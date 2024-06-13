@@ -1,0 +1,85 @@
+syntax = "proto3";
+package com.cio.fdb.record.grpc;
+option java_package = "com.cio.fdb.record.grpc";
+
+
+import "google/protobuf/descriptor.proto";
+import "record_metadata.proto";
+
+message FDBRemoteSessionRequest{
+    int64 client_id = 1;
+}
+
+message FDBRemoteSessionHandle{
+    int64 id = 1;
+}
+
+message FDBDirectory{
+    string name = 1;
+    string value = 2;
+    optional FDBDirectory sub_directory = 3;
+}
+
+message FDBRemoteRecordStoreRequest{
+    FDBRemoteSessionHandle session = 1;
+    google.protobuf.FileDescriptorProto metadata = 2;
+    FDBDirectory key_space =3;
+}
+
+message FDBRemoteRecordStoreHandle{
+    int64 id = 1;
+    FDBRemoteSessionHandle session = 2;
+    com.apple.foundationdb.record.DataStoreInfo store = 3;
+}
+message FDBRemoteSessionCommitRequest{
+    FDBRemoteSessionHandle session = 1;
+}
+
+
+message FDBSaveRecordCommand{
+    FDBRemoteRecordStoreHandle store = 1;
+    string table = 2;
+    bytes record = 3;
+}
+message FDBSaveRecordResult{
+    bytes record = 1;
+}
+
+message FDBDeleteRecordCommand{
+    FDBRemoteRecordStoreHandle store = 1;
+    bytes record_id = 2;
+}
+message FDBDeleteRecordResult{
+    bool result = 1;
+}
+
+enum TransactionCommitResult{
+    TRANSACTION_SUCCESS = 0;
+    TRANSACTION_NOT_ACTIVE = 1;
+    TRANSACTION_FAILED = 2;
+}
+message FDBRemoteSessionCommitResponse{
+    TransactionCommitResult result = 1;
+    optional string error = 2;
+}
+
+message FDBDumpAllCommand{
+    optional bytes start = 1;
+    optional bytes end = 2; 
+}
+message FDBDumpAllResponseBatch{
+    message KV {
+        bytes key = 1;
+        bytes value = 2;
+      }
+    repeated KV data = 7;
+}
+
+service FDBRemote {
+    rpc NewSession(FDBRemoteSessionRequest) returns (FDBRemoteSessionHandle) {}
+    rpc NewRecordStore (FDBRemoteRecordStoreRequest) returns (FDBRemoteRecordStoreHandle) {}
+    rpc commit (FDBRemoteSessionCommitRequest) returns (FDBRemoteSessionCommitResponse){}
+    rpc SaveRecord (FDBSaveRecordCommand) returns (FDBSaveRecordResult) {}
+    rpc DeleteRecord (FDBDeleteRecordCommand) returns (FDBDeleteRecordResult) {}
+    rpc GetDump(FDBDumpAllCommand) returns (stream FDBDumpAllResponseBatch) {}
+}
