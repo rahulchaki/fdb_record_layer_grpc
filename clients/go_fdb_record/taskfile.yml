@@ -1,0 +1,16 @@
+version: '3'
+
+tasks:
+  protogen:
+    cmds:
+      - rm -rf protos/*pb.go
+      - protoc --proto_path=protos --proto_path=../../common/record_layer/protos --go_out=protos --go_opt=paths=source_relative protos/sample.proto
+  build:
+    deps: [protogen]
+    cmds:
+      - go build -o app -v main.go
+      - chmod 777 ./app
+  run:
+    deps: [build]
+    cmds:
+      - go run main.go
