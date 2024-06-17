@@ -5,24 +5,28 @@ import com.google.protobuf.UnknownFieldSet
 
 import scala.util.{Failure, Success, Try}
 
-trait ByteArrayReadable{
-  def format( value: Array[Byte] ): Try[String]
+trait ByteArrayReadable {
+  def format(value: Array[Byte]): Try[String]
 }
+
 object ByteArrayTupleReadable extends ByteArrayReadable {
   override def format(value: Array[Byte]): Try[String] = Try(
     s"Tuple[${Tuple.fromBytes(value).toString}]"
   )
 }
-object ByteArrayProtobufReadable extends ByteArrayReadable{
-  override def format(value: Array[Byte]): Try[String] = Try{
+
+object ByteArrayProtobufReadable extends ByteArrayReadable {
+  override def format(value: Array[Byte]): Try[String] = Try {
     s"Proto[${UnknownFieldSet.parseFrom(value).toString}]"
   }
 }
+
 object ByteArrayFDBReadable extends ByteArrayReadable {
   override def format(value: Array[Byte]): Try[String] = Success(
     s"FDB[${ByteArrayUtil.printable(value)}]"
   )
 }
+
 object ByteArrayTupleNFDBReadable extends ByteArrayReadable {
   override def format(value: Array[Byte]): Try[String] = {
     (ByteArrayTupleReadable.format(value), ByteArrayFDBReadable.format(value)) match {
@@ -33,13 +37,14 @@ object ByteArrayTupleNFDBReadable extends ByteArrayReadable {
     }
   }
 }
+
 object ByteArrayHexReadable extends ByteArrayReadable {
   override def format(value: Array[Byte]): Try[String] = Success(
     s"Hex[${ByteArrayUtil2.toHexString(value)}]"
   )
 }
 
-class ComposableByteArrayReadable( inners: ByteArrayReadable* ) extends ByteArrayReadable{
+class ComposableByteArrayReadable(inners: ByteArrayReadable*) extends ByteArrayReadable {
   override def format(value: Array[Byte]): Try[String] = {
     inners.find(inner => inner.format(value).isSuccess) match {
       case Some(inner) => inner.format(value)
@@ -47,12 +52,14 @@ class ComposableByteArrayReadable( inners: ByteArrayReadable* ) extends ByteArra
     }
   }
 }
-object ByteArrayReadable{
+
+object ByteArrayReadable {
   private val readable = new ComposableByteArrayReadable(
     ByteArrayProtobufReadable,
     ByteArrayTupleNFDBReadable,
     ByteArrayFDBReadable,
     ByteArrayHexReadable
   )
-  def formatSafe( value: Array[Byte] ): String = readable.format( value ).get
+
+  def formatSafe(value: Array[Byte]): String = readable.format(value).get
 }

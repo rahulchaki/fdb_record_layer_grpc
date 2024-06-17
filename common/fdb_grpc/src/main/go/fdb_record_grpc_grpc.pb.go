@@ -19,91 +19,260 @@ import (
 const _ = grpc.SupportPackageIsVersion8
 
 const (
-	FDBRemote_NewSession_FullMethodName     = "/cio.fdb.record.grpc.FDBRemote/NewSession"
-	FDBRemote_NewRecordStore_FullMethodName = "/cio.fdb.record.grpc.FDBRemote/NewRecordStore"
-	FDBRemote_Commit_FullMethodName         = "/cio.fdb.record.grpc.FDBRemote/commit"
-	FDBRemote_SaveRecord_FullMethodName     = "/cio.fdb.record.grpc.FDBRemote/SaveRecord"
-	FDBRemote_DeleteRecord_FullMethodName   = "/cio.fdb.record.grpc.FDBRemote/DeleteRecord"
-	FDBRemote_GetDump_FullMethodName        = "/cio.fdb.record.grpc.FDBRemote/GetDump"
+	FDBRemoteCRUD_LoadMetadata_FullMethodName   = "/cio.fdb.record.grpc.FDBRemoteCRUD/LoadMetadata"
+	FDBRemoteCRUD_RegisterSchema_FullMethodName = "/cio.fdb.record.grpc.FDBRemoteCRUD/RegisterSchema"
+	FDBRemoteCRUD_Execute_FullMethodName        = "/cio.fdb.record.grpc.FDBRemoteCRUD/execute"
 )
 
-// FDBRemoteClient is the client API for FDBRemote service.
+// FDBRemoteCRUDClient is the client API for FDBRemoteCRUD service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type FDBRemoteClient interface {
+type FDBRemoteCRUDClient interface {
+	LoadMetadata(ctx context.Context, in *FDBLoadMetadataCommand, opts ...grpc.CallOption) (*FDBLoadMetadataResponse, error)
+	RegisterSchema(ctx context.Context, in *FDBRegisterSchemaCommand, opts ...grpc.CallOption) (*FDBLoadMetadataResponse, error)
+	Execute(ctx context.Context, in *FDBCRUDCommand, opts ...grpc.CallOption) (*FDBCRUDResponse, error)
+}
+
+type fDBRemoteCRUDClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewFDBRemoteCRUDClient(cc grpc.ClientConnInterface) FDBRemoteCRUDClient {
+	return &fDBRemoteCRUDClient{cc}
+}
+
+func (c *fDBRemoteCRUDClient) LoadMetadata(ctx context.Context, in *FDBLoadMetadataCommand, opts ...grpc.CallOption) (*FDBLoadMetadataResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(FDBLoadMetadataResponse)
+	err := c.cc.Invoke(ctx, FDBRemoteCRUD_LoadMetadata_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *fDBRemoteCRUDClient) RegisterSchema(ctx context.Context, in *FDBRegisterSchemaCommand, opts ...grpc.CallOption) (*FDBLoadMetadataResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(FDBLoadMetadataResponse)
+	err := c.cc.Invoke(ctx, FDBRemoteCRUD_RegisterSchema_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *fDBRemoteCRUDClient) Execute(ctx context.Context, in *FDBCRUDCommand, opts ...grpc.CallOption) (*FDBCRUDResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(FDBCRUDResponse)
+	err := c.cc.Invoke(ctx, FDBRemoteCRUD_Execute_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// FDBRemoteCRUDServer is the server API for FDBRemoteCRUD service.
+// All implementations must embed UnimplementedFDBRemoteCRUDServer
+// for forward compatibility
+type FDBRemoteCRUDServer interface {
+	LoadMetadata(context.Context, *FDBLoadMetadataCommand) (*FDBLoadMetadataResponse, error)
+	RegisterSchema(context.Context, *FDBRegisterSchemaCommand) (*FDBLoadMetadataResponse, error)
+	Execute(context.Context, *FDBCRUDCommand) (*FDBCRUDResponse, error)
+	mustEmbedUnimplementedFDBRemoteCRUDServer()
+}
+
+// UnimplementedFDBRemoteCRUDServer must be embedded to have forward compatible implementations.
+type UnimplementedFDBRemoteCRUDServer struct {
+}
+
+func (UnimplementedFDBRemoteCRUDServer) LoadMetadata(context.Context, *FDBLoadMetadataCommand) (*FDBLoadMetadataResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method LoadMetadata not implemented")
+}
+func (UnimplementedFDBRemoteCRUDServer) RegisterSchema(context.Context, *FDBRegisterSchemaCommand) (*FDBLoadMetadataResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method RegisterSchema not implemented")
+}
+func (UnimplementedFDBRemoteCRUDServer) Execute(context.Context, *FDBCRUDCommand) (*FDBCRUDResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Execute not implemented")
+}
+func (UnimplementedFDBRemoteCRUDServer) mustEmbedUnimplementedFDBRemoteCRUDServer() {}
+
+// UnsafeFDBRemoteCRUDServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to FDBRemoteCRUDServer will
+// result in compilation errors.
+type UnsafeFDBRemoteCRUDServer interface {
+	mustEmbedUnimplementedFDBRemoteCRUDServer()
+}
+
+func RegisterFDBRemoteCRUDServer(s grpc.ServiceRegistrar, srv FDBRemoteCRUDServer) {
+	s.RegisterService(&FDBRemoteCRUD_ServiceDesc, srv)
+}
+
+func _FDBRemoteCRUD_LoadMetadata_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FDBLoadMetadataCommand)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FDBRemoteCRUDServer).LoadMetadata(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FDBRemoteCRUD_LoadMetadata_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FDBRemoteCRUDServer).LoadMetadata(ctx, req.(*FDBLoadMetadataCommand))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FDBRemoteCRUD_RegisterSchema_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FDBRegisterSchemaCommand)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FDBRemoteCRUDServer).RegisterSchema(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FDBRemoteCRUD_RegisterSchema_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FDBRemoteCRUDServer).RegisterSchema(ctx, req.(*FDBRegisterSchemaCommand))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _FDBRemoteCRUD_Execute_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(FDBCRUDCommand)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(FDBRemoteCRUDServer).Execute(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: FDBRemoteCRUD_Execute_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(FDBRemoteCRUDServer).Execute(ctx, req.(*FDBCRUDCommand))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// FDBRemoteCRUD_ServiceDesc is the grpc.ServiceDesc for FDBRemoteCRUD service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var FDBRemoteCRUD_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "cio.fdb.record.grpc.FDBRemoteCRUD",
+	HandlerType: (*FDBRemoteCRUDServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "LoadMetadata",
+			Handler:    _FDBRemoteCRUD_LoadMetadata_Handler,
+		},
+		{
+			MethodName: "RegisterSchema",
+			Handler:    _FDBRemoteCRUD_RegisterSchema_Handler,
+		},
+		{
+			MethodName: "execute",
+			Handler:    _FDBRemoteCRUD_Execute_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "fdb_record_grpc.proto",
+}
+
+const (
+	FDBRemoteInteractiveSession_NewSession_FullMethodName     = "/cio.fdb.record.grpc.FDBRemoteInteractiveSession/NewSession"
+	FDBRemoteInteractiveSession_NewRecordStore_FullMethodName = "/cio.fdb.record.grpc.FDBRemoteInteractiveSession/NewRecordStore"
+	FDBRemoteInteractiveSession_Commit_FullMethodName         = "/cio.fdb.record.grpc.FDBRemoteInteractiveSession/commit"
+	FDBRemoteInteractiveSession_SaveRecord_FullMethodName     = "/cio.fdb.record.grpc.FDBRemoteInteractiveSession/SaveRecord"
+	FDBRemoteInteractiveSession_DeleteRecord_FullMethodName   = "/cio.fdb.record.grpc.FDBRemoteInteractiveSession/DeleteRecord"
+	FDBRemoteInteractiveSession_LoadRecords_FullMethodName    = "/cio.fdb.record.grpc.FDBRemoteInteractiveSession/loadRecords"
+	FDBRemoteInteractiveSession_GetDump_FullMethodName        = "/cio.fdb.record.grpc.FDBRemoteInteractiveSession/GetDump"
+)
+
+// FDBRemoteInteractiveSessionClient is the client API for FDBRemoteInteractiveSession service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type FDBRemoteInteractiveSessionClient interface {
 	NewSession(ctx context.Context, in *FDBRemoteSessionRequest, opts ...grpc.CallOption) (*FDBRemoteSessionHandle, error)
 	NewRecordStore(ctx context.Context, in *FDBRemoteRecordStoreRequest, opts ...grpc.CallOption) (*FDBRemoteRecordStoreHandle, error)
 	Commit(ctx context.Context, in *FDBRemoteSessionCommitRequest, opts ...grpc.CallOption) (*FDBRemoteSessionCommitResponse, error)
 	SaveRecord(ctx context.Context, in *FDBSaveRecordCommand, opts ...grpc.CallOption) (*FDBSaveRecordResult, error)
 	DeleteRecord(ctx context.Context, in *FDBDeleteRecordCommand, opts ...grpc.CallOption) (*FDBDeleteRecordResult, error)
-	GetDump(ctx context.Context, in *FDBDumpAllCommand, opts ...grpc.CallOption) (FDBRemote_GetDumpClient, error)
+	LoadRecords(ctx context.Context, in *FDBLoadRecordsCommand, opts ...grpc.CallOption) (FDBRemoteInteractiveSession_LoadRecordsClient, error)
+	GetDump(ctx context.Context, in *FDBDumpAllCommand, opts ...grpc.CallOption) (FDBRemoteInteractiveSession_GetDumpClient, error)
 }
 
-type fDBRemoteClient struct {
+type fDBRemoteInteractiveSessionClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewFDBRemoteClient(cc grpc.ClientConnInterface) FDBRemoteClient {
-	return &fDBRemoteClient{cc}
+func NewFDBRemoteInteractiveSessionClient(cc grpc.ClientConnInterface) FDBRemoteInteractiveSessionClient {
+	return &fDBRemoteInteractiveSessionClient{cc}
 }
 
-func (c *fDBRemoteClient) NewSession(ctx context.Context, in *FDBRemoteSessionRequest, opts ...grpc.CallOption) (*FDBRemoteSessionHandle, error) {
+func (c *fDBRemoteInteractiveSessionClient) NewSession(ctx context.Context, in *FDBRemoteSessionRequest, opts ...grpc.CallOption) (*FDBRemoteSessionHandle, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(FDBRemoteSessionHandle)
-	err := c.cc.Invoke(ctx, FDBRemote_NewSession_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, FDBRemoteInteractiveSession_NewSession_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *fDBRemoteClient) NewRecordStore(ctx context.Context, in *FDBRemoteRecordStoreRequest, opts ...grpc.CallOption) (*FDBRemoteRecordStoreHandle, error) {
+func (c *fDBRemoteInteractiveSessionClient) NewRecordStore(ctx context.Context, in *FDBRemoteRecordStoreRequest, opts ...grpc.CallOption) (*FDBRemoteRecordStoreHandle, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(FDBRemoteRecordStoreHandle)
-	err := c.cc.Invoke(ctx, FDBRemote_NewRecordStore_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, FDBRemoteInteractiveSession_NewRecordStore_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *fDBRemoteClient) Commit(ctx context.Context, in *FDBRemoteSessionCommitRequest, opts ...grpc.CallOption) (*FDBRemoteSessionCommitResponse, error) {
+func (c *fDBRemoteInteractiveSessionClient) Commit(ctx context.Context, in *FDBRemoteSessionCommitRequest, opts ...grpc.CallOption) (*FDBRemoteSessionCommitResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(FDBRemoteSessionCommitResponse)
-	err := c.cc.Invoke(ctx, FDBRemote_Commit_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, FDBRemoteInteractiveSession_Commit_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *fDBRemoteClient) SaveRecord(ctx context.Context, in *FDBSaveRecordCommand, opts ...grpc.CallOption) (*FDBSaveRecordResult, error) {
+func (c *fDBRemoteInteractiveSessionClient) SaveRecord(ctx context.Context, in *FDBSaveRecordCommand, opts ...grpc.CallOption) (*FDBSaveRecordResult, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(FDBSaveRecordResult)
-	err := c.cc.Invoke(ctx, FDBRemote_SaveRecord_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, FDBRemoteInteractiveSession_SaveRecord_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *fDBRemoteClient) DeleteRecord(ctx context.Context, in *FDBDeleteRecordCommand, opts ...grpc.CallOption) (*FDBDeleteRecordResult, error) {
+func (c *fDBRemoteInteractiveSessionClient) DeleteRecord(ctx context.Context, in *FDBDeleteRecordCommand, opts ...grpc.CallOption) (*FDBDeleteRecordResult, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(FDBDeleteRecordResult)
-	err := c.cc.Invoke(ctx, FDBRemote_DeleteRecord_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, FDBRemoteInteractiveSession_DeleteRecord_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *fDBRemoteClient) GetDump(ctx context.Context, in *FDBDumpAllCommand, opts ...grpc.CallOption) (FDBRemote_GetDumpClient, error) {
+func (c *fDBRemoteInteractiveSessionClient) LoadRecords(ctx context.Context, in *FDBLoadRecordsCommand, opts ...grpc.CallOption) (FDBRemoteInteractiveSession_LoadRecordsClient, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	stream, err := c.cc.NewStream(ctx, &FDBRemote_ServiceDesc.Streams[0], FDBRemote_GetDump_FullMethodName, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &FDBRemoteInteractiveSession_ServiceDesc.Streams[0], FDBRemoteInteractiveSession_LoadRecords_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
-	x := &fDBRemoteGetDumpClient{ClientStream: stream}
+	x := &fDBRemoteInteractiveSessionLoadRecordsClient{ClientStream: stream}
 	if err := x.ClientStream.SendMsg(in); err != nil {
 		return nil, err
 	}
@@ -113,16 +282,49 @@ func (c *fDBRemoteClient) GetDump(ctx context.Context, in *FDBDumpAllCommand, op
 	return x, nil
 }
 
-type FDBRemote_GetDumpClient interface {
+type FDBRemoteInteractiveSession_LoadRecordsClient interface {
+	Recv() (*FDBSaveRecordResult, error)
+	grpc.ClientStream
+}
+
+type fDBRemoteInteractiveSessionLoadRecordsClient struct {
+	grpc.ClientStream
+}
+
+func (x *fDBRemoteInteractiveSessionLoadRecordsClient) Recv() (*FDBSaveRecordResult, error) {
+	m := new(FDBSaveRecordResult)
+	if err := x.ClientStream.RecvMsg(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+func (c *fDBRemoteInteractiveSessionClient) GetDump(ctx context.Context, in *FDBDumpAllCommand, opts ...grpc.CallOption) (FDBRemoteInteractiveSession_GetDumpClient, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	stream, err := c.cc.NewStream(ctx, &FDBRemoteInteractiveSession_ServiceDesc.Streams[1], FDBRemoteInteractiveSession_GetDump_FullMethodName, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &fDBRemoteInteractiveSessionGetDumpClient{ClientStream: stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type FDBRemoteInteractiveSession_GetDumpClient interface {
 	Recv() (*FDBDumpAllResponseBatch, error)
 	grpc.ClientStream
 }
 
-type fDBRemoteGetDumpClient struct {
+type fDBRemoteInteractiveSessionGetDumpClient struct {
 	grpc.ClientStream
 }
 
-func (x *fDBRemoteGetDumpClient) Recv() (*FDBDumpAllResponseBatch, error) {
+func (x *fDBRemoteInteractiveSessionGetDumpClient) Recv() (*FDBDumpAllResponseBatch, error) {
 	m := new(FDBDumpAllResponseBatch)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -130,197 +332,228 @@ func (x *fDBRemoteGetDumpClient) Recv() (*FDBDumpAllResponseBatch, error) {
 	return m, nil
 }
 
-// FDBRemoteServer is the server API for FDBRemote service.
-// All implementations must embed UnimplementedFDBRemoteServer
+// FDBRemoteInteractiveSessionServer is the server API for FDBRemoteInteractiveSession service.
+// All implementations must embed UnimplementedFDBRemoteInteractiveSessionServer
 // for forward compatibility
-type FDBRemoteServer interface {
+type FDBRemoteInteractiveSessionServer interface {
 	NewSession(context.Context, *FDBRemoteSessionRequest) (*FDBRemoteSessionHandle, error)
 	NewRecordStore(context.Context, *FDBRemoteRecordStoreRequest) (*FDBRemoteRecordStoreHandle, error)
 	Commit(context.Context, *FDBRemoteSessionCommitRequest) (*FDBRemoteSessionCommitResponse, error)
 	SaveRecord(context.Context, *FDBSaveRecordCommand) (*FDBSaveRecordResult, error)
 	DeleteRecord(context.Context, *FDBDeleteRecordCommand) (*FDBDeleteRecordResult, error)
-	GetDump(*FDBDumpAllCommand, FDBRemote_GetDumpServer) error
-	mustEmbedUnimplementedFDBRemoteServer()
+	LoadRecords(*FDBLoadRecordsCommand, FDBRemoteInteractiveSession_LoadRecordsServer) error
+	GetDump(*FDBDumpAllCommand, FDBRemoteInteractiveSession_GetDumpServer) error
+	mustEmbedUnimplementedFDBRemoteInteractiveSessionServer()
 }
 
-// UnimplementedFDBRemoteServer must be embedded to have forward compatible implementations.
-type UnimplementedFDBRemoteServer struct {
+// UnimplementedFDBRemoteInteractiveSessionServer must be embedded to have forward compatible implementations.
+type UnimplementedFDBRemoteInteractiveSessionServer struct {
 }
 
-func (UnimplementedFDBRemoteServer) NewSession(context.Context, *FDBRemoteSessionRequest) (*FDBRemoteSessionHandle, error) {
+func (UnimplementedFDBRemoteInteractiveSessionServer) NewSession(context.Context, *FDBRemoteSessionRequest) (*FDBRemoteSessionHandle, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method NewSession not implemented")
 }
-func (UnimplementedFDBRemoteServer) NewRecordStore(context.Context, *FDBRemoteRecordStoreRequest) (*FDBRemoteRecordStoreHandle, error) {
+func (UnimplementedFDBRemoteInteractiveSessionServer) NewRecordStore(context.Context, *FDBRemoteRecordStoreRequest) (*FDBRemoteRecordStoreHandle, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method NewRecordStore not implemented")
 }
-func (UnimplementedFDBRemoteServer) Commit(context.Context, *FDBRemoteSessionCommitRequest) (*FDBRemoteSessionCommitResponse, error) {
+func (UnimplementedFDBRemoteInteractiveSessionServer) Commit(context.Context, *FDBRemoteSessionCommitRequest) (*FDBRemoteSessionCommitResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Commit not implemented")
 }
-func (UnimplementedFDBRemoteServer) SaveRecord(context.Context, *FDBSaveRecordCommand) (*FDBSaveRecordResult, error) {
+func (UnimplementedFDBRemoteInteractiveSessionServer) SaveRecord(context.Context, *FDBSaveRecordCommand) (*FDBSaveRecordResult, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SaveRecord not implemented")
 }
-func (UnimplementedFDBRemoteServer) DeleteRecord(context.Context, *FDBDeleteRecordCommand) (*FDBDeleteRecordResult, error) {
+func (UnimplementedFDBRemoteInteractiveSessionServer) DeleteRecord(context.Context, *FDBDeleteRecordCommand) (*FDBDeleteRecordResult, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteRecord not implemented")
 }
-func (UnimplementedFDBRemoteServer) GetDump(*FDBDumpAllCommand, FDBRemote_GetDumpServer) error {
+func (UnimplementedFDBRemoteInteractiveSessionServer) LoadRecords(*FDBLoadRecordsCommand, FDBRemoteInteractiveSession_LoadRecordsServer) error {
+	return status.Errorf(codes.Unimplemented, "method LoadRecords not implemented")
+}
+func (UnimplementedFDBRemoteInteractiveSessionServer) GetDump(*FDBDumpAllCommand, FDBRemoteInteractiveSession_GetDumpServer) error {
 	return status.Errorf(codes.Unimplemented, "method GetDump not implemented")
 }
-func (UnimplementedFDBRemoteServer) mustEmbedUnimplementedFDBRemoteServer() {}
+func (UnimplementedFDBRemoteInteractiveSessionServer) mustEmbedUnimplementedFDBRemoteInteractiveSessionServer() {
+}
 
-// UnsafeFDBRemoteServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to FDBRemoteServer will
+// UnsafeFDBRemoteInteractiveSessionServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to FDBRemoteInteractiveSessionServer will
 // result in compilation errors.
-type UnsafeFDBRemoteServer interface {
-	mustEmbedUnimplementedFDBRemoteServer()
+type UnsafeFDBRemoteInteractiveSessionServer interface {
+	mustEmbedUnimplementedFDBRemoteInteractiveSessionServer()
 }
 
-func RegisterFDBRemoteServer(s grpc.ServiceRegistrar, srv FDBRemoteServer) {
-	s.RegisterService(&FDBRemote_ServiceDesc, srv)
+func RegisterFDBRemoteInteractiveSessionServer(s grpc.ServiceRegistrar, srv FDBRemoteInteractiveSessionServer) {
+	s.RegisterService(&FDBRemoteInteractiveSession_ServiceDesc, srv)
 }
 
-func _FDBRemote_NewSession_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _FDBRemoteInteractiveSession_NewSession_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(FDBRemoteSessionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(FDBRemoteServer).NewSession(ctx, in)
+		return srv.(FDBRemoteInteractiveSessionServer).NewSession(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: FDBRemote_NewSession_FullMethodName,
+		FullMethod: FDBRemoteInteractiveSession_NewSession_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FDBRemoteServer).NewSession(ctx, req.(*FDBRemoteSessionRequest))
+		return srv.(FDBRemoteInteractiveSessionServer).NewSession(ctx, req.(*FDBRemoteSessionRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _FDBRemote_NewRecordStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _FDBRemoteInteractiveSession_NewRecordStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(FDBRemoteRecordStoreRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(FDBRemoteServer).NewRecordStore(ctx, in)
+		return srv.(FDBRemoteInteractiveSessionServer).NewRecordStore(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: FDBRemote_NewRecordStore_FullMethodName,
+		FullMethod: FDBRemoteInteractiveSession_NewRecordStore_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FDBRemoteServer).NewRecordStore(ctx, req.(*FDBRemoteRecordStoreRequest))
+		return srv.(FDBRemoteInteractiveSessionServer).NewRecordStore(ctx, req.(*FDBRemoteRecordStoreRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _FDBRemote_Commit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _FDBRemoteInteractiveSession_Commit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(FDBRemoteSessionCommitRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(FDBRemoteServer).Commit(ctx, in)
+		return srv.(FDBRemoteInteractiveSessionServer).Commit(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: FDBRemote_Commit_FullMethodName,
+		FullMethod: FDBRemoteInteractiveSession_Commit_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FDBRemoteServer).Commit(ctx, req.(*FDBRemoteSessionCommitRequest))
+		return srv.(FDBRemoteInteractiveSessionServer).Commit(ctx, req.(*FDBRemoteSessionCommitRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _FDBRemote_SaveRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _FDBRemoteInteractiveSession_SaveRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(FDBSaveRecordCommand)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(FDBRemoteServer).SaveRecord(ctx, in)
+		return srv.(FDBRemoteInteractiveSessionServer).SaveRecord(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: FDBRemote_SaveRecord_FullMethodName,
+		FullMethod: FDBRemoteInteractiveSession_SaveRecord_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FDBRemoteServer).SaveRecord(ctx, req.(*FDBSaveRecordCommand))
+		return srv.(FDBRemoteInteractiveSessionServer).SaveRecord(ctx, req.(*FDBSaveRecordCommand))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _FDBRemote_DeleteRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _FDBRemoteInteractiveSession_DeleteRecord_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(FDBDeleteRecordCommand)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(FDBRemoteServer).DeleteRecord(ctx, in)
+		return srv.(FDBRemoteInteractiveSessionServer).DeleteRecord(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: FDBRemote_DeleteRecord_FullMethodName,
+		FullMethod: FDBRemoteInteractiveSession_DeleteRecord_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FDBRemoteServer).DeleteRecord(ctx, req.(*FDBDeleteRecordCommand))
+		return srv.(FDBRemoteInteractiveSessionServer).DeleteRecord(ctx, req.(*FDBDeleteRecordCommand))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _FDBRemote_GetDump_Handler(srv interface{}, stream grpc.ServerStream) error {
+func _FDBRemoteInteractiveSession_LoadRecords_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(FDBLoadRecordsCommand)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
+	}
+	return srv.(FDBRemoteInteractiveSessionServer).LoadRecords(m, &fDBRemoteInteractiveSessionLoadRecordsServer{ServerStream: stream})
+}
+
+type FDBRemoteInteractiveSession_LoadRecordsServer interface {
+	Send(*FDBSaveRecordResult) error
+	grpc.ServerStream
+}
+
+type fDBRemoteInteractiveSessionLoadRecordsServer struct {
+	grpc.ServerStream
+}
+
+func (x *fDBRemoteInteractiveSessionLoadRecordsServer) Send(m *FDBSaveRecordResult) error {
+	return x.ServerStream.SendMsg(m)
+}
+
+func _FDBRemoteInteractiveSession_GetDump_Handler(srv interface{}, stream grpc.ServerStream) error {
 	m := new(FDBDumpAllCommand)
 	if err := stream.RecvMsg(m); err != nil {
 		return err
 	}
-	return srv.(FDBRemoteServer).GetDump(m, &fDBRemoteGetDumpServer{ServerStream: stream})
+	return srv.(FDBRemoteInteractiveSessionServer).GetDump(m, &fDBRemoteInteractiveSessionGetDumpServer{ServerStream: stream})
 }
 
-type FDBRemote_GetDumpServer interface {
+type FDBRemoteInteractiveSession_GetDumpServer interface {
 	Send(*FDBDumpAllResponseBatch) error
 	grpc.ServerStream
 }
 
-type fDBRemoteGetDumpServer struct {
+type fDBRemoteInteractiveSessionGetDumpServer struct {
 	grpc.ServerStream
 }
 
-func (x *fDBRemoteGetDumpServer) Send(m *FDBDumpAllResponseBatch) error {
+func (x *fDBRemoteInteractiveSessionGetDumpServer) Send(m *FDBDumpAllResponseBatch) error {
 	return x.ServerStream.SendMsg(m)
 }
 
-// FDBRemote_ServiceDesc is the grpc.ServiceDesc for FDBRemote service.
+// FDBRemoteInteractiveSession_ServiceDesc is the grpc.ServiceDesc for FDBRemoteInteractiveSession service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var FDBRemote_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "cio.fdb.record.grpc.FDBRemote",
-	HandlerType: (*FDBRemoteServer)(nil),
+var FDBRemoteInteractiveSession_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "cio.fdb.record.grpc.FDBRemoteInteractiveSession",
+	HandlerType: (*FDBRemoteInteractiveSessionServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "NewSession",
-			Handler:    _FDBRemote_NewSession_Handler,
+			Handler:    _FDBRemoteInteractiveSession_NewSession_Handler,
 		},
 		{
 			MethodName: "NewRecordStore",
-			Handler:    _FDBRemote_NewRecordStore_Handler,
+			Handler:    _FDBRemoteInteractiveSession_NewRecordStore_Handler,
 		},
 		{
 			MethodName: "commit",
-			Handler:    _FDBRemote_Commit_Handler,
+			Handler:    _FDBRemoteInteractiveSession_Commit_Handler,
 		},
 		{
 			MethodName: "SaveRecord",
-			Handler:    _FDBRemote_SaveRecord_Handler,
+			Handler:    _FDBRemoteInteractiveSession_SaveRecord_Handler,
 		},
 		{
 			MethodName: "DeleteRecord",
-			Handler:    _FDBRemote_DeleteRecord_Handler,
+			Handler:    _FDBRemoteInteractiveSession_DeleteRecord_Handler,
 		},
 	},
 	Streams: []grpc.StreamDesc{
 		{
+			StreamName:    "loadRecords",
+			Handler:       _FDBRemoteInteractiveSession_LoadRecords_Handler,
+			ServerStreams: true,
+		},
+		{
 			StreamName:    "GetDump",
-			Handler:       _FDBRemote_GetDump_Handler,
+			Handler:       _FDBRemoteInteractiveSession_GetDump_Handler,
 			ServerStreams: true,
 		},
 	},

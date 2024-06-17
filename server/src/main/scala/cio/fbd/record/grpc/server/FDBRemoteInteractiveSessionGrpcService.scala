@@ -1,14 +1,15 @@
 package cio.fbd.record.grpc.server
 
-import cio.fdb.record.grpc.FDBRemoteGrpc._
+import cio.fdb.record.grpc.FDBRemoteInteractiveSessionGrpc._
 import cio.fdb.record.grpc.FdbRecordGrpc._
+import com.google.protobuf.Message
 import io.grpc.stub.StreamObserver
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.jdk.CollectionConverters._
 import scala.util.{Failure, Success}
 
-class FDBRemoteGrpcService(sessionsManager: RemoteFDBSessionManager) extends FDBRemoteImplBase {
+class FDBRemoteInteractiveSessionGrpcService(sessionsManager: RemoteFDBSessionManager) extends FDBRemoteInteractiveSessionImplBase {
 
   override def newSession(
                            request: FDBRemoteSessionRequest,
@@ -82,17 +83,17 @@ class FDBRemoteGrpcService(sessionsManager: RemoteFDBSessionManager) extends FDB
   }
 
   override def getDump(request: FDBDumpAllCommand, responseObserver: StreamObserver[FDBDumpAllResponseBatch]): Unit = {
-    val results = if( request.hasStart && request.hasEnd )
-      sessionsManager.getRange( request.getStart, request.getEnd )
+    val results = if (request.hasStart && request.hasEnd)
+      sessionsManager.getRange(request.getStart, request.getEnd)
     else sessionsManager.getAll
-    results.foreach{ batch =>
+    results.foreach { batch =>
       responseObserver.onNext(
         FDBDumpAllResponseBatch.newBuilder()
           .addAllData(
-            batch.map{ kv =>
+            batch.map { kv =>
               FDBDumpAllResponseBatch.KV.newBuilder()
-                .setKey( kv._1)
-                .setValue( kv._2 )
+                .setKey(kv._1)
+                .setValue(kv._2)
                 .build()
             }.asJava
           )
@@ -111,6 +112,20 @@ class FDBRemoteGrpcService(sessionsManager: RemoteFDBSessionManager) extends FDB
         responseObserver.onNext(
           FDBDeleteRecordResult.newBuilder().setResult(result).build()
         )
+        responseObserver.onCompleted()
+    }
+  }
+
+  override def loadRecords(request: FDBLoadRecordsCommand, responseObserver: StreamObserver[FDBSaveRecordResult]): Unit = {
+    def handle(record: Message): Unit = {
+      responseObserver.onNext(FDBSaveRecordResult.newBuilder().setRecord(record.toByteString).build())
+    }
+
+    sessionsManager.loadRecords(request.getStore.getId, request.getTable, request.getQuery, handle).onComplete {
+      case Failure(ex) =>
+        responseObserver.onError(ex)
+        responseObserver.onCompleted()
+      case Success(_) =>
         responseObserver.onCompleted()
     }
   }

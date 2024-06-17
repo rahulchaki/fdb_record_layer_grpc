@@ -5,7 +5,9 @@ option go_package = "cio/fdb/grpc/protos";
 
 
 import "google/protobuf/descriptor.proto";
+import "google/protobuf/struct.proto";
 import "record_metadata.proto";
+import "filters.proto";
 
 message FDBRemoteSessionRequest{
     int64 client_id = 1;
@@ -53,7 +55,11 @@ message FDBDeleteRecordCommand{
 message FDBDeleteRecordResult{
     bool result = 1;
 }
-
+message FDBLoadRecordsCommand{
+    FDBRemoteRecordStoreHandle store = 1;
+    string table = 2;
+    BooleanQuery query = 3;
+}
 enum TransactionCommitResult{
     TRANSACTION_SUCCESS = 0;
     TRANSACTION_NOT_ACTIVE = 1;
@@ -76,11 +82,64 @@ message FDBDumpAllResponseBatch{
     repeated KV data = 7;
 }
 
-service FDBRemote {
+
+message FDBLoadMetadataCommand{
+    repeated string path = 1;
+}
+message FDBRegisterSchemaCommand{
+    repeated string path = 1;
+    google.protobuf.FileDescriptorProto schema = 2;
+}
+message FDBLoadMetadataResponse{
+    com.apple.foundationdb.record.MetaData metadata = 1;
+}
+
+message KeysList{
+    repeated bytes keys = 1;
+}
+message RecordsList{
+    repeated bytes records = 1;
+}
+message FDBTransactionError{
+    int32 code = 1;
+    optional string error = 2;
+}
+message FDBCRUDCommand{
+    string table = 1;
+    enum OPERATION{
+        CREATE=0;
+        LOAD=1;
+        DELETE=2;
+    }
+    OPERATION operation = 10;
+    oneof data {
+        KeysList keys = 16;
+        RecordsList records = 20;
+        BooleanQuery query = 24;
+    }
+}
+message FDBCRUDResponse{
+    oneof data{
+        KeysList keys = 8;
+        RecordsList records = 16;
+        bool success = 32;
+        FDBTransactionError error = 64;
+    }
+}
+
+
+service FDBRemoteCRUD {
+    rpc LoadMetadata(FDBLoadMetadataCommand) returns (FDBLoadMetadataResponse){}
+    rpc RegisterSchema(FDBRegisterSchemaCommand) returns (FDBLoadMetadataResponse) {}
+    rpc execute( FDBCRUDCommand) returns (FDBCRUDResponse) {}
+}
+
+service FDBRemoteInteractiveSession {
     rpc NewSession(FDBRemoteSessionRequest) returns (FDBRemoteSessionHandle) {}
     rpc NewRecordStore (FDBRemoteRecordStoreRequest) returns (FDBRemoteRecordStoreHandle) {}
     rpc commit (FDBRemoteSessionCommitRequest) returns (FDBRemoteSessionCommitResponse){}
     rpc SaveRecord (FDBSaveRecordCommand) returns (FDBSaveRecordResult) {}
     rpc DeleteRecord (FDBDeleteRecordCommand) returns (FDBDeleteRecordResult) {}
+    rpc loadRecords(FDBLoadRecordsCommand) returns( stream FDBSaveRecordResult){}
     rpc GetDump(FDBDumpAllCommand) returns (stream FDBDumpAllResponseBatch) {}
 }

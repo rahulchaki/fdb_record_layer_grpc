@@ -2,90 +2,121 @@ package main
 
 import (
 	pb "cio/fdb/grpc/client/protos"
-	fdbgrpc "cio/fdb/grpc/src/main/go"
-	"context"
 	"fmt"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
+	"github.com/apple/foundationdb/bindings/go/src/fdb"
+	"github.com/apple/foundationdb/bindings/go/src/fdb/tuple"
+	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
-	"google.golang.org/protobuf/reflect/protodesc"
 	"log"
-	"math/rand/v2"
-	"time"
 )
 
-func newSession(fdbRemote fdbgrpc.FDBRemoteClient) (*fdbgrpc.FDBRemoteSessionHandle, error) {
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
-	sessionRequest := fdbgrpc.FDBRemoteSessionRequest{
-		ClientId: rand.Int64(),
+func newVendor(ids ...int32) []proto.Message {
+	protos := make([]proto.Message, len(ids))
+	for _, id := range ids {
+		vendorId := int64(id)
+		vendorName := fmt.Sprintf("%s%d", "vendor_", id)
+		_ = append(protos, &pb.Vendor{VendorId: &vendorId, VendorName: &vendorName})
 	}
-	return fdbRemote.NewSession(ctx, &sessionRequest)
+	return protos
 }
-
-func newRecordStore(fdbRemote fdbgrpc.FDBRemoteClient, session *fdbgrpc.FDBRemoteSessionHandle) (*fdbgrpc.FDBRemoteRecordStoreHandle, error) {
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
-
-	recordStoreRequest := fdbgrpc.FDBRemoteRecordStoreRequest{
-		Session:  session,
-		Metadata: protodesc.ToFileDescriptorProto(pb.File_sample_proto),
-		KeySpace: &fdbgrpc.FDBDirectory{
-			Name:  "environment",
-			Value: "demo",
-			SubDirectory: &fdbgrpc.FDBDirectory{
-				Name:  "environment",
-				Value: "demo",
+func newItems(ids ...int32) []proto.Message {
+	protos := make([]proto.Message, len(ids))
+	for _, id := range ids {
+		itemId := int64(id)
+		vendorId := int64(id - 10)
+		itemName := fmt.Sprintf("%s%d", "item_", id)
+		_ = append(
+			protos,
+			&pb.Item{
+				ItemId:   &itemId,
+				ItemName: &itemName,
+				VendorId: &vendorId,
 			},
-		},
+		)
 	}
-	return fdbRemote.NewRecordStore(ctx, &recordStoreRequest)
+	return protos
 }
-
-func saveRecord(fdbRemote fdbgrpc.FDBRemoteClient, recordStore *fdbgrpc.FDBRemoteRecordStoreHandle) (*fdbgrpc.FDBSaveRecordResult, error) {
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
-	vendorId := int64(1023)
-	vendorName := "vendor 1"
-	vendor := pb.Vendor{
-		VendorId:   &vendorId,
-		VendorName: &vendorName,
-	}
-	record, err := proto.Marshal(&vendor)
-	if err != nil {
-		return nil, err
-	}
-	saveRecordCommand := &fdbgrpc.FDBSaveRecordCommand{
-		Store:  recordStore,
-		Table:  "Vendor",
-		Record: record,
-	}
-	return fdbRemote.SaveRecord(ctx, saveRecordCommand)
-}
-
 func main() {
-	conn, err := grpc.NewClient(
-		"localhost:8080",
-		grpc.WithTransportCredentials(insecure.NewCredentials()),
+	if err := fdb.APIVersion(710); err != nil {
+		log.Fatalf("Error loading fdb: %v", err)
+	}
+
+	vendors := newVendor(1, 2, 3, 4, 5)
+	vendorBuilder := func() proto.Message { return &pb.Vendor{} }
+	items := newItems(11, 12, 13, 14, 15)
+	itemsBuilder := func() proto.Message { return &pb.Item{} }
+
+	keySpace := []string{"environment", "demo", "application", "ecommerce"}
+	fdbCRUD, err := NewCRUDClient()
+	if err != nil {
+		log.Fatalf("Could not create CRUD client: %v", err)
+	}
+	metadata, err := fdbCRUD.LoadMetadata(keySpace)
+	if err != nil {
+		log.Fatalf("Could not load metadata: %v", err)
+	}
+	if metadata == nil {
+		log.Println(" Metadata not found. Registering Schema : =========")
+		registered, err := fdbCRUD.RegisterSchema(keySpace, pb.File_sample_proto)
+		if err != nil {
+			log.Fatalf("Could not register schema: %v", err)
+		}
+		metadata = registered
+		log.Println("  Registering Schema done: =========")
+	}
+	log.Println(" Metadata found : =========")
+	log.Println(protojson.Format(metadata))
+	log.Println(" Metadata found : =========")
+
+	vendorKeys, err := fdbCRUD.CreateAll("Vendor", vendors)
+	if err != nil {
+		log.Fatalf("Could not create vendors: %v", err)
+	}
+	log.Println(" Vendors created with Keys  : =========")
+	for _, vendor := range vendorKeys {
+		log.Println(" VendorKey : ", vendor.String())
+	}
+	log.Println(" Vendors created with Keys  : =========")
+
+	itemKeys, err := fdbCRUD.CreateAll("Item", items)
+	if err != nil {
+		log.Fatalf("Could not create items: %v", err)
+	}
+	log.Println(" Items created with Keys  : =========")
+	for _, item := range itemKeys {
+		log.Println(" VendorKey : ", item.String())
+	}
+	log.Println(" Items created with Keys  : =========")
+
+	vendorsFiltered, err := fdbCRUD.LoadAllKeys(
+		"Vendor",
+		[]tuple.Tuple{
+			[]tuple.TupleElement{int64(1)},
+			[]tuple.TupleElement{int64(1)},
+			[]tuple.TupleElement{int64(1)},
+		},
+		vendorBuilder,
 	)
 	if err != nil {
-		log.Fatalf("could not connect to localhost:8080: %v", err)
+		log.Fatalf("Could not filter vendors: %v", err)
 	}
-	defer func(conn *grpc.ClientConn) {
-		err := conn.Close()
-		if err != nil {
-			log.Fatalf("Error in closing connection: %v", err)
-		}
-	}(conn)
+	log.Println(" Vendors found: =========")
+	for _, vendor := range vendorsFiltered {
+		log.Println(" Vendor : ", protojson.Format(vendor))
+	}
+	log.Println(" Vendors found: =========")
 
-	fdbRemote := fdbgrpc.NewFDBRemoteClient(conn)
-	session, _ := newSession(fdbRemote)
-	recordStore, _ := newRecordStore(fdbRemote, session)
-	record, _ := saveRecord(fdbRemote, recordStore)
-	var savedRecord pb.Vendor
-	err = proto.Unmarshal(record.Record, &savedRecord)
+	itemsFiltered, err := fdbCRUD.LoadAllQuery(
+		"Item",
+		Field_Equals_String("vendor_id", "vendor_1"),
+		itemsBuilder,
+	)
 	if err != nil {
-		log.Fatalf("Error parsing proto: %v", err)
+		log.Fatalf("Could not filter items: %v", err)
 	}
-	fmt.Println(*savedRecord.VendorName)
+	log.Println(" Items found: =========")
+	for _, item := range itemsFiltered {
+		log.Println(" Item : ", protojson.Format(item))
+	}
+	log.Println(" Items found: =========")
 }

@@ -7019,6 +7019,977 @@ public final class FdbRecordGrpc {
 
   }
 
+  public interface FDBLoadRecordsCommandOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:cio.fdb.record.grpc.FDBLoadRecordsCommand)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.cio.fdb.record.grpc.FDBRemoteRecordStoreHandle store = 1;</code>
+     * @return Whether the store field is set.
+     */
+    boolean hasStore();
+    /**
+     * <code>.cio.fdb.record.grpc.FDBRemoteRecordStoreHandle store = 1;</code>
+     * @return The store.
+     */
+    cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle getStore();
+    /**
+     * <code>.cio.fdb.record.grpc.FDBRemoteRecordStoreHandle store = 1;</code>
+     */
+    cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandleOrBuilder getStoreOrBuilder();
+
+    /**
+     * <code>string table = 2;</code>
+     * @return The table.
+     */
+    java.lang.String getTable();
+    /**
+     * <code>string table = 2;</code>
+     * @return The bytes for table.
+     */
+    com.google.protobuf.ByteString
+        getTableBytes();
+
+    /**
+     * <code>.cio.fdb.record.grpc.BooleanQuery query = 3;</code>
+     * @return Whether the query field is set.
+     */
+    boolean hasQuery();
+    /**
+     * <code>.cio.fdb.record.grpc.BooleanQuery query = 3;</code>
+     * @return The query.
+     */
+    cio.fdb.record.grpc.Filters.BooleanQuery getQuery();
+    /**
+     * <code>.cio.fdb.record.grpc.BooleanQuery query = 3;</code>
+     */
+    cio.fdb.record.grpc.Filters.BooleanQueryOrBuilder getQueryOrBuilder();
+  }
+  /**
+   * Protobuf type {@code cio.fdb.record.grpc.FDBLoadRecordsCommand}
+   */
+  public static final class FDBLoadRecordsCommand extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:cio.fdb.record.grpc.FDBLoadRecordsCommand)
+      FDBLoadRecordsCommandOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use FDBLoadRecordsCommand.newBuilder() to construct.
+    private FDBLoadRecordsCommand(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private FDBLoadRecordsCommand() {
+      table_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FDBLoadRecordsCommand();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBLoadRecordsCommand_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBLoadRecordsCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand.class, cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int STORE_FIELD_NUMBER = 1;
+    private cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle store_;
+    /**
+     * <code>.cio.fdb.record.grpc.FDBRemoteRecordStoreHandle store = 1;</code>
+     * @return Whether the store field is set.
+     */
+    @java.lang.Override
+    public boolean hasStore() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>.cio.fdb.record.grpc.FDBRemoteRecordStoreHandle store = 1;</code>
+     * @return The store.
+     */
+    @java.lang.Override
+    public cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle getStore() {
+      return store_ == null ? cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle.getDefaultInstance() : store_;
+    }
+    /**
+     * <code>.cio.fdb.record.grpc.FDBRemoteRecordStoreHandle store = 1;</code>
+     */
+    @java.lang.Override
+    public cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandleOrBuilder getStoreOrBuilder() {
+      return store_ == null ? cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle.getDefaultInstance() : store_;
+    }
+
+    public static final int TABLE_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object table_ = "";
+    /**
+     * <code>string table = 2;</code>
+     * @return The table.
+     */
+    @java.lang.Override
+    public java.lang.String getTable() {
+      java.lang.Object ref = table_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        table_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string table = 2;</code>
+     * @return The bytes for table.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTableBytes() {
+      java.lang.Object ref = table_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        table_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int QUERY_FIELD_NUMBER = 3;
+    private cio.fdb.record.grpc.Filters.BooleanQuery query_;
+    /**
+     * <code>.cio.fdb.record.grpc.BooleanQuery query = 3;</code>
+     * @return Whether the query field is set.
+     */
+    @java.lang.Override
+    public boolean hasQuery() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>.cio.fdb.record.grpc.BooleanQuery query = 3;</code>
+     * @return The query.
+     */
+    @java.lang.Override
+    public cio.fdb.record.grpc.Filters.BooleanQuery getQuery() {
+      return query_ == null ? cio.fdb.record.grpc.Filters.BooleanQuery.getDefaultInstance() : query_;
+    }
+    /**
+     * <code>.cio.fdb.record.grpc.BooleanQuery query = 3;</code>
+     */
+    @java.lang.Override
+    public cio.fdb.record.grpc.Filters.BooleanQueryOrBuilder getQueryOrBuilder() {
+      return query_ == null ? cio.fdb.record.grpc.Filters.BooleanQuery.getDefaultInstance() : query_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (hasStore()) {
+        if (!getStore().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeMessage(1, getStore());
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(table_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, table_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeMessage(3, getQuery());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getStore());
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(table_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, table_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getQuery());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand)) {
+        return super.equals(obj);
+      }
+      cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand other = (cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand) obj;
+
+      if (hasStore() != other.hasStore()) return false;
+      if (hasStore()) {
+        if (!getStore()
+            .equals(other.getStore())) return false;
+      }
+      if (!getTable()
+          .equals(other.getTable())) return false;
+      if (hasQuery() != other.hasQuery()) return false;
+      if (hasQuery()) {
+        if (!getQuery()
+            .equals(other.getQuery())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasStore()) {
+        hash = (37 * hash) + STORE_FIELD_NUMBER;
+        hash = (53 * hash) + getStore().hashCode();
+      }
+      hash = (37 * hash) + TABLE_FIELD_NUMBER;
+      hash = (53 * hash) + getTable().hashCode();
+      if (hasQuery()) {
+        hash = (37 * hash) + QUERY_FIELD_NUMBER;
+        hash = (53 * hash) + getQuery().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code cio.fdb.record.grpc.FDBLoadRecordsCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:cio.fdb.record.grpc.FDBLoadRecordsCommand)
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBLoadRecordsCommand_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBLoadRecordsCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand.class, cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand.Builder.class);
+      }
+
+      // Construct using cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getStoreFieldBuilder();
+          getQueryFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        store_ = null;
+        if (storeBuilder_ != null) {
+          storeBuilder_.dispose();
+          storeBuilder_ = null;
+        }
+        table_ = "";
+        query_ = null;
+        if (queryBuilder_ != null) {
+          queryBuilder_.dispose();
+          queryBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBLoadRecordsCommand_descriptor;
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand getDefaultInstanceForType() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand build() {
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand buildPartial() {
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand result = new cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.store_ = storeBuilder_ == null
+              ? store_
+              : storeBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.table_ = table_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.query_ = queryBuilder_ == null
+              ? query_
+              : queryBuilder_.build();
+          to_bitField0_ |= 0x00000002;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand) {
+          return mergeFrom((cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand other) {
+        if (other == cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand.getDefaultInstance()) return this;
+        if (other.hasStore()) {
+          mergeStore(other.getStore());
+        }
+        if (!other.getTable().isEmpty()) {
+          table_ = other.table_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (other.hasQuery()) {
+          mergeQuery(other.getQuery());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (hasStore()) {
+          if (!getStore().isInitialized()) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    getStoreFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                table_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                input.readMessage(
+                    getQueryFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle store_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle, cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle.Builder, cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandleOrBuilder> storeBuilder_;
+      /**
+       * <code>.cio.fdb.record.grpc.FDBRemoteRecordStoreHandle store = 1;</code>
+       * @return Whether the store field is set.
+       */
+      public boolean hasStore() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.FDBRemoteRecordStoreHandle store = 1;</code>
+       * @return The store.
+       */
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle getStore() {
+        if (storeBuilder_ == null) {
+          return store_ == null ? cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle.getDefaultInstance() : store_;
+        } else {
+          return storeBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.FDBRemoteRecordStoreHandle store = 1;</code>
+       */
+      public Builder setStore(cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle value) {
+        if (storeBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          store_ = value;
+        } else {
+          storeBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.FDBRemoteRecordStoreHandle store = 1;</code>
+       */
+      public Builder setStore(
+          cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle.Builder builderForValue) {
+        if (storeBuilder_ == null) {
+          store_ = builderForValue.build();
+        } else {
+          storeBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.FDBRemoteRecordStoreHandle store = 1;</code>
+       */
+      public Builder mergeStore(cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle value) {
+        if (storeBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0) &&
+            store_ != null &&
+            store_ != cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle.getDefaultInstance()) {
+            getStoreBuilder().mergeFrom(value);
+          } else {
+            store_ = value;
+          }
+        } else {
+          storeBuilder_.mergeFrom(value);
+        }
+        if (store_ != null) {
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.FDBRemoteRecordStoreHandle store = 1;</code>
+       */
+      public Builder clearStore() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        store_ = null;
+        if (storeBuilder_ != null) {
+          storeBuilder_.dispose();
+          storeBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.FDBRemoteRecordStoreHandle store = 1;</code>
+       */
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle.Builder getStoreBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getStoreFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.FDBRemoteRecordStoreHandle store = 1;</code>
+       */
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandleOrBuilder getStoreOrBuilder() {
+        if (storeBuilder_ != null) {
+          return storeBuilder_.getMessageOrBuilder();
+        } else {
+          return store_ == null ?
+              cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle.getDefaultInstance() : store_;
+        }
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.FDBRemoteRecordStoreHandle store = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle, cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle.Builder, cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandleOrBuilder> 
+          getStoreFieldBuilder() {
+        if (storeBuilder_ == null) {
+          storeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle, cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle.Builder, cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandleOrBuilder>(
+                  getStore(),
+                  getParentForChildren(),
+                  isClean());
+          store_ = null;
+        }
+        return storeBuilder_;
+      }
+
+      private java.lang.Object table_ = "";
+      /**
+       * <code>string table = 2;</code>
+       * @return The table.
+       */
+      public java.lang.String getTable() {
+        java.lang.Object ref = table_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          table_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string table = 2;</code>
+       * @return The bytes for table.
+       */
+      public com.google.protobuf.ByteString
+          getTableBytes() {
+        java.lang.Object ref = table_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          table_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string table = 2;</code>
+       * @param value The table to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTable(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        table_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string table = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTable() {
+        table_ = getDefaultInstance().getTable();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string table = 2;</code>
+       * @param value The bytes for table to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTableBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        table_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      private cio.fdb.record.grpc.Filters.BooleanQuery query_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cio.fdb.record.grpc.Filters.BooleanQuery, cio.fdb.record.grpc.Filters.BooleanQuery.Builder, cio.fdb.record.grpc.Filters.BooleanQueryOrBuilder> queryBuilder_;
+      /**
+       * <code>.cio.fdb.record.grpc.BooleanQuery query = 3;</code>
+       * @return Whether the query field is set.
+       */
+      public boolean hasQuery() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.BooleanQuery query = 3;</code>
+       * @return The query.
+       */
+      public cio.fdb.record.grpc.Filters.BooleanQuery getQuery() {
+        if (queryBuilder_ == null) {
+          return query_ == null ? cio.fdb.record.grpc.Filters.BooleanQuery.getDefaultInstance() : query_;
+        } else {
+          return queryBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.BooleanQuery query = 3;</code>
+       */
+      public Builder setQuery(cio.fdb.record.grpc.Filters.BooleanQuery value) {
+        if (queryBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          query_ = value;
+        } else {
+          queryBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.BooleanQuery query = 3;</code>
+       */
+      public Builder setQuery(
+          cio.fdb.record.grpc.Filters.BooleanQuery.Builder builderForValue) {
+        if (queryBuilder_ == null) {
+          query_ = builderForValue.build();
+        } else {
+          queryBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.BooleanQuery query = 3;</code>
+       */
+      public Builder mergeQuery(cio.fdb.record.grpc.Filters.BooleanQuery value) {
+        if (queryBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) != 0) &&
+            query_ != null &&
+            query_ != cio.fdb.record.grpc.Filters.BooleanQuery.getDefaultInstance()) {
+            getQueryBuilder().mergeFrom(value);
+          } else {
+            query_ = value;
+          }
+        } else {
+          queryBuilder_.mergeFrom(value);
+        }
+        if (query_ != null) {
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.BooleanQuery query = 3;</code>
+       */
+      public Builder clearQuery() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        query_ = null;
+        if (queryBuilder_ != null) {
+          queryBuilder_.dispose();
+          queryBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.BooleanQuery query = 3;</code>
+       */
+      public cio.fdb.record.grpc.Filters.BooleanQuery.Builder getQueryBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return getQueryFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.BooleanQuery query = 3;</code>
+       */
+      public cio.fdb.record.grpc.Filters.BooleanQueryOrBuilder getQueryOrBuilder() {
+        if (queryBuilder_ != null) {
+          return queryBuilder_.getMessageOrBuilder();
+        } else {
+          return query_ == null ?
+              cio.fdb.record.grpc.Filters.BooleanQuery.getDefaultInstance() : query_;
+        }
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.BooleanQuery query = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cio.fdb.record.grpc.Filters.BooleanQuery, cio.fdb.record.grpc.Filters.BooleanQuery.Builder, cio.fdb.record.grpc.Filters.BooleanQueryOrBuilder> 
+          getQueryFieldBuilder() {
+        if (queryBuilder_ == null) {
+          queryBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              cio.fdb.record.grpc.Filters.BooleanQuery, cio.fdb.record.grpc.Filters.BooleanQuery.Builder, cio.fdb.record.grpc.Filters.BooleanQueryOrBuilder>(
+                  getQuery(),
+                  getParentForChildren(),
+                  isClean());
+          query_ = null;
+        }
+        return queryBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:cio.fdb.record.grpc.FDBLoadRecordsCommand)
+    }
+
+    // @@protoc_insertion_point(class_scope:cio.fdb.record.grpc.FDBLoadRecordsCommand)
+    private static final cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand();
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<FDBLoadRecordsCommand>
+        PARSER = new com.google.protobuf.AbstractParser<FDBLoadRecordsCommand>() {
+      @java.lang.Override
+      public FDBLoadRecordsCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<FDBLoadRecordsCommand> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FDBLoadRecordsCommand> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface FDBRemoteSessionCommitResponseOrBuilder extends
       // @@protoc_insertion_point(interface_extends:cio.fdb.record.grpc.FDBRemoteSessionCommitResponse)
       com.google.protobuf.MessageOrBuilder {
@@ -9644,6 +10615,6660 @@ public final class FdbRecordGrpc {
 
   }
 
+  public interface FDBLoadMetadataCommandOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:cio.fdb.record.grpc.FDBLoadMetadataCommand)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated string path = 1;</code>
+     * @return A list containing the path.
+     */
+    java.util.List<java.lang.String>
+        getPathList();
+    /**
+     * <code>repeated string path = 1;</code>
+     * @return The count of path.
+     */
+    int getPathCount();
+    /**
+     * <code>repeated string path = 1;</code>
+     * @param index The index of the element to return.
+     * @return The path at the given index.
+     */
+    java.lang.String getPath(int index);
+    /**
+     * <code>repeated string path = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the path at the given index.
+     */
+    com.google.protobuf.ByteString
+        getPathBytes(int index);
+  }
+  /**
+   * Protobuf type {@code cio.fdb.record.grpc.FDBLoadMetadataCommand}
+   */
+  public static final class FDBLoadMetadataCommand extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:cio.fdb.record.grpc.FDBLoadMetadataCommand)
+      FDBLoadMetadataCommandOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use FDBLoadMetadataCommand.newBuilder() to construct.
+    private FDBLoadMetadataCommand(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private FDBLoadMetadataCommand() {
+      path_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FDBLoadMetadataCommand();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBLoadMetadataCommand_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBLoadMetadataCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand.class, cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand.Builder.class);
+    }
+
+    public static final int PATH_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList path_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    /**
+     * <code>repeated string path = 1;</code>
+     * @return A list containing the path.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getPathList() {
+      return path_;
+    }
+    /**
+     * <code>repeated string path = 1;</code>
+     * @return The count of path.
+     */
+    public int getPathCount() {
+      return path_.size();
+    }
+    /**
+     * <code>repeated string path = 1;</code>
+     * @param index The index of the element to return.
+     * @return The path at the given index.
+     */
+    public java.lang.String getPath(int index) {
+      return path_.get(index);
+    }
+    /**
+     * <code>repeated string path = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the path at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getPathBytes(int index) {
+      return path_.getByteString(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < path_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, path_.getRaw(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      {
+        int dataSize = 0;
+        for (int i = 0; i < path_.size(); i++) {
+          dataSize += computeStringSizeNoTag(path_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getPathList().size();
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand)) {
+        return super.equals(obj);
+      }
+      cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand other = (cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand) obj;
+
+      if (!getPathList()
+          .equals(other.getPathList())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getPathCount() > 0) {
+        hash = (37 * hash) + PATH_FIELD_NUMBER;
+        hash = (53 * hash) + getPathList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code cio.fdb.record.grpc.FDBLoadMetadataCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:cio.fdb.record.grpc.FDBLoadMetadataCommand)
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBLoadMetadataCommand_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBLoadMetadataCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand.class, cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand.Builder.class);
+      }
+
+      // Construct using cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        path_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBLoadMetadataCommand_descriptor;
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand getDefaultInstanceForType() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand build() {
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand buildPartial() {
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand result = new cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          path_.makeImmutable();
+          result.path_ = path_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand) {
+          return mergeFrom((cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand other) {
+        if (other == cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand.getDefaultInstance()) return this;
+        if (!other.path_.isEmpty()) {
+          if (path_.isEmpty()) {
+            path_ = other.path_;
+            bitField0_ |= 0x00000001;
+          } else {
+            ensurePathIsMutable();
+            path_.addAll(other.path_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                java.lang.String s = input.readStringRequireUtf8();
+                ensurePathIsMutable();
+                path_.add(s);
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.LazyStringArrayList path_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      private void ensurePathIsMutable() {
+        if (!path_.isModifiable()) {
+          path_ = new com.google.protobuf.LazyStringArrayList(path_);
+        }
+        bitField0_ |= 0x00000001;
+      }
+      /**
+       * <code>repeated string path = 1;</code>
+       * @return A list containing the path.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getPathList() {
+        path_.makeImmutable();
+        return path_;
+      }
+      /**
+       * <code>repeated string path = 1;</code>
+       * @return The count of path.
+       */
+      public int getPathCount() {
+        return path_.size();
+      }
+      /**
+       * <code>repeated string path = 1;</code>
+       * @param index The index of the element to return.
+       * @return The path at the given index.
+       */
+      public java.lang.String getPath(int index) {
+        return path_.get(index);
+      }
+      /**
+       * <code>repeated string path = 1;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the path at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getPathBytes(int index) {
+        return path_.getByteString(index);
+      }
+      /**
+       * <code>repeated string path = 1;</code>
+       * @param index The index to set the value at.
+       * @param value The path to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPath(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensurePathIsMutable();
+        path_.set(index, value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string path = 1;</code>
+       * @param value The path to add.
+       * @return This builder for chaining.
+       */
+      public Builder addPath(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensurePathIsMutable();
+        path_.add(value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string path = 1;</code>
+       * @param values The path to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllPath(
+          java.lang.Iterable<java.lang.String> values) {
+        ensurePathIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, path_);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string path = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPath() {
+        path_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string path = 1;</code>
+       * @param value The bytes of the path to add.
+       * @return This builder for chaining.
+       */
+      public Builder addPathBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        ensurePathIsMutable();
+        path_.add(value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:cio.fdb.record.grpc.FDBLoadMetadataCommand)
+    }
+
+    // @@protoc_insertion_point(class_scope:cio.fdb.record.grpc.FDBLoadMetadataCommand)
+    private static final cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand();
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<FDBLoadMetadataCommand>
+        PARSER = new com.google.protobuf.AbstractParser<FDBLoadMetadataCommand>() {
+      @java.lang.Override
+      public FDBLoadMetadataCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<FDBLoadMetadataCommand> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FDBLoadMetadataCommand> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataCommand getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface FDBRegisterSchemaCommandOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:cio.fdb.record.grpc.FDBRegisterSchemaCommand)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated string path = 1;</code>
+     * @return A list containing the path.
+     */
+    java.util.List<java.lang.String>
+        getPathList();
+    /**
+     * <code>repeated string path = 1;</code>
+     * @return The count of path.
+     */
+    int getPathCount();
+    /**
+     * <code>repeated string path = 1;</code>
+     * @param index The index of the element to return.
+     * @return The path at the given index.
+     */
+    java.lang.String getPath(int index);
+    /**
+     * <code>repeated string path = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the path at the given index.
+     */
+    com.google.protobuf.ByteString
+        getPathBytes(int index);
+
+    /**
+     * <code>.google.protobuf.FileDescriptorProto schema = 2;</code>
+     * @return Whether the schema field is set.
+     */
+    boolean hasSchema();
+    /**
+     * <code>.google.protobuf.FileDescriptorProto schema = 2;</code>
+     * @return The schema.
+     */
+    com.google.protobuf.DescriptorProtos.FileDescriptorProto getSchema();
+    /**
+     * <code>.google.protobuf.FileDescriptorProto schema = 2;</code>
+     */
+    com.google.protobuf.DescriptorProtos.FileDescriptorProtoOrBuilder getSchemaOrBuilder();
+  }
+  /**
+   * Protobuf type {@code cio.fdb.record.grpc.FDBRegisterSchemaCommand}
+   */
+  public static final class FDBRegisterSchemaCommand extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:cio.fdb.record.grpc.FDBRegisterSchemaCommand)
+      FDBRegisterSchemaCommandOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use FDBRegisterSchemaCommand.newBuilder() to construct.
+    private FDBRegisterSchemaCommand(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private FDBRegisterSchemaCommand() {
+      path_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FDBRegisterSchemaCommand();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBRegisterSchemaCommand_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBRegisterSchemaCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand.class, cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int PATH_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList path_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    /**
+     * <code>repeated string path = 1;</code>
+     * @return A list containing the path.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getPathList() {
+      return path_;
+    }
+    /**
+     * <code>repeated string path = 1;</code>
+     * @return The count of path.
+     */
+    public int getPathCount() {
+      return path_.size();
+    }
+    /**
+     * <code>repeated string path = 1;</code>
+     * @param index The index of the element to return.
+     * @return The path at the given index.
+     */
+    public java.lang.String getPath(int index) {
+      return path_.get(index);
+    }
+    /**
+     * <code>repeated string path = 1;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the path at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getPathBytes(int index) {
+      return path_.getByteString(index);
+    }
+
+    public static final int SCHEMA_FIELD_NUMBER = 2;
+    private com.google.protobuf.DescriptorProtos.FileDescriptorProto schema_;
+    /**
+     * <code>.google.protobuf.FileDescriptorProto schema = 2;</code>
+     * @return Whether the schema field is set.
+     */
+    @java.lang.Override
+    public boolean hasSchema() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>.google.protobuf.FileDescriptorProto schema = 2;</code>
+     * @return The schema.
+     */
+    @java.lang.Override
+    public com.google.protobuf.DescriptorProtos.FileDescriptorProto getSchema() {
+      return schema_ == null ? com.google.protobuf.DescriptorProtos.FileDescriptorProto.getDefaultInstance() : schema_;
+    }
+    /**
+     * <code>.google.protobuf.FileDescriptorProto schema = 2;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.DescriptorProtos.FileDescriptorProtoOrBuilder getSchemaOrBuilder() {
+      return schema_ == null ? com.google.protobuf.DescriptorProtos.FileDescriptorProto.getDefaultInstance() : schema_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (hasSchema()) {
+        if (!getSchema().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < path_.size(); i++) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, path_.getRaw(i));
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeMessage(2, getSchema());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      {
+        int dataSize = 0;
+        for (int i = 0; i < path_.size(); i++) {
+          dataSize += computeStringSizeNoTag(path_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getPathList().size();
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getSchema());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand)) {
+        return super.equals(obj);
+      }
+      cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand other = (cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand) obj;
+
+      if (!getPathList()
+          .equals(other.getPathList())) return false;
+      if (hasSchema() != other.hasSchema()) return false;
+      if (hasSchema()) {
+        if (!getSchema()
+            .equals(other.getSchema())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getPathCount() > 0) {
+        hash = (37 * hash) + PATH_FIELD_NUMBER;
+        hash = (53 * hash) + getPathList().hashCode();
+      }
+      if (hasSchema()) {
+        hash = (37 * hash) + SCHEMA_FIELD_NUMBER;
+        hash = (53 * hash) + getSchema().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code cio.fdb.record.grpc.FDBRegisterSchemaCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:cio.fdb.record.grpc.FDBRegisterSchemaCommand)
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBRegisterSchemaCommand_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBRegisterSchemaCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand.class, cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand.Builder.class);
+      }
+
+      // Construct using cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getSchemaFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        path_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
+        schema_ = null;
+        if (schemaBuilder_ != null) {
+          schemaBuilder_.dispose();
+          schemaBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBRegisterSchemaCommand_descriptor;
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand getDefaultInstanceForType() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand build() {
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand buildPartial() {
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand result = new cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          path_.makeImmutable();
+          result.path_ = path_;
+        }
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.schema_ = schemaBuilder_ == null
+              ? schema_
+              : schemaBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand) {
+          return mergeFrom((cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand other) {
+        if (other == cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand.getDefaultInstance()) return this;
+        if (!other.path_.isEmpty()) {
+          if (path_.isEmpty()) {
+            path_ = other.path_;
+            bitField0_ |= 0x00000001;
+          } else {
+            ensurePathIsMutable();
+            path_.addAll(other.path_);
+          }
+          onChanged();
+        }
+        if (other.hasSchema()) {
+          mergeSchema(other.getSchema());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (hasSchema()) {
+          if (!getSchema().isInitialized()) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                java.lang.String s = input.readStringRequireUtf8();
+                ensurePathIsMutable();
+                path_.add(s);
+                break;
+              } // case 10
+              case 18: {
+                input.readMessage(
+                    getSchemaFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.LazyStringArrayList path_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      private void ensurePathIsMutable() {
+        if (!path_.isModifiable()) {
+          path_ = new com.google.protobuf.LazyStringArrayList(path_);
+        }
+        bitField0_ |= 0x00000001;
+      }
+      /**
+       * <code>repeated string path = 1;</code>
+       * @return A list containing the path.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getPathList() {
+        path_.makeImmutable();
+        return path_;
+      }
+      /**
+       * <code>repeated string path = 1;</code>
+       * @return The count of path.
+       */
+      public int getPathCount() {
+        return path_.size();
+      }
+      /**
+       * <code>repeated string path = 1;</code>
+       * @param index The index of the element to return.
+       * @return The path at the given index.
+       */
+      public java.lang.String getPath(int index) {
+        return path_.get(index);
+      }
+      /**
+       * <code>repeated string path = 1;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the path at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getPathBytes(int index) {
+        return path_.getByteString(index);
+      }
+      /**
+       * <code>repeated string path = 1;</code>
+       * @param index The index to set the value at.
+       * @param value The path to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPath(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensurePathIsMutable();
+        path_.set(index, value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string path = 1;</code>
+       * @param value The path to add.
+       * @return This builder for chaining.
+       */
+      public Builder addPath(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensurePathIsMutable();
+        path_.add(value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string path = 1;</code>
+       * @param values The path to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllPath(
+          java.lang.Iterable<java.lang.String> values) {
+        ensurePathIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, path_);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string path = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPath() {
+        path_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string path = 1;</code>
+       * @param value The bytes of the path to add.
+       * @return This builder for chaining.
+       */
+      public Builder addPathBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        ensurePathIsMutable();
+        path_.add(value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.DescriptorProtos.FileDescriptorProto schema_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.DescriptorProtos.FileDescriptorProto, com.google.protobuf.DescriptorProtos.FileDescriptorProto.Builder, com.google.protobuf.DescriptorProtos.FileDescriptorProtoOrBuilder> schemaBuilder_;
+      /**
+       * <code>.google.protobuf.FileDescriptorProto schema = 2;</code>
+       * @return Whether the schema field is set.
+       */
+      public boolean hasSchema() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>.google.protobuf.FileDescriptorProto schema = 2;</code>
+       * @return The schema.
+       */
+      public com.google.protobuf.DescriptorProtos.FileDescriptorProto getSchema() {
+        if (schemaBuilder_ == null) {
+          return schema_ == null ? com.google.protobuf.DescriptorProtos.FileDescriptorProto.getDefaultInstance() : schema_;
+        } else {
+          return schemaBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.FileDescriptorProto schema = 2;</code>
+       */
+      public Builder setSchema(com.google.protobuf.DescriptorProtos.FileDescriptorProto value) {
+        if (schemaBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          schema_ = value;
+        } else {
+          schemaBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.FileDescriptorProto schema = 2;</code>
+       */
+      public Builder setSchema(
+          com.google.protobuf.DescriptorProtos.FileDescriptorProto.Builder builderForValue) {
+        if (schemaBuilder_ == null) {
+          schema_ = builderForValue.build();
+        } else {
+          schemaBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.FileDescriptorProto schema = 2;</code>
+       */
+      public Builder mergeSchema(com.google.protobuf.DescriptorProtos.FileDescriptorProto value) {
+        if (schemaBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) != 0) &&
+            schema_ != null &&
+            schema_ != com.google.protobuf.DescriptorProtos.FileDescriptorProto.getDefaultInstance()) {
+            getSchemaBuilder().mergeFrom(value);
+          } else {
+            schema_ = value;
+          }
+        } else {
+          schemaBuilder_.mergeFrom(value);
+        }
+        if (schema_ != null) {
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.FileDescriptorProto schema = 2;</code>
+       */
+      public Builder clearSchema() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        schema_ = null;
+        if (schemaBuilder_ != null) {
+          schemaBuilder_.dispose();
+          schemaBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.FileDescriptorProto schema = 2;</code>
+       */
+      public com.google.protobuf.DescriptorProtos.FileDescriptorProto.Builder getSchemaBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return getSchemaFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.FileDescriptorProto schema = 2;</code>
+       */
+      public com.google.protobuf.DescriptorProtos.FileDescriptorProtoOrBuilder getSchemaOrBuilder() {
+        if (schemaBuilder_ != null) {
+          return schemaBuilder_.getMessageOrBuilder();
+        } else {
+          return schema_ == null ?
+              com.google.protobuf.DescriptorProtos.FileDescriptorProto.getDefaultInstance() : schema_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.FileDescriptorProto schema = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.google.protobuf.DescriptorProtos.FileDescriptorProto, com.google.protobuf.DescriptorProtos.FileDescriptorProto.Builder, com.google.protobuf.DescriptorProtos.FileDescriptorProtoOrBuilder> 
+          getSchemaFieldBuilder() {
+        if (schemaBuilder_ == null) {
+          schemaBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.google.protobuf.DescriptorProtos.FileDescriptorProto, com.google.protobuf.DescriptorProtos.FileDescriptorProto.Builder, com.google.protobuf.DescriptorProtos.FileDescriptorProtoOrBuilder>(
+                  getSchema(),
+                  getParentForChildren(),
+                  isClean());
+          schema_ = null;
+        }
+        return schemaBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:cio.fdb.record.grpc.FDBRegisterSchemaCommand)
+    }
+
+    // @@protoc_insertion_point(class_scope:cio.fdb.record.grpc.FDBRegisterSchemaCommand)
+    private static final cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand();
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<FDBRegisterSchemaCommand>
+        PARSER = new com.google.protobuf.AbstractParser<FDBRegisterSchemaCommand>() {
+      @java.lang.Override
+      public FDBRegisterSchemaCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<FDBRegisterSchemaCommand> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FDBRegisterSchemaCommand> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public cio.fdb.record.grpc.FdbRecordGrpc.FDBRegisterSchemaCommand getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface FDBLoadMetadataResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:cio.fdb.record.grpc.FDBLoadMetadataResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.com.apple.foundationdb.record.MetaData metadata = 1;</code>
+     * @return Whether the metadata field is set.
+     */
+    boolean hasMetadata();
+    /**
+     * <code>.com.apple.foundationdb.record.MetaData metadata = 1;</code>
+     * @return The metadata.
+     */
+    com.apple.foundationdb.record.RecordMetaDataProto.MetaData getMetadata();
+    /**
+     * <code>.com.apple.foundationdb.record.MetaData metadata = 1;</code>
+     */
+    com.apple.foundationdb.record.RecordMetaDataProto.MetaDataOrBuilder getMetadataOrBuilder();
+  }
+  /**
+   * Protobuf type {@code cio.fdb.record.grpc.FDBLoadMetadataResponse}
+   */
+  public static final class FDBLoadMetadataResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:cio.fdb.record.grpc.FDBLoadMetadataResponse)
+      FDBLoadMetadataResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use FDBLoadMetadataResponse.newBuilder() to construct.
+    private FDBLoadMetadataResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private FDBLoadMetadataResponse() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FDBLoadMetadataResponse();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBLoadMetadataResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBLoadMetadataResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse.class, cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int METADATA_FIELD_NUMBER = 1;
+    private com.apple.foundationdb.record.RecordMetaDataProto.MetaData metadata_;
+    /**
+     * <code>.com.apple.foundationdb.record.MetaData metadata = 1;</code>
+     * @return Whether the metadata field is set.
+     */
+    @java.lang.Override
+    public boolean hasMetadata() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>.com.apple.foundationdb.record.MetaData metadata = 1;</code>
+     * @return The metadata.
+     */
+    @java.lang.Override
+    public com.apple.foundationdb.record.RecordMetaDataProto.MetaData getMetadata() {
+      return metadata_ == null ? com.apple.foundationdb.record.RecordMetaDataProto.MetaData.getDefaultInstance() : metadata_;
+    }
+    /**
+     * <code>.com.apple.foundationdb.record.MetaData metadata = 1;</code>
+     */
+    @java.lang.Override
+    public com.apple.foundationdb.record.RecordMetaDataProto.MetaDataOrBuilder getMetadataOrBuilder() {
+      return metadata_ == null ? com.apple.foundationdb.record.RecordMetaDataProto.MetaData.getDefaultInstance() : metadata_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (hasMetadata()) {
+        if (!getMetadata().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeMessage(1, getMetadata());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getMetadata());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse)) {
+        return super.equals(obj);
+      }
+      cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse other = (cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse) obj;
+
+      if (hasMetadata() != other.hasMetadata()) return false;
+      if (hasMetadata()) {
+        if (!getMetadata()
+            .equals(other.getMetadata())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasMetadata()) {
+        hash = (37 * hash) + METADATA_FIELD_NUMBER;
+        hash = (53 * hash) + getMetadata().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code cio.fdb.record.grpc.FDBLoadMetadataResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:cio.fdb.record.grpc.FDBLoadMetadataResponse)
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBLoadMetadataResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBLoadMetadataResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse.class, cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse.Builder.class);
+      }
+
+      // Construct using cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getMetadataFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        metadata_ = null;
+        if (metadataBuilder_ != null) {
+          metadataBuilder_.dispose();
+          metadataBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBLoadMetadataResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse getDefaultInstanceForType() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse build() {
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse buildPartial() {
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse result = new cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.metadata_ = metadataBuilder_ == null
+              ? metadata_
+              : metadataBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse) {
+          return mergeFrom((cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse other) {
+        if (other == cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse.getDefaultInstance()) return this;
+        if (other.hasMetadata()) {
+          mergeMetadata(other.getMetadata());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        if (hasMetadata()) {
+          if (!getMetadata().isInitialized()) {
+            return false;
+          }
+        }
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    getMetadataFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.apple.foundationdb.record.RecordMetaDataProto.MetaData metadata_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.apple.foundationdb.record.RecordMetaDataProto.MetaData, com.apple.foundationdb.record.RecordMetaDataProto.MetaData.Builder, com.apple.foundationdb.record.RecordMetaDataProto.MetaDataOrBuilder> metadataBuilder_;
+      /**
+       * <code>.com.apple.foundationdb.record.MetaData metadata = 1;</code>
+       * @return Whether the metadata field is set.
+       */
+      public boolean hasMetadata() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>.com.apple.foundationdb.record.MetaData metadata = 1;</code>
+       * @return The metadata.
+       */
+      public com.apple.foundationdb.record.RecordMetaDataProto.MetaData getMetadata() {
+        if (metadataBuilder_ == null) {
+          return metadata_ == null ? com.apple.foundationdb.record.RecordMetaDataProto.MetaData.getDefaultInstance() : metadata_;
+        } else {
+          return metadataBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.apple.foundationdb.record.MetaData metadata = 1;</code>
+       */
+      public Builder setMetadata(com.apple.foundationdb.record.RecordMetaDataProto.MetaData value) {
+        if (metadataBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          metadata_ = value;
+        } else {
+          metadataBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.com.apple.foundationdb.record.MetaData metadata = 1;</code>
+       */
+      public Builder setMetadata(
+          com.apple.foundationdb.record.RecordMetaDataProto.MetaData.Builder builderForValue) {
+        if (metadataBuilder_ == null) {
+          metadata_ = builderForValue.build();
+        } else {
+          metadataBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.com.apple.foundationdb.record.MetaData metadata = 1;</code>
+       */
+      public Builder mergeMetadata(com.apple.foundationdb.record.RecordMetaDataProto.MetaData value) {
+        if (metadataBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0) &&
+            metadata_ != null &&
+            metadata_ != com.apple.foundationdb.record.RecordMetaDataProto.MetaData.getDefaultInstance()) {
+            getMetadataBuilder().mergeFrom(value);
+          } else {
+            metadata_ = value;
+          }
+        } else {
+          metadataBuilder_.mergeFrom(value);
+        }
+        if (metadata_ != null) {
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.com.apple.foundationdb.record.MetaData metadata = 1;</code>
+       */
+      public Builder clearMetadata() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        metadata_ = null;
+        if (metadataBuilder_ != null) {
+          metadataBuilder_.dispose();
+          metadataBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.com.apple.foundationdb.record.MetaData metadata = 1;</code>
+       */
+      public com.apple.foundationdb.record.RecordMetaDataProto.MetaData.Builder getMetadataBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return getMetadataFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.apple.foundationdb.record.MetaData metadata = 1;</code>
+       */
+      public com.apple.foundationdb.record.RecordMetaDataProto.MetaDataOrBuilder getMetadataOrBuilder() {
+        if (metadataBuilder_ != null) {
+          return metadataBuilder_.getMessageOrBuilder();
+        } else {
+          return metadata_ == null ?
+              com.apple.foundationdb.record.RecordMetaDataProto.MetaData.getDefaultInstance() : metadata_;
+        }
+      }
+      /**
+       * <code>.com.apple.foundationdb.record.MetaData metadata = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.apple.foundationdb.record.RecordMetaDataProto.MetaData, com.apple.foundationdb.record.RecordMetaDataProto.MetaData.Builder, com.apple.foundationdb.record.RecordMetaDataProto.MetaDataOrBuilder> 
+          getMetadataFieldBuilder() {
+        if (metadataBuilder_ == null) {
+          metadataBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.apple.foundationdb.record.RecordMetaDataProto.MetaData, com.apple.foundationdb.record.RecordMetaDataProto.MetaData.Builder, com.apple.foundationdb.record.RecordMetaDataProto.MetaDataOrBuilder>(
+                  getMetadata(),
+                  getParentForChildren(),
+                  isClean());
+          metadata_ = null;
+        }
+        return metadataBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:cio.fdb.record.grpc.FDBLoadMetadataResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:cio.fdb.record.grpc.FDBLoadMetadataResponse)
+    private static final cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse();
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<FDBLoadMetadataResponse>
+        PARSER = new com.google.protobuf.AbstractParser<FDBLoadMetadataResponse>() {
+      @java.lang.Override
+      public FDBLoadMetadataResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<FDBLoadMetadataResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FDBLoadMetadataResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadMetadataResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface KeysListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:cio.fdb.record.grpc.KeysList)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated bytes keys = 1;</code>
+     * @return A list containing the keys.
+     */
+    java.util.List<com.google.protobuf.ByteString> getKeysList();
+    /**
+     * <code>repeated bytes keys = 1;</code>
+     * @return The count of keys.
+     */
+    int getKeysCount();
+    /**
+     * <code>repeated bytes keys = 1;</code>
+     * @param index The index of the element to return.
+     * @return The keys at the given index.
+     */
+    com.google.protobuf.ByteString getKeys(int index);
+  }
+  /**
+   * Protobuf type {@code cio.fdb.record.grpc.KeysList}
+   */
+  public static final class KeysList extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:cio.fdb.record.grpc.KeysList)
+      KeysListOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use KeysList.newBuilder() to construct.
+    private KeysList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private KeysList() {
+      keys_ = emptyList(com.google.protobuf.ByteString.class);
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new KeysList();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_KeysList_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_KeysList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              cio.fdb.record.grpc.FdbRecordGrpc.KeysList.class, cio.fdb.record.grpc.FdbRecordGrpc.KeysList.Builder.class);
+    }
+
+    public static final int KEYS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> keys_ =
+        emptyList(com.google.protobuf.ByteString.class);
+    /**
+     * <code>repeated bytes keys = 1;</code>
+     * @return A list containing the keys.
+     */
+    @java.lang.Override
+    public java.util.List<com.google.protobuf.ByteString>
+        getKeysList() {
+      return keys_;
+    }
+    /**
+     * <code>repeated bytes keys = 1;</code>
+     * @return The count of keys.
+     */
+    public int getKeysCount() {
+      return keys_.size();
+    }
+    /**
+     * <code>repeated bytes keys = 1;</code>
+     * @param index The index of the element to return.
+     * @return The keys at the given index.
+     */
+    public com.google.protobuf.ByteString getKeys(int index) {
+      return keys_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < keys_.size(); i++) {
+        output.writeBytes(1, keys_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      {
+        int dataSize = 0;
+        for (int i = 0; i < keys_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeBytesSizeNoTag(keys_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getKeysList().size();
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof cio.fdb.record.grpc.FdbRecordGrpc.KeysList)) {
+        return super.equals(obj);
+      }
+      cio.fdb.record.grpc.FdbRecordGrpc.KeysList other = (cio.fdb.record.grpc.FdbRecordGrpc.KeysList) obj;
+
+      if (!getKeysList()
+          .equals(other.getKeysList())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getKeysCount() > 0) {
+        hash = (37 * hash) + KEYS_FIELD_NUMBER;
+        hash = (53 * hash) + getKeysList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.KeysList parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.KeysList parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.KeysList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.KeysList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.KeysList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.KeysList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.KeysList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.KeysList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.KeysList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.KeysList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.KeysList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.KeysList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(cio.fdb.record.grpc.FdbRecordGrpc.KeysList prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code cio.fdb.record.grpc.KeysList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:cio.fdb.record.grpc.KeysList)
+        cio.fdb.record.grpc.FdbRecordGrpc.KeysListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_KeysList_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_KeysList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                cio.fdb.record.grpc.FdbRecordGrpc.KeysList.class, cio.fdb.record.grpc.FdbRecordGrpc.KeysList.Builder.class);
+      }
+
+      // Construct using cio.fdb.record.grpc.FdbRecordGrpc.KeysList.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        keys_ = emptyList(com.google.protobuf.ByteString.class);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_KeysList_descriptor;
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.KeysList getDefaultInstanceForType() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.KeysList.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.KeysList build() {
+        cio.fdb.record.grpc.FdbRecordGrpc.KeysList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.KeysList buildPartial() {
+        cio.fdb.record.grpc.FdbRecordGrpc.KeysList result = new cio.fdb.record.grpc.FdbRecordGrpc.KeysList(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(cio.fdb.record.grpc.FdbRecordGrpc.KeysList result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          keys_.makeImmutable();
+          result.keys_ = keys_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof cio.fdb.record.grpc.FdbRecordGrpc.KeysList) {
+          return mergeFrom((cio.fdb.record.grpc.FdbRecordGrpc.KeysList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(cio.fdb.record.grpc.FdbRecordGrpc.KeysList other) {
+        if (other == cio.fdb.record.grpc.FdbRecordGrpc.KeysList.getDefaultInstance()) return this;
+        if (!other.keys_.isEmpty()) {
+          if (keys_.isEmpty()) {
+            keys_ = other.keys_;
+            keys_.makeImmutable();
+            bitField0_ |= 0x00000001;
+          } else {
+            ensureKeysIsMutable();
+            keys_.addAll(other.keys_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                com.google.protobuf.ByteString v = input.readBytes();
+                ensureKeysIsMutable();
+                keys_.add(v);
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> keys_ = emptyList(com.google.protobuf.ByteString.class);
+      private void ensureKeysIsMutable() {
+        if (!keys_.isModifiable()) {
+          keys_ = makeMutableCopy(keys_);
+        }
+        bitField0_ |= 0x00000001;
+      }
+      /**
+       * <code>repeated bytes keys = 1;</code>
+       * @return A list containing the keys.
+       */
+      public java.util.List<com.google.protobuf.ByteString>
+          getKeysList() {
+        keys_.makeImmutable();
+        return keys_;
+      }
+      /**
+       * <code>repeated bytes keys = 1;</code>
+       * @return The count of keys.
+       */
+      public int getKeysCount() {
+        return keys_.size();
+      }
+      /**
+       * <code>repeated bytes keys = 1;</code>
+       * @param index The index of the element to return.
+       * @return The keys at the given index.
+       */
+      public com.google.protobuf.ByteString getKeys(int index) {
+        return keys_.get(index);
+      }
+      /**
+       * <code>repeated bytes keys = 1;</code>
+       * @param index The index to set the value at.
+       * @param value The keys to set.
+       * @return This builder for chaining.
+       */
+      public Builder setKeys(
+          int index, com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureKeysIsMutable();
+        keys_.set(index, value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bytes keys = 1;</code>
+       * @param value The keys to add.
+       * @return This builder for chaining.
+       */
+      public Builder addKeys(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureKeysIsMutable();
+        keys_.add(value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bytes keys = 1;</code>
+       * @param values The keys to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllKeys(
+          java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
+        ensureKeysIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, keys_);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bytes keys = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearKeys() {
+        keys_ = emptyList(com.google.protobuf.ByteString.class);
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:cio.fdb.record.grpc.KeysList)
+    }
+
+    // @@protoc_insertion_point(class_scope:cio.fdb.record.grpc.KeysList)
+    private static final cio.fdb.record.grpc.FdbRecordGrpc.KeysList DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new cio.fdb.record.grpc.FdbRecordGrpc.KeysList();
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.KeysList getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<KeysList>
+        PARSER = new com.google.protobuf.AbstractParser<KeysList>() {
+      @java.lang.Override
+      public KeysList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<KeysList> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<KeysList> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public cio.fdb.record.grpc.FdbRecordGrpc.KeysList getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface RecordsListOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:cio.fdb.record.grpc.RecordsList)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated bytes records = 1;</code>
+     * @return A list containing the records.
+     */
+    java.util.List<com.google.protobuf.ByteString> getRecordsList();
+    /**
+     * <code>repeated bytes records = 1;</code>
+     * @return The count of records.
+     */
+    int getRecordsCount();
+    /**
+     * <code>repeated bytes records = 1;</code>
+     * @param index The index of the element to return.
+     * @return The records at the given index.
+     */
+    com.google.protobuf.ByteString getRecords(int index);
+  }
+  /**
+   * Protobuf type {@code cio.fdb.record.grpc.RecordsList}
+   */
+  public static final class RecordsList extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:cio.fdb.record.grpc.RecordsList)
+      RecordsListOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use RecordsList.newBuilder() to construct.
+    private RecordsList(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private RecordsList() {
+      records_ = emptyList(com.google.protobuf.ByteString.class);
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new RecordsList();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_RecordsList_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_RecordsList_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.class, cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.Builder.class);
+    }
+
+    public static final int RECORDS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> records_ =
+        emptyList(com.google.protobuf.ByteString.class);
+    /**
+     * <code>repeated bytes records = 1;</code>
+     * @return A list containing the records.
+     */
+    @java.lang.Override
+    public java.util.List<com.google.protobuf.ByteString>
+        getRecordsList() {
+      return records_;
+    }
+    /**
+     * <code>repeated bytes records = 1;</code>
+     * @return The count of records.
+     */
+    public int getRecordsCount() {
+      return records_.size();
+    }
+    /**
+     * <code>repeated bytes records = 1;</code>
+     * @param index The index of the element to return.
+     * @return The records at the given index.
+     */
+    public com.google.protobuf.ByteString getRecords(int index) {
+      return records_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < records_.size(); i++) {
+        output.writeBytes(1, records_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      {
+        int dataSize = 0;
+        for (int i = 0; i < records_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeBytesSizeNoTag(records_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getRecordsList().size();
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof cio.fdb.record.grpc.FdbRecordGrpc.RecordsList)) {
+        return super.equals(obj);
+      }
+      cio.fdb.record.grpc.FdbRecordGrpc.RecordsList other = (cio.fdb.record.grpc.FdbRecordGrpc.RecordsList) obj;
+
+      if (!getRecordsList()
+          .equals(other.getRecordsList())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getRecordsCount() > 0) {
+        hash = (37 * hash) + RECORDS_FIELD_NUMBER;
+        hash = (53 * hash) + getRecordsList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.RecordsList parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.RecordsList parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.RecordsList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.RecordsList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.RecordsList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.RecordsList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.RecordsList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.RecordsList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.RecordsList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.RecordsList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.RecordsList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.RecordsList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(cio.fdb.record.grpc.FdbRecordGrpc.RecordsList prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code cio.fdb.record.grpc.RecordsList}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:cio.fdb.record.grpc.RecordsList)
+        cio.fdb.record.grpc.FdbRecordGrpc.RecordsListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_RecordsList_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_RecordsList_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.class, cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.Builder.class);
+      }
+
+      // Construct using cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        records_ = emptyList(com.google.protobuf.ByteString.class);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_RecordsList_descriptor;
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.RecordsList getDefaultInstanceForType() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.RecordsList build() {
+        cio.fdb.record.grpc.FdbRecordGrpc.RecordsList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.RecordsList buildPartial() {
+        cio.fdb.record.grpc.FdbRecordGrpc.RecordsList result = new cio.fdb.record.grpc.FdbRecordGrpc.RecordsList(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(cio.fdb.record.grpc.FdbRecordGrpc.RecordsList result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          records_.makeImmutable();
+          result.records_ = records_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof cio.fdb.record.grpc.FdbRecordGrpc.RecordsList) {
+          return mergeFrom((cio.fdb.record.grpc.FdbRecordGrpc.RecordsList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(cio.fdb.record.grpc.FdbRecordGrpc.RecordsList other) {
+        if (other == cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.getDefaultInstance()) return this;
+        if (!other.records_.isEmpty()) {
+          if (records_.isEmpty()) {
+            records_ = other.records_;
+            records_.makeImmutable();
+            bitField0_ |= 0x00000001;
+          } else {
+            ensureRecordsIsMutable();
+            records_.addAll(other.records_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                com.google.protobuf.ByteString v = input.readBytes();
+                ensureRecordsIsMutable();
+                records_.add(v);
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.Internal.ProtobufList<com.google.protobuf.ByteString> records_ = emptyList(com.google.protobuf.ByteString.class);
+      private void ensureRecordsIsMutable() {
+        if (!records_.isModifiable()) {
+          records_ = makeMutableCopy(records_);
+        }
+        bitField0_ |= 0x00000001;
+      }
+      /**
+       * <code>repeated bytes records = 1;</code>
+       * @return A list containing the records.
+       */
+      public java.util.List<com.google.protobuf.ByteString>
+          getRecordsList() {
+        records_.makeImmutable();
+        return records_;
+      }
+      /**
+       * <code>repeated bytes records = 1;</code>
+       * @return The count of records.
+       */
+      public int getRecordsCount() {
+        return records_.size();
+      }
+      /**
+       * <code>repeated bytes records = 1;</code>
+       * @param index The index of the element to return.
+       * @return The records at the given index.
+       */
+      public com.google.protobuf.ByteString getRecords(int index) {
+        return records_.get(index);
+      }
+      /**
+       * <code>repeated bytes records = 1;</code>
+       * @param index The index to set the value at.
+       * @param value The records to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRecords(
+          int index, com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRecordsIsMutable();
+        records_.set(index, value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bytes records = 1;</code>
+       * @param value The records to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRecords(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRecordsIsMutable();
+        records_.add(value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bytes records = 1;</code>
+       * @param values The records to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRecords(
+          java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {
+        ensureRecordsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, records_);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bytes records = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRecords() {
+        records_ = emptyList(com.google.protobuf.ByteString.class);
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:cio.fdb.record.grpc.RecordsList)
+    }
+
+    // @@protoc_insertion_point(class_scope:cio.fdb.record.grpc.RecordsList)
+    private static final cio.fdb.record.grpc.FdbRecordGrpc.RecordsList DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new cio.fdb.record.grpc.FdbRecordGrpc.RecordsList();
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.RecordsList getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<RecordsList>
+        PARSER = new com.google.protobuf.AbstractParser<RecordsList>() {
+      @java.lang.Override
+      public RecordsList parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<RecordsList> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RecordsList> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public cio.fdb.record.grpc.FdbRecordGrpc.RecordsList getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface FDBTransactionErrorOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:cio.fdb.record.grpc.FDBTransactionError)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 code = 1;</code>
+     * @return The code.
+     */
+    int getCode();
+
+    /**
+     * <code>optional string error = 2;</code>
+     * @return Whether the error field is set.
+     */
+    boolean hasError();
+    /**
+     * <code>optional string error = 2;</code>
+     * @return The error.
+     */
+    java.lang.String getError();
+    /**
+     * <code>optional string error = 2;</code>
+     * @return The bytes for error.
+     */
+    com.google.protobuf.ByteString
+        getErrorBytes();
+  }
+  /**
+   * Protobuf type {@code cio.fdb.record.grpc.FDBTransactionError}
+   */
+  public static final class FDBTransactionError extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:cio.fdb.record.grpc.FDBTransactionError)
+      FDBTransactionErrorOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use FDBTransactionError.newBuilder() to construct.
+    private FDBTransactionError(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private FDBTransactionError() {
+      error_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FDBTransactionError();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBTransactionError_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBTransactionError_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError.class, cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int CODE_FIELD_NUMBER = 1;
+    private int code_ = 0;
+    /**
+     * <code>int32 code = 1;</code>
+     * @return The code.
+     */
+    @java.lang.Override
+    public int getCode() {
+      return code_;
+    }
+
+    public static final int ERROR_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object error_ = "";
+    /**
+     * <code>optional string error = 2;</code>
+     * @return Whether the error field is set.
+     */
+    @java.lang.Override
+    public boolean hasError() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>optional string error = 2;</code>
+     * @return The error.
+     */
+    @java.lang.Override
+    public java.lang.String getError() {
+      java.lang.Object ref = error_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        error_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>optional string error = 2;</code>
+     * @return The bytes for error.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getErrorBytes() {
+      java.lang.Object ref = error_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        error_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (code_ != 0) {
+        output.writeInt32(1, code_);
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, error_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (code_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, code_);
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, error_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError)) {
+        return super.equals(obj);
+      }
+      cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError other = (cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError) obj;
+
+      if (getCode()
+          != other.getCode()) return false;
+      if (hasError() != other.hasError()) return false;
+      if (hasError()) {
+        if (!getError()
+            .equals(other.getError())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getCode();
+      if (hasError()) {
+        hash = (37 * hash) + ERROR_FIELD_NUMBER;
+        hash = (53 * hash) + getError().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code cio.fdb.record.grpc.FDBTransactionError}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:cio.fdb.record.grpc.FDBTransactionError)
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionErrorOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBTransactionError_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBTransactionError_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError.class, cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError.Builder.class);
+      }
+
+      // Construct using cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        code_ = 0;
+        error_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBTransactionError_descriptor;
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError getDefaultInstanceForType() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError build() {
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError buildPartial() {
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError result = new cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.code_ = code_;
+        }
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.error_ = error_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError) {
+          return mergeFrom((cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError other) {
+        if (other == cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError.getDefaultInstance()) return this;
+        if (other.getCode() != 0) {
+          setCode(other.getCode());
+        }
+        if (other.hasError()) {
+          error_ = other.error_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                code_ = input.readInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 18: {
+                error_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private int code_ ;
+      /**
+       * <code>int32 code = 1;</code>
+       * @return The code.
+       */
+      @java.lang.Override
+      public int getCode() {
+        return code_;
+      }
+      /**
+       * <code>int32 code = 1;</code>
+       * @param value The code to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCode(int value) {
+
+        code_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 code = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCode() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        code_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object error_ = "";
+      /**
+       * <code>optional string error = 2;</code>
+       * @return Whether the error field is set.
+       */
+      public boolean hasError() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>optional string error = 2;</code>
+       * @return The error.
+       */
+      public java.lang.String getError() {
+        java.lang.Object ref = error_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          error_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string error = 2;</code>
+       * @return The bytes for error.
+       */
+      public com.google.protobuf.ByteString
+          getErrorBytes() {
+        java.lang.Object ref = error_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          error_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string error = 2;</code>
+       * @param value The error to set.
+       * @return This builder for chaining.
+       */
+      public Builder setError(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        error_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string error = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearError() {
+        error_ = getDefaultInstance().getError();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string error = 2;</code>
+       * @param value The bytes for error to set.
+       * @return This builder for chaining.
+       */
+      public Builder setErrorBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        error_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:cio.fdb.record.grpc.FDBTransactionError)
+    }
+
+    // @@protoc_insertion_point(class_scope:cio.fdb.record.grpc.FDBTransactionError)
+    private static final cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError();
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<FDBTransactionError>
+        PARSER = new com.google.protobuf.AbstractParser<FDBTransactionError>() {
+      @java.lang.Override
+      public FDBTransactionError parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<FDBTransactionError> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FDBTransactionError> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface FDBCRUDCommandOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:cio.fdb.record.grpc.FDBCRUDCommand)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string table = 1;</code>
+     * @return The table.
+     */
+    java.lang.String getTable();
+    /**
+     * <code>string table = 1;</code>
+     * @return The bytes for table.
+     */
+    com.google.protobuf.ByteString
+        getTableBytes();
+
+    /**
+     * <code>.cio.fdb.record.grpc.FDBCRUDCommand.OPERATION operation = 10;</code>
+     * @return The enum numeric value on the wire for operation.
+     */
+    int getOperationValue();
+    /**
+     * <code>.cio.fdb.record.grpc.FDBCRUDCommand.OPERATION operation = 10;</code>
+     * @return The operation.
+     */
+    cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand.OPERATION getOperation();
+
+    /**
+     * <code>.cio.fdb.record.grpc.KeysList keys = 16;</code>
+     * @return Whether the keys field is set.
+     */
+    boolean hasKeys();
+    /**
+     * <code>.cio.fdb.record.grpc.KeysList keys = 16;</code>
+     * @return The keys.
+     */
+    cio.fdb.record.grpc.FdbRecordGrpc.KeysList getKeys();
+    /**
+     * <code>.cio.fdb.record.grpc.KeysList keys = 16;</code>
+     */
+    cio.fdb.record.grpc.FdbRecordGrpc.KeysListOrBuilder getKeysOrBuilder();
+
+    /**
+     * <code>.cio.fdb.record.grpc.RecordsList records = 20;</code>
+     * @return Whether the records field is set.
+     */
+    boolean hasRecords();
+    /**
+     * <code>.cio.fdb.record.grpc.RecordsList records = 20;</code>
+     * @return The records.
+     */
+    cio.fdb.record.grpc.FdbRecordGrpc.RecordsList getRecords();
+    /**
+     * <code>.cio.fdb.record.grpc.RecordsList records = 20;</code>
+     */
+    cio.fdb.record.grpc.FdbRecordGrpc.RecordsListOrBuilder getRecordsOrBuilder();
+
+    /**
+     * <code>.cio.fdb.record.grpc.BooleanQuery query = 24;</code>
+     * @return Whether the query field is set.
+     */
+    boolean hasQuery();
+    /**
+     * <code>.cio.fdb.record.grpc.BooleanQuery query = 24;</code>
+     * @return The query.
+     */
+    cio.fdb.record.grpc.Filters.BooleanQuery getQuery();
+    /**
+     * <code>.cio.fdb.record.grpc.BooleanQuery query = 24;</code>
+     */
+    cio.fdb.record.grpc.Filters.BooleanQueryOrBuilder getQueryOrBuilder();
+
+    cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand.DataCase getDataCase();
+  }
+  /**
+   * Protobuf type {@code cio.fdb.record.grpc.FDBCRUDCommand}
+   */
+  public static final class FDBCRUDCommand extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:cio.fdb.record.grpc.FDBCRUDCommand)
+      FDBCRUDCommandOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use FDBCRUDCommand.newBuilder() to construct.
+    private FDBCRUDCommand(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private FDBCRUDCommand() {
+      table_ = "";
+      operation_ = 0;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FDBCRUDCommand();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBCRUDCommand_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBCRUDCommand_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand.class, cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand.Builder.class);
+    }
+
+    /**
+     * Protobuf enum {@code cio.fdb.record.grpc.FDBCRUDCommand.OPERATION}
+     */
+    public enum OPERATION
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>CREATE = 0;</code>
+       */
+      CREATE(0),
+      /**
+       * <code>LOAD = 1;</code>
+       */
+      LOAD(1),
+      /**
+       * <code>DELETE = 2;</code>
+       */
+      DELETE(2),
+      UNRECOGNIZED(-1),
+      ;
+
+      /**
+       * <code>CREATE = 0;</code>
+       */
+      public static final int CREATE_VALUE = 0;
+      /**
+       * <code>LOAD = 1;</code>
+       */
+      public static final int LOAD_VALUE = 1;
+      /**
+       * <code>DELETE = 2;</code>
+       */
+      public static final int DELETE_VALUE = 2;
+
+
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static OPERATION valueOf(int value) {
+        return forNumber(value);
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       */
+      public static OPERATION forNumber(int value) {
+        switch (value) {
+          case 0: return CREATE;
+          case 1: return LOAD;
+          case 2: return DELETE;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<OPERATION>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          OPERATION> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<OPERATION>() {
+              public OPERATION findValueByNumber(int number) {
+                return OPERATION.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalStateException(
+              "Can't get the descriptor of an unrecognized enum value.");
+        }
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final OPERATION[] VALUES = values();
+
+      public static OPERATION valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        if (desc.getIndex() == -1) {
+          return UNRECOGNIZED;
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private OPERATION(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:cio.fdb.record.grpc.FDBCRUDCommand.OPERATION)
+    }
+
+    private int dataCase_ = 0;
+    @SuppressWarnings("serial")
+    private java.lang.Object data_;
+    public enum DataCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      KEYS(16),
+      RECORDS(20),
+      QUERY(24),
+      DATA_NOT_SET(0);
+      private final int value;
+      private DataCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static DataCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static DataCase forNumber(int value) {
+        switch (value) {
+          case 16: return KEYS;
+          case 20: return RECORDS;
+          case 24: return QUERY;
+          case 0: return DATA_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public DataCase
+    getDataCase() {
+      return DataCase.forNumber(
+          dataCase_);
+    }
+
+    public static final int TABLE_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object table_ = "";
+    /**
+     * <code>string table = 1;</code>
+     * @return The table.
+     */
+    @java.lang.Override
+    public java.lang.String getTable() {
+      java.lang.Object ref = table_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        table_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string table = 1;</code>
+     * @return The bytes for table.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTableBytes() {
+      java.lang.Object ref = table_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        table_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int OPERATION_FIELD_NUMBER = 10;
+    private int operation_ = 0;
+    /**
+     * <code>.cio.fdb.record.grpc.FDBCRUDCommand.OPERATION operation = 10;</code>
+     * @return The enum numeric value on the wire for operation.
+     */
+    @java.lang.Override public int getOperationValue() {
+      return operation_;
+    }
+    /**
+     * <code>.cio.fdb.record.grpc.FDBCRUDCommand.OPERATION operation = 10;</code>
+     * @return The operation.
+     */
+    @java.lang.Override public cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand.OPERATION getOperation() {
+      cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand.OPERATION result = cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand.OPERATION.forNumber(operation_);
+      return result == null ? cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand.OPERATION.UNRECOGNIZED : result;
+    }
+
+    public static final int KEYS_FIELD_NUMBER = 16;
+    /**
+     * <code>.cio.fdb.record.grpc.KeysList keys = 16;</code>
+     * @return Whether the keys field is set.
+     */
+    @java.lang.Override
+    public boolean hasKeys() {
+      return dataCase_ == 16;
+    }
+    /**
+     * <code>.cio.fdb.record.grpc.KeysList keys = 16;</code>
+     * @return The keys.
+     */
+    @java.lang.Override
+    public cio.fdb.record.grpc.FdbRecordGrpc.KeysList getKeys() {
+      if (dataCase_ == 16) {
+         return (cio.fdb.record.grpc.FdbRecordGrpc.KeysList) data_;
+      }
+      return cio.fdb.record.grpc.FdbRecordGrpc.KeysList.getDefaultInstance();
+    }
+    /**
+     * <code>.cio.fdb.record.grpc.KeysList keys = 16;</code>
+     */
+    @java.lang.Override
+    public cio.fdb.record.grpc.FdbRecordGrpc.KeysListOrBuilder getKeysOrBuilder() {
+      if (dataCase_ == 16) {
+         return (cio.fdb.record.grpc.FdbRecordGrpc.KeysList) data_;
+      }
+      return cio.fdb.record.grpc.FdbRecordGrpc.KeysList.getDefaultInstance();
+    }
+
+    public static final int RECORDS_FIELD_NUMBER = 20;
+    /**
+     * <code>.cio.fdb.record.grpc.RecordsList records = 20;</code>
+     * @return Whether the records field is set.
+     */
+    @java.lang.Override
+    public boolean hasRecords() {
+      return dataCase_ == 20;
+    }
+    /**
+     * <code>.cio.fdb.record.grpc.RecordsList records = 20;</code>
+     * @return The records.
+     */
+    @java.lang.Override
+    public cio.fdb.record.grpc.FdbRecordGrpc.RecordsList getRecords() {
+      if (dataCase_ == 20) {
+         return (cio.fdb.record.grpc.FdbRecordGrpc.RecordsList) data_;
+      }
+      return cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.getDefaultInstance();
+    }
+    /**
+     * <code>.cio.fdb.record.grpc.RecordsList records = 20;</code>
+     */
+    @java.lang.Override
+    public cio.fdb.record.grpc.FdbRecordGrpc.RecordsListOrBuilder getRecordsOrBuilder() {
+      if (dataCase_ == 20) {
+         return (cio.fdb.record.grpc.FdbRecordGrpc.RecordsList) data_;
+      }
+      return cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.getDefaultInstance();
+    }
+
+    public static final int QUERY_FIELD_NUMBER = 24;
+    /**
+     * <code>.cio.fdb.record.grpc.BooleanQuery query = 24;</code>
+     * @return Whether the query field is set.
+     */
+    @java.lang.Override
+    public boolean hasQuery() {
+      return dataCase_ == 24;
+    }
+    /**
+     * <code>.cio.fdb.record.grpc.BooleanQuery query = 24;</code>
+     * @return The query.
+     */
+    @java.lang.Override
+    public cio.fdb.record.grpc.Filters.BooleanQuery getQuery() {
+      if (dataCase_ == 24) {
+         return (cio.fdb.record.grpc.Filters.BooleanQuery) data_;
+      }
+      return cio.fdb.record.grpc.Filters.BooleanQuery.getDefaultInstance();
+    }
+    /**
+     * <code>.cio.fdb.record.grpc.BooleanQuery query = 24;</code>
+     */
+    @java.lang.Override
+    public cio.fdb.record.grpc.Filters.BooleanQueryOrBuilder getQueryOrBuilder() {
+      if (dataCase_ == 24) {
+         return (cio.fdb.record.grpc.Filters.BooleanQuery) data_;
+      }
+      return cio.fdb.record.grpc.Filters.BooleanQuery.getDefaultInstance();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(table_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, table_);
+      }
+      if (operation_ != cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand.OPERATION.CREATE.getNumber()) {
+        output.writeEnum(10, operation_);
+      }
+      if (dataCase_ == 16) {
+        output.writeMessage(16, (cio.fdb.record.grpc.FdbRecordGrpc.KeysList) data_);
+      }
+      if (dataCase_ == 20) {
+        output.writeMessage(20, (cio.fdb.record.grpc.FdbRecordGrpc.RecordsList) data_);
+      }
+      if (dataCase_ == 24) {
+        output.writeMessage(24, (cio.fdb.record.grpc.Filters.BooleanQuery) data_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(table_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, table_);
+      }
+      if (operation_ != cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand.OPERATION.CREATE.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(10, operation_);
+      }
+      if (dataCase_ == 16) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(16, (cio.fdb.record.grpc.FdbRecordGrpc.KeysList) data_);
+      }
+      if (dataCase_ == 20) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(20, (cio.fdb.record.grpc.FdbRecordGrpc.RecordsList) data_);
+      }
+      if (dataCase_ == 24) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(24, (cio.fdb.record.grpc.Filters.BooleanQuery) data_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand)) {
+        return super.equals(obj);
+      }
+      cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand other = (cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand) obj;
+
+      if (!getTable()
+          .equals(other.getTable())) return false;
+      if (operation_ != other.operation_) return false;
+      if (!getDataCase().equals(other.getDataCase())) return false;
+      switch (dataCase_) {
+        case 16:
+          if (!getKeys()
+              .equals(other.getKeys())) return false;
+          break;
+        case 20:
+          if (!getRecords()
+              .equals(other.getRecords())) return false;
+          break;
+        case 24:
+          if (!getQuery()
+              .equals(other.getQuery())) return false;
+          break;
+        case 0:
+        default:
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TABLE_FIELD_NUMBER;
+      hash = (53 * hash) + getTable().hashCode();
+      hash = (37 * hash) + OPERATION_FIELD_NUMBER;
+      hash = (53 * hash) + operation_;
+      switch (dataCase_) {
+        case 16:
+          hash = (37 * hash) + KEYS_FIELD_NUMBER;
+          hash = (53 * hash) + getKeys().hashCode();
+          break;
+        case 20:
+          hash = (37 * hash) + RECORDS_FIELD_NUMBER;
+          hash = (53 * hash) + getRecords().hashCode();
+          break;
+        case 24:
+          hash = (37 * hash) + QUERY_FIELD_NUMBER;
+          hash = (53 * hash) + getQuery().hashCode();
+          break;
+        case 0:
+        default:
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code cio.fdb.record.grpc.FDBCRUDCommand}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:cio.fdb.record.grpc.FDBCRUDCommand)
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommandOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBCRUDCommand_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBCRUDCommand_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand.class, cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand.Builder.class);
+      }
+
+      // Construct using cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        table_ = "";
+        operation_ = 0;
+        if (keysBuilder_ != null) {
+          keysBuilder_.clear();
+        }
+        if (recordsBuilder_ != null) {
+          recordsBuilder_.clear();
+        }
+        if (queryBuilder_ != null) {
+          queryBuilder_.clear();
+        }
+        dataCase_ = 0;
+        data_ = null;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBCRUDCommand_descriptor;
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand getDefaultInstanceForType() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand build() {
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand buildPartial() {
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand result = new cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        buildPartialOneofs(result);
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.table_ = table_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.operation_ = operation_;
+        }
+      }
+
+      private void buildPartialOneofs(cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand result) {
+        result.dataCase_ = dataCase_;
+        result.data_ = this.data_;
+        if (dataCase_ == 16 &&
+            keysBuilder_ != null) {
+          result.data_ = keysBuilder_.build();
+        }
+        if (dataCase_ == 20 &&
+            recordsBuilder_ != null) {
+          result.data_ = recordsBuilder_.build();
+        }
+        if (dataCase_ == 24 &&
+            queryBuilder_ != null) {
+          result.data_ = queryBuilder_.build();
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand) {
+          return mergeFrom((cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand other) {
+        if (other == cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand.getDefaultInstance()) return this;
+        if (!other.getTable().isEmpty()) {
+          table_ = other.table_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.operation_ != 0) {
+          setOperationValue(other.getOperationValue());
+        }
+        switch (other.getDataCase()) {
+          case KEYS: {
+            mergeKeys(other.getKeys());
+            break;
+          }
+          case RECORDS: {
+            mergeRecords(other.getRecords());
+            break;
+          }
+          case QUERY: {
+            mergeQuery(other.getQuery());
+            break;
+          }
+          case DATA_NOT_SET: {
+            break;
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                table_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 80: {
+                operation_ = input.readEnum();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 80
+              case 130: {
+                input.readMessage(
+                    getKeysFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                dataCase_ = 16;
+                break;
+              } // case 130
+              case 162: {
+                input.readMessage(
+                    getRecordsFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                dataCase_ = 20;
+                break;
+              } // case 162
+              case 194: {
+                input.readMessage(
+                    getQueryFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                dataCase_ = 24;
+                break;
+              } // case 194
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int dataCase_ = 0;
+      private java.lang.Object data_;
+      public DataCase
+          getDataCase() {
+        return DataCase.forNumber(
+            dataCase_);
+      }
+
+      public Builder clearData() {
+        dataCase_ = 0;
+        data_ = null;
+        onChanged();
+        return this;
+      }
+
+      private int bitField0_;
+
+      private java.lang.Object table_ = "";
+      /**
+       * <code>string table = 1;</code>
+       * @return The table.
+       */
+      public java.lang.String getTable() {
+        java.lang.Object ref = table_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          table_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string table = 1;</code>
+       * @return The bytes for table.
+       */
+      public com.google.protobuf.ByteString
+          getTableBytes() {
+        java.lang.Object ref = table_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          table_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string table = 1;</code>
+       * @param value The table to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTable(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        table_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string table = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTable() {
+        table_ = getDefaultInstance().getTable();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string table = 1;</code>
+       * @param value The bytes for table to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTableBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        table_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private int operation_ = 0;
+      /**
+       * <code>.cio.fdb.record.grpc.FDBCRUDCommand.OPERATION operation = 10;</code>
+       * @return The enum numeric value on the wire for operation.
+       */
+      @java.lang.Override public int getOperationValue() {
+        return operation_;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.FDBCRUDCommand.OPERATION operation = 10;</code>
+       * @param value The enum numeric value on the wire for operation to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOperationValue(int value) {
+        operation_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.FDBCRUDCommand.OPERATION operation = 10;</code>
+       * @return The operation.
+       */
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand.OPERATION getOperation() {
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand.OPERATION result = cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand.OPERATION.forNumber(operation_);
+        return result == null ? cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand.OPERATION.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.FDBCRUDCommand.OPERATION operation = 10;</code>
+       * @param value The operation to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOperation(cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand.OPERATION value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        bitField0_ |= 0x00000002;
+        operation_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.FDBCRUDCommand.OPERATION operation = 10;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOperation() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        operation_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cio.fdb.record.grpc.FdbRecordGrpc.KeysList, cio.fdb.record.grpc.FdbRecordGrpc.KeysList.Builder, cio.fdb.record.grpc.FdbRecordGrpc.KeysListOrBuilder> keysBuilder_;
+      /**
+       * <code>.cio.fdb.record.grpc.KeysList keys = 16;</code>
+       * @return Whether the keys field is set.
+       */
+      @java.lang.Override
+      public boolean hasKeys() {
+        return dataCase_ == 16;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.KeysList keys = 16;</code>
+       * @return The keys.
+       */
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.KeysList getKeys() {
+        if (keysBuilder_ == null) {
+          if (dataCase_ == 16) {
+            return (cio.fdb.record.grpc.FdbRecordGrpc.KeysList) data_;
+          }
+          return cio.fdb.record.grpc.FdbRecordGrpc.KeysList.getDefaultInstance();
+        } else {
+          if (dataCase_ == 16) {
+            return keysBuilder_.getMessage();
+          }
+          return cio.fdb.record.grpc.FdbRecordGrpc.KeysList.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.KeysList keys = 16;</code>
+       */
+      public Builder setKeys(cio.fdb.record.grpc.FdbRecordGrpc.KeysList value) {
+        if (keysBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          data_ = value;
+          onChanged();
+        } else {
+          keysBuilder_.setMessage(value);
+        }
+        dataCase_ = 16;
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.KeysList keys = 16;</code>
+       */
+      public Builder setKeys(
+          cio.fdb.record.grpc.FdbRecordGrpc.KeysList.Builder builderForValue) {
+        if (keysBuilder_ == null) {
+          data_ = builderForValue.build();
+          onChanged();
+        } else {
+          keysBuilder_.setMessage(builderForValue.build());
+        }
+        dataCase_ = 16;
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.KeysList keys = 16;</code>
+       */
+      public Builder mergeKeys(cio.fdb.record.grpc.FdbRecordGrpc.KeysList value) {
+        if (keysBuilder_ == null) {
+          if (dataCase_ == 16 &&
+              data_ != cio.fdb.record.grpc.FdbRecordGrpc.KeysList.getDefaultInstance()) {
+            data_ = cio.fdb.record.grpc.FdbRecordGrpc.KeysList.newBuilder((cio.fdb.record.grpc.FdbRecordGrpc.KeysList) data_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            data_ = value;
+          }
+          onChanged();
+        } else {
+          if (dataCase_ == 16) {
+            keysBuilder_.mergeFrom(value);
+          } else {
+            keysBuilder_.setMessage(value);
+          }
+        }
+        dataCase_ = 16;
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.KeysList keys = 16;</code>
+       */
+      public Builder clearKeys() {
+        if (keysBuilder_ == null) {
+          if (dataCase_ == 16) {
+            dataCase_ = 0;
+            data_ = null;
+            onChanged();
+          }
+        } else {
+          if (dataCase_ == 16) {
+            dataCase_ = 0;
+            data_ = null;
+          }
+          keysBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.KeysList keys = 16;</code>
+       */
+      public cio.fdb.record.grpc.FdbRecordGrpc.KeysList.Builder getKeysBuilder() {
+        return getKeysFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.KeysList keys = 16;</code>
+       */
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.KeysListOrBuilder getKeysOrBuilder() {
+        if ((dataCase_ == 16) && (keysBuilder_ != null)) {
+          return keysBuilder_.getMessageOrBuilder();
+        } else {
+          if (dataCase_ == 16) {
+            return (cio.fdb.record.grpc.FdbRecordGrpc.KeysList) data_;
+          }
+          return cio.fdb.record.grpc.FdbRecordGrpc.KeysList.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.KeysList keys = 16;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cio.fdb.record.grpc.FdbRecordGrpc.KeysList, cio.fdb.record.grpc.FdbRecordGrpc.KeysList.Builder, cio.fdb.record.grpc.FdbRecordGrpc.KeysListOrBuilder> 
+          getKeysFieldBuilder() {
+        if (keysBuilder_ == null) {
+          if (!(dataCase_ == 16)) {
+            data_ = cio.fdb.record.grpc.FdbRecordGrpc.KeysList.getDefaultInstance();
+          }
+          keysBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              cio.fdb.record.grpc.FdbRecordGrpc.KeysList, cio.fdb.record.grpc.FdbRecordGrpc.KeysList.Builder, cio.fdb.record.grpc.FdbRecordGrpc.KeysListOrBuilder>(
+                  (cio.fdb.record.grpc.FdbRecordGrpc.KeysList) data_,
+                  getParentForChildren(),
+                  isClean());
+          data_ = null;
+        }
+        dataCase_ = 16;
+        onChanged();
+        return keysBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cio.fdb.record.grpc.FdbRecordGrpc.RecordsList, cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.Builder, cio.fdb.record.grpc.FdbRecordGrpc.RecordsListOrBuilder> recordsBuilder_;
+      /**
+       * <code>.cio.fdb.record.grpc.RecordsList records = 20;</code>
+       * @return Whether the records field is set.
+       */
+      @java.lang.Override
+      public boolean hasRecords() {
+        return dataCase_ == 20;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.RecordsList records = 20;</code>
+       * @return The records.
+       */
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.RecordsList getRecords() {
+        if (recordsBuilder_ == null) {
+          if (dataCase_ == 20) {
+            return (cio.fdb.record.grpc.FdbRecordGrpc.RecordsList) data_;
+          }
+          return cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.getDefaultInstance();
+        } else {
+          if (dataCase_ == 20) {
+            return recordsBuilder_.getMessage();
+          }
+          return cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.RecordsList records = 20;</code>
+       */
+      public Builder setRecords(cio.fdb.record.grpc.FdbRecordGrpc.RecordsList value) {
+        if (recordsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          data_ = value;
+          onChanged();
+        } else {
+          recordsBuilder_.setMessage(value);
+        }
+        dataCase_ = 20;
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.RecordsList records = 20;</code>
+       */
+      public Builder setRecords(
+          cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.Builder builderForValue) {
+        if (recordsBuilder_ == null) {
+          data_ = builderForValue.build();
+          onChanged();
+        } else {
+          recordsBuilder_.setMessage(builderForValue.build());
+        }
+        dataCase_ = 20;
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.RecordsList records = 20;</code>
+       */
+      public Builder mergeRecords(cio.fdb.record.grpc.FdbRecordGrpc.RecordsList value) {
+        if (recordsBuilder_ == null) {
+          if (dataCase_ == 20 &&
+              data_ != cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.getDefaultInstance()) {
+            data_ = cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.newBuilder((cio.fdb.record.grpc.FdbRecordGrpc.RecordsList) data_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            data_ = value;
+          }
+          onChanged();
+        } else {
+          if (dataCase_ == 20) {
+            recordsBuilder_.mergeFrom(value);
+          } else {
+            recordsBuilder_.setMessage(value);
+          }
+        }
+        dataCase_ = 20;
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.RecordsList records = 20;</code>
+       */
+      public Builder clearRecords() {
+        if (recordsBuilder_ == null) {
+          if (dataCase_ == 20) {
+            dataCase_ = 0;
+            data_ = null;
+            onChanged();
+          }
+        } else {
+          if (dataCase_ == 20) {
+            dataCase_ = 0;
+            data_ = null;
+          }
+          recordsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.RecordsList records = 20;</code>
+       */
+      public cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.Builder getRecordsBuilder() {
+        return getRecordsFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.RecordsList records = 20;</code>
+       */
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.RecordsListOrBuilder getRecordsOrBuilder() {
+        if ((dataCase_ == 20) && (recordsBuilder_ != null)) {
+          return recordsBuilder_.getMessageOrBuilder();
+        } else {
+          if (dataCase_ == 20) {
+            return (cio.fdb.record.grpc.FdbRecordGrpc.RecordsList) data_;
+          }
+          return cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.RecordsList records = 20;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cio.fdb.record.grpc.FdbRecordGrpc.RecordsList, cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.Builder, cio.fdb.record.grpc.FdbRecordGrpc.RecordsListOrBuilder> 
+          getRecordsFieldBuilder() {
+        if (recordsBuilder_ == null) {
+          if (!(dataCase_ == 20)) {
+            data_ = cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.getDefaultInstance();
+          }
+          recordsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              cio.fdb.record.grpc.FdbRecordGrpc.RecordsList, cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.Builder, cio.fdb.record.grpc.FdbRecordGrpc.RecordsListOrBuilder>(
+                  (cio.fdb.record.grpc.FdbRecordGrpc.RecordsList) data_,
+                  getParentForChildren(),
+                  isClean());
+          data_ = null;
+        }
+        dataCase_ = 20;
+        onChanged();
+        return recordsBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cio.fdb.record.grpc.Filters.BooleanQuery, cio.fdb.record.grpc.Filters.BooleanQuery.Builder, cio.fdb.record.grpc.Filters.BooleanQueryOrBuilder> queryBuilder_;
+      /**
+       * <code>.cio.fdb.record.grpc.BooleanQuery query = 24;</code>
+       * @return Whether the query field is set.
+       */
+      @java.lang.Override
+      public boolean hasQuery() {
+        return dataCase_ == 24;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.BooleanQuery query = 24;</code>
+       * @return The query.
+       */
+      @java.lang.Override
+      public cio.fdb.record.grpc.Filters.BooleanQuery getQuery() {
+        if (queryBuilder_ == null) {
+          if (dataCase_ == 24) {
+            return (cio.fdb.record.grpc.Filters.BooleanQuery) data_;
+          }
+          return cio.fdb.record.grpc.Filters.BooleanQuery.getDefaultInstance();
+        } else {
+          if (dataCase_ == 24) {
+            return queryBuilder_.getMessage();
+          }
+          return cio.fdb.record.grpc.Filters.BooleanQuery.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.BooleanQuery query = 24;</code>
+       */
+      public Builder setQuery(cio.fdb.record.grpc.Filters.BooleanQuery value) {
+        if (queryBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          data_ = value;
+          onChanged();
+        } else {
+          queryBuilder_.setMessage(value);
+        }
+        dataCase_ = 24;
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.BooleanQuery query = 24;</code>
+       */
+      public Builder setQuery(
+          cio.fdb.record.grpc.Filters.BooleanQuery.Builder builderForValue) {
+        if (queryBuilder_ == null) {
+          data_ = builderForValue.build();
+          onChanged();
+        } else {
+          queryBuilder_.setMessage(builderForValue.build());
+        }
+        dataCase_ = 24;
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.BooleanQuery query = 24;</code>
+       */
+      public Builder mergeQuery(cio.fdb.record.grpc.Filters.BooleanQuery value) {
+        if (queryBuilder_ == null) {
+          if (dataCase_ == 24 &&
+              data_ != cio.fdb.record.grpc.Filters.BooleanQuery.getDefaultInstance()) {
+            data_ = cio.fdb.record.grpc.Filters.BooleanQuery.newBuilder((cio.fdb.record.grpc.Filters.BooleanQuery) data_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            data_ = value;
+          }
+          onChanged();
+        } else {
+          if (dataCase_ == 24) {
+            queryBuilder_.mergeFrom(value);
+          } else {
+            queryBuilder_.setMessage(value);
+          }
+        }
+        dataCase_ = 24;
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.BooleanQuery query = 24;</code>
+       */
+      public Builder clearQuery() {
+        if (queryBuilder_ == null) {
+          if (dataCase_ == 24) {
+            dataCase_ = 0;
+            data_ = null;
+            onChanged();
+          }
+        } else {
+          if (dataCase_ == 24) {
+            dataCase_ = 0;
+            data_ = null;
+          }
+          queryBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.BooleanQuery query = 24;</code>
+       */
+      public cio.fdb.record.grpc.Filters.BooleanQuery.Builder getQueryBuilder() {
+        return getQueryFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.BooleanQuery query = 24;</code>
+       */
+      @java.lang.Override
+      public cio.fdb.record.grpc.Filters.BooleanQueryOrBuilder getQueryOrBuilder() {
+        if ((dataCase_ == 24) && (queryBuilder_ != null)) {
+          return queryBuilder_.getMessageOrBuilder();
+        } else {
+          if (dataCase_ == 24) {
+            return (cio.fdb.record.grpc.Filters.BooleanQuery) data_;
+          }
+          return cio.fdb.record.grpc.Filters.BooleanQuery.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.BooleanQuery query = 24;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cio.fdb.record.grpc.Filters.BooleanQuery, cio.fdb.record.grpc.Filters.BooleanQuery.Builder, cio.fdb.record.grpc.Filters.BooleanQueryOrBuilder> 
+          getQueryFieldBuilder() {
+        if (queryBuilder_ == null) {
+          if (!(dataCase_ == 24)) {
+            data_ = cio.fdb.record.grpc.Filters.BooleanQuery.getDefaultInstance();
+          }
+          queryBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              cio.fdb.record.grpc.Filters.BooleanQuery, cio.fdb.record.grpc.Filters.BooleanQuery.Builder, cio.fdb.record.grpc.Filters.BooleanQueryOrBuilder>(
+                  (cio.fdb.record.grpc.Filters.BooleanQuery) data_,
+                  getParentForChildren(),
+                  isClean());
+          data_ = null;
+        }
+        dataCase_ = 24;
+        onChanged();
+        return queryBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:cio.fdb.record.grpc.FDBCRUDCommand)
+    }
+
+    // @@protoc_insertion_point(class_scope:cio.fdb.record.grpc.FDBCRUDCommand)
+    private static final cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand();
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<FDBCRUDCommand>
+        PARSER = new com.google.protobuf.AbstractParser<FDBCRUDCommand>() {
+      @java.lang.Override
+      public FDBCRUDCommand parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<FDBCRUDCommand> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FDBCRUDCommand> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDCommand getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface FDBCRUDResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:cio.fdb.record.grpc.FDBCRUDResponse)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.cio.fdb.record.grpc.KeysList keys = 8;</code>
+     * @return Whether the keys field is set.
+     */
+    boolean hasKeys();
+    /**
+     * <code>.cio.fdb.record.grpc.KeysList keys = 8;</code>
+     * @return The keys.
+     */
+    cio.fdb.record.grpc.FdbRecordGrpc.KeysList getKeys();
+    /**
+     * <code>.cio.fdb.record.grpc.KeysList keys = 8;</code>
+     */
+    cio.fdb.record.grpc.FdbRecordGrpc.KeysListOrBuilder getKeysOrBuilder();
+
+    /**
+     * <code>.cio.fdb.record.grpc.RecordsList records = 16;</code>
+     * @return Whether the records field is set.
+     */
+    boolean hasRecords();
+    /**
+     * <code>.cio.fdb.record.grpc.RecordsList records = 16;</code>
+     * @return The records.
+     */
+    cio.fdb.record.grpc.FdbRecordGrpc.RecordsList getRecords();
+    /**
+     * <code>.cio.fdb.record.grpc.RecordsList records = 16;</code>
+     */
+    cio.fdb.record.grpc.FdbRecordGrpc.RecordsListOrBuilder getRecordsOrBuilder();
+
+    /**
+     * <code>bool success = 32;</code>
+     * @return Whether the success field is set.
+     */
+    boolean hasSuccess();
+    /**
+     * <code>bool success = 32;</code>
+     * @return The success.
+     */
+    boolean getSuccess();
+
+    /**
+     * <code>.cio.fdb.record.grpc.FDBTransactionError error = 64;</code>
+     * @return Whether the error field is set.
+     */
+    boolean hasError();
+    /**
+     * <code>.cio.fdb.record.grpc.FDBTransactionError error = 64;</code>
+     * @return The error.
+     */
+    cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError getError();
+    /**
+     * <code>.cio.fdb.record.grpc.FDBTransactionError error = 64;</code>
+     */
+    cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionErrorOrBuilder getErrorOrBuilder();
+
+    cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse.DataCase getDataCase();
+  }
+  /**
+   * Protobuf type {@code cio.fdb.record.grpc.FDBCRUDResponse}
+   */
+  public static final class FDBCRUDResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:cio.fdb.record.grpc.FDBCRUDResponse)
+      FDBCRUDResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use FDBCRUDResponse.newBuilder() to construct.
+    private FDBCRUDResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private FDBCRUDResponse() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FDBCRUDResponse();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBCRUDResponse_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBCRUDResponse_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse.class, cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse.Builder.class);
+    }
+
+    private int dataCase_ = 0;
+    @SuppressWarnings("serial")
+    private java.lang.Object data_;
+    public enum DataCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      KEYS(8),
+      RECORDS(16),
+      SUCCESS(32),
+      ERROR(64),
+      DATA_NOT_SET(0);
+      private final int value;
+      private DataCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static DataCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static DataCase forNumber(int value) {
+        switch (value) {
+          case 8: return KEYS;
+          case 16: return RECORDS;
+          case 32: return SUCCESS;
+          case 64: return ERROR;
+          case 0: return DATA_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public DataCase
+    getDataCase() {
+      return DataCase.forNumber(
+          dataCase_);
+    }
+
+    public static final int KEYS_FIELD_NUMBER = 8;
+    /**
+     * <code>.cio.fdb.record.grpc.KeysList keys = 8;</code>
+     * @return Whether the keys field is set.
+     */
+    @java.lang.Override
+    public boolean hasKeys() {
+      return dataCase_ == 8;
+    }
+    /**
+     * <code>.cio.fdb.record.grpc.KeysList keys = 8;</code>
+     * @return The keys.
+     */
+    @java.lang.Override
+    public cio.fdb.record.grpc.FdbRecordGrpc.KeysList getKeys() {
+      if (dataCase_ == 8) {
+         return (cio.fdb.record.grpc.FdbRecordGrpc.KeysList) data_;
+      }
+      return cio.fdb.record.grpc.FdbRecordGrpc.KeysList.getDefaultInstance();
+    }
+    /**
+     * <code>.cio.fdb.record.grpc.KeysList keys = 8;</code>
+     */
+    @java.lang.Override
+    public cio.fdb.record.grpc.FdbRecordGrpc.KeysListOrBuilder getKeysOrBuilder() {
+      if (dataCase_ == 8) {
+         return (cio.fdb.record.grpc.FdbRecordGrpc.KeysList) data_;
+      }
+      return cio.fdb.record.grpc.FdbRecordGrpc.KeysList.getDefaultInstance();
+    }
+
+    public static final int RECORDS_FIELD_NUMBER = 16;
+    /**
+     * <code>.cio.fdb.record.grpc.RecordsList records = 16;</code>
+     * @return Whether the records field is set.
+     */
+    @java.lang.Override
+    public boolean hasRecords() {
+      return dataCase_ == 16;
+    }
+    /**
+     * <code>.cio.fdb.record.grpc.RecordsList records = 16;</code>
+     * @return The records.
+     */
+    @java.lang.Override
+    public cio.fdb.record.grpc.FdbRecordGrpc.RecordsList getRecords() {
+      if (dataCase_ == 16) {
+         return (cio.fdb.record.grpc.FdbRecordGrpc.RecordsList) data_;
+      }
+      return cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.getDefaultInstance();
+    }
+    /**
+     * <code>.cio.fdb.record.grpc.RecordsList records = 16;</code>
+     */
+    @java.lang.Override
+    public cio.fdb.record.grpc.FdbRecordGrpc.RecordsListOrBuilder getRecordsOrBuilder() {
+      if (dataCase_ == 16) {
+         return (cio.fdb.record.grpc.FdbRecordGrpc.RecordsList) data_;
+      }
+      return cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.getDefaultInstance();
+    }
+
+    public static final int SUCCESS_FIELD_NUMBER = 32;
+    /**
+     * <code>bool success = 32;</code>
+     * @return Whether the success field is set.
+     */
+    @java.lang.Override
+    public boolean hasSuccess() {
+      return dataCase_ == 32;
+    }
+    /**
+     * <code>bool success = 32;</code>
+     * @return The success.
+     */
+    @java.lang.Override
+    public boolean getSuccess() {
+      if (dataCase_ == 32) {
+        return (java.lang.Boolean) data_;
+      }
+      return false;
+    }
+
+    public static final int ERROR_FIELD_NUMBER = 64;
+    /**
+     * <code>.cio.fdb.record.grpc.FDBTransactionError error = 64;</code>
+     * @return Whether the error field is set.
+     */
+    @java.lang.Override
+    public boolean hasError() {
+      return dataCase_ == 64;
+    }
+    /**
+     * <code>.cio.fdb.record.grpc.FDBTransactionError error = 64;</code>
+     * @return The error.
+     */
+    @java.lang.Override
+    public cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError getError() {
+      if (dataCase_ == 64) {
+         return (cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError) data_;
+      }
+      return cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError.getDefaultInstance();
+    }
+    /**
+     * <code>.cio.fdb.record.grpc.FDBTransactionError error = 64;</code>
+     */
+    @java.lang.Override
+    public cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionErrorOrBuilder getErrorOrBuilder() {
+      if (dataCase_ == 64) {
+         return (cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError) data_;
+      }
+      return cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError.getDefaultInstance();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (dataCase_ == 8) {
+        output.writeMessage(8, (cio.fdb.record.grpc.FdbRecordGrpc.KeysList) data_);
+      }
+      if (dataCase_ == 16) {
+        output.writeMessage(16, (cio.fdb.record.grpc.FdbRecordGrpc.RecordsList) data_);
+      }
+      if (dataCase_ == 32) {
+        output.writeBool(
+            32, (boolean)((java.lang.Boolean) data_));
+      }
+      if (dataCase_ == 64) {
+        output.writeMessage(64, (cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError) data_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (dataCase_ == 8) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, (cio.fdb.record.grpc.FdbRecordGrpc.KeysList) data_);
+      }
+      if (dataCase_ == 16) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(16, (cio.fdb.record.grpc.FdbRecordGrpc.RecordsList) data_);
+      }
+      if (dataCase_ == 32) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(
+              32, (boolean)((java.lang.Boolean) data_));
+      }
+      if (dataCase_ == 64) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(64, (cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError) data_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse)) {
+        return super.equals(obj);
+      }
+      cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse other = (cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse) obj;
+
+      if (!getDataCase().equals(other.getDataCase())) return false;
+      switch (dataCase_) {
+        case 8:
+          if (!getKeys()
+              .equals(other.getKeys())) return false;
+          break;
+        case 16:
+          if (!getRecords()
+              .equals(other.getRecords())) return false;
+          break;
+        case 32:
+          if (getSuccess()
+              != other.getSuccess()) return false;
+          break;
+        case 64:
+          if (!getError()
+              .equals(other.getError())) return false;
+          break;
+        case 0:
+        default:
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      switch (dataCase_) {
+        case 8:
+          hash = (37 * hash) + KEYS_FIELD_NUMBER;
+          hash = (53 * hash) + getKeys().hashCode();
+          break;
+        case 16:
+          hash = (37 * hash) + RECORDS_FIELD_NUMBER;
+          hash = (53 * hash) + getRecords().hashCode();
+          break;
+        case 32:
+          hash = (37 * hash) + SUCCESS_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+              getSuccess());
+          break;
+        case 64:
+          hash = (37 * hash) + ERROR_FIELD_NUMBER;
+          hash = (53 * hash) + getError().hashCode();
+          break;
+        case 0:
+        default:
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code cio.fdb.record.grpc.FDBCRUDResponse}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:cio.fdb.record.grpc.FDBCRUDResponse)
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponseOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBCRUDResponse_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBCRUDResponse_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse.class, cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse.Builder.class);
+      }
+
+      // Construct using cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        if (keysBuilder_ != null) {
+          keysBuilder_.clear();
+        }
+        if (recordsBuilder_ != null) {
+          recordsBuilder_.clear();
+        }
+        if (errorBuilder_ != null) {
+          errorBuilder_.clear();
+        }
+        dataCase_ = 0;
+        data_ = null;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.internal_static_cio_fdb_record_grpc_FDBCRUDResponse_descriptor;
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse getDefaultInstanceForType() {
+        return cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse build() {
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse buildPartial() {
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse result = new cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        buildPartialOneofs(result);
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse result) {
+        int from_bitField0_ = bitField0_;
+      }
+
+      private void buildPartialOneofs(cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse result) {
+        result.dataCase_ = dataCase_;
+        result.data_ = this.data_;
+        if (dataCase_ == 8 &&
+            keysBuilder_ != null) {
+          result.data_ = keysBuilder_.build();
+        }
+        if (dataCase_ == 16 &&
+            recordsBuilder_ != null) {
+          result.data_ = recordsBuilder_.build();
+        }
+        if (dataCase_ == 64 &&
+            errorBuilder_ != null) {
+          result.data_ = errorBuilder_.build();
+        }
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse) {
+          return mergeFrom((cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse other) {
+        if (other == cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse.getDefaultInstance()) return this;
+        switch (other.getDataCase()) {
+          case KEYS: {
+            mergeKeys(other.getKeys());
+            break;
+          }
+          case RECORDS: {
+            mergeRecords(other.getRecords());
+            break;
+          }
+          case SUCCESS: {
+            setSuccess(other.getSuccess());
+            break;
+          }
+          case ERROR: {
+            mergeError(other.getError());
+            break;
+          }
+          case DATA_NOT_SET: {
+            break;
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 66: {
+                input.readMessage(
+                    getKeysFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                dataCase_ = 8;
+                break;
+              } // case 66
+              case 130: {
+                input.readMessage(
+                    getRecordsFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                dataCase_ = 16;
+                break;
+              } // case 130
+              case 256: {
+                data_ = input.readBool();
+                dataCase_ = 32;
+                break;
+              } // case 256
+              case 514: {
+                input.readMessage(
+                    getErrorFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                dataCase_ = 64;
+                break;
+              } // case 514
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int dataCase_ = 0;
+      private java.lang.Object data_;
+      public DataCase
+          getDataCase() {
+        return DataCase.forNumber(
+            dataCase_);
+      }
+
+      public Builder clearData() {
+        dataCase_ = 0;
+        data_ = null;
+        onChanged();
+        return this;
+      }
+
+      private int bitField0_;
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cio.fdb.record.grpc.FdbRecordGrpc.KeysList, cio.fdb.record.grpc.FdbRecordGrpc.KeysList.Builder, cio.fdb.record.grpc.FdbRecordGrpc.KeysListOrBuilder> keysBuilder_;
+      /**
+       * <code>.cio.fdb.record.grpc.KeysList keys = 8;</code>
+       * @return Whether the keys field is set.
+       */
+      @java.lang.Override
+      public boolean hasKeys() {
+        return dataCase_ == 8;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.KeysList keys = 8;</code>
+       * @return The keys.
+       */
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.KeysList getKeys() {
+        if (keysBuilder_ == null) {
+          if (dataCase_ == 8) {
+            return (cio.fdb.record.grpc.FdbRecordGrpc.KeysList) data_;
+          }
+          return cio.fdb.record.grpc.FdbRecordGrpc.KeysList.getDefaultInstance();
+        } else {
+          if (dataCase_ == 8) {
+            return keysBuilder_.getMessage();
+          }
+          return cio.fdb.record.grpc.FdbRecordGrpc.KeysList.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.KeysList keys = 8;</code>
+       */
+      public Builder setKeys(cio.fdb.record.grpc.FdbRecordGrpc.KeysList value) {
+        if (keysBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          data_ = value;
+          onChanged();
+        } else {
+          keysBuilder_.setMessage(value);
+        }
+        dataCase_ = 8;
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.KeysList keys = 8;</code>
+       */
+      public Builder setKeys(
+          cio.fdb.record.grpc.FdbRecordGrpc.KeysList.Builder builderForValue) {
+        if (keysBuilder_ == null) {
+          data_ = builderForValue.build();
+          onChanged();
+        } else {
+          keysBuilder_.setMessage(builderForValue.build());
+        }
+        dataCase_ = 8;
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.KeysList keys = 8;</code>
+       */
+      public Builder mergeKeys(cio.fdb.record.grpc.FdbRecordGrpc.KeysList value) {
+        if (keysBuilder_ == null) {
+          if (dataCase_ == 8 &&
+              data_ != cio.fdb.record.grpc.FdbRecordGrpc.KeysList.getDefaultInstance()) {
+            data_ = cio.fdb.record.grpc.FdbRecordGrpc.KeysList.newBuilder((cio.fdb.record.grpc.FdbRecordGrpc.KeysList) data_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            data_ = value;
+          }
+          onChanged();
+        } else {
+          if (dataCase_ == 8) {
+            keysBuilder_.mergeFrom(value);
+          } else {
+            keysBuilder_.setMessage(value);
+          }
+        }
+        dataCase_ = 8;
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.KeysList keys = 8;</code>
+       */
+      public Builder clearKeys() {
+        if (keysBuilder_ == null) {
+          if (dataCase_ == 8) {
+            dataCase_ = 0;
+            data_ = null;
+            onChanged();
+          }
+        } else {
+          if (dataCase_ == 8) {
+            dataCase_ = 0;
+            data_ = null;
+          }
+          keysBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.KeysList keys = 8;</code>
+       */
+      public cio.fdb.record.grpc.FdbRecordGrpc.KeysList.Builder getKeysBuilder() {
+        return getKeysFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.KeysList keys = 8;</code>
+       */
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.KeysListOrBuilder getKeysOrBuilder() {
+        if ((dataCase_ == 8) && (keysBuilder_ != null)) {
+          return keysBuilder_.getMessageOrBuilder();
+        } else {
+          if (dataCase_ == 8) {
+            return (cio.fdb.record.grpc.FdbRecordGrpc.KeysList) data_;
+          }
+          return cio.fdb.record.grpc.FdbRecordGrpc.KeysList.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.KeysList keys = 8;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cio.fdb.record.grpc.FdbRecordGrpc.KeysList, cio.fdb.record.grpc.FdbRecordGrpc.KeysList.Builder, cio.fdb.record.grpc.FdbRecordGrpc.KeysListOrBuilder> 
+          getKeysFieldBuilder() {
+        if (keysBuilder_ == null) {
+          if (!(dataCase_ == 8)) {
+            data_ = cio.fdb.record.grpc.FdbRecordGrpc.KeysList.getDefaultInstance();
+          }
+          keysBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              cio.fdb.record.grpc.FdbRecordGrpc.KeysList, cio.fdb.record.grpc.FdbRecordGrpc.KeysList.Builder, cio.fdb.record.grpc.FdbRecordGrpc.KeysListOrBuilder>(
+                  (cio.fdb.record.grpc.FdbRecordGrpc.KeysList) data_,
+                  getParentForChildren(),
+                  isClean());
+          data_ = null;
+        }
+        dataCase_ = 8;
+        onChanged();
+        return keysBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cio.fdb.record.grpc.FdbRecordGrpc.RecordsList, cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.Builder, cio.fdb.record.grpc.FdbRecordGrpc.RecordsListOrBuilder> recordsBuilder_;
+      /**
+       * <code>.cio.fdb.record.grpc.RecordsList records = 16;</code>
+       * @return Whether the records field is set.
+       */
+      @java.lang.Override
+      public boolean hasRecords() {
+        return dataCase_ == 16;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.RecordsList records = 16;</code>
+       * @return The records.
+       */
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.RecordsList getRecords() {
+        if (recordsBuilder_ == null) {
+          if (dataCase_ == 16) {
+            return (cio.fdb.record.grpc.FdbRecordGrpc.RecordsList) data_;
+          }
+          return cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.getDefaultInstance();
+        } else {
+          if (dataCase_ == 16) {
+            return recordsBuilder_.getMessage();
+          }
+          return cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.RecordsList records = 16;</code>
+       */
+      public Builder setRecords(cio.fdb.record.grpc.FdbRecordGrpc.RecordsList value) {
+        if (recordsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          data_ = value;
+          onChanged();
+        } else {
+          recordsBuilder_.setMessage(value);
+        }
+        dataCase_ = 16;
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.RecordsList records = 16;</code>
+       */
+      public Builder setRecords(
+          cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.Builder builderForValue) {
+        if (recordsBuilder_ == null) {
+          data_ = builderForValue.build();
+          onChanged();
+        } else {
+          recordsBuilder_.setMessage(builderForValue.build());
+        }
+        dataCase_ = 16;
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.RecordsList records = 16;</code>
+       */
+      public Builder mergeRecords(cio.fdb.record.grpc.FdbRecordGrpc.RecordsList value) {
+        if (recordsBuilder_ == null) {
+          if (dataCase_ == 16 &&
+              data_ != cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.getDefaultInstance()) {
+            data_ = cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.newBuilder((cio.fdb.record.grpc.FdbRecordGrpc.RecordsList) data_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            data_ = value;
+          }
+          onChanged();
+        } else {
+          if (dataCase_ == 16) {
+            recordsBuilder_.mergeFrom(value);
+          } else {
+            recordsBuilder_.setMessage(value);
+          }
+        }
+        dataCase_ = 16;
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.RecordsList records = 16;</code>
+       */
+      public Builder clearRecords() {
+        if (recordsBuilder_ == null) {
+          if (dataCase_ == 16) {
+            dataCase_ = 0;
+            data_ = null;
+            onChanged();
+          }
+        } else {
+          if (dataCase_ == 16) {
+            dataCase_ = 0;
+            data_ = null;
+          }
+          recordsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.RecordsList records = 16;</code>
+       */
+      public cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.Builder getRecordsBuilder() {
+        return getRecordsFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.RecordsList records = 16;</code>
+       */
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.RecordsListOrBuilder getRecordsOrBuilder() {
+        if ((dataCase_ == 16) && (recordsBuilder_ != null)) {
+          return recordsBuilder_.getMessageOrBuilder();
+        } else {
+          if (dataCase_ == 16) {
+            return (cio.fdb.record.grpc.FdbRecordGrpc.RecordsList) data_;
+          }
+          return cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.RecordsList records = 16;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cio.fdb.record.grpc.FdbRecordGrpc.RecordsList, cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.Builder, cio.fdb.record.grpc.FdbRecordGrpc.RecordsListOrBuilder> 
+          getRecordsFieldBuilder() {
+        if (recordsBuilder_ == null) {
+          if (!(dataCase_ == 16)) {
+            data_ = cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.getDefaultInstance();
+          }
+          recordsBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              cio.fdb.record.grpc.FdbRecordGrpc.RecordsList, cio.fdb.record.grpc.FdbRecordGrpc.RecordsList.Builder, cio.fdb.record.grpc.FdbRecordGrpc.RecordsListOrBuilder>(
+                  (cio.fdb.record.grpc.FdbRecordGrpc.RecordsList) data_,
+                  getParentForChildren(),
+                  isClean());
+          data_ = null;
+        }
+        dataCase_ = 16;
+        onChanged();
+        return recordsBuilder_;
+      }
+
+      /**
+       * <code>bool success = 32;</code>
+       * @return Whether the success field is set.
+       */
+      public boolean hasSuccess() {
+        return dataCase_ == 32;
+      }
+      /**
+       * <code>bool success = 32;</code>
+       * @return The success.
+       */
+      public boolean getSuccess() {
+        if (dataCase_ == 32) {
+          return (java.lang.Boolean) data_;
+        }
+        return false;
+      }
+      /**
+       * <code>bool success = 32;</code>
+       * @param value The success to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSuccess(boolean value) {
+
+        dataCase_ = 32;
+        data_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool success = 32;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSuccess() {
+        if (dataCase_ == 32) {
+          dataCase_ = 0;
+          data_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError, cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError.Builder, cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionErrorOrBuilder> errorBuilder_;
+      /**
+       * <code>.cio.fdb.record.grpc.FDBTransactionError error = 64;</code>
+       * @return Whether the error field is set.
+       */
+      @java.lang.Override
+      public boolean hasError() {
+        return dataCase_ == 64;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.FDBTransactionError error = 64;</code>
+       * @return The error.
+       */
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError getError() {
+        if (errorBuilder_ == null) {
+          if (dataCase_ == 64) {
+            return (cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError) data_;
+          }
+          return cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError.getDefaultInstance();
+        } else {
+          if (dataCase_ == 64) {
+            return errorBuilder_.getMessage();
+          }
+          return cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.FDBTransactionError error = 64;</code>
+       */
+      public Builder setError(cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError value) {
+        if (errorBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          data_ = value;
+          onChanged();
+        } else {
+          errorBuilder_.setMessage(value);
+        }
+        dataCase_ = 64;
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.FDBTransactionError error = 64;</code>
+       */
+      public Builder setError(
+          cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError.Builder builderForValue) {
+        if (errorBuilder_ == null) {
+          data_ = builderForValue.build();
+          onChanged();
+        } else {
+          errorBuilder_.setMessage(builderForValue.build());
+        }
+        dataCase_ = 64;
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.FDBTransactionError error = 64;</code>
+       */
+      public Builder mergeError(cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError value) {
+        if (errorBuilder_ == null) {
+          if (dataCase_ == 64 &&
+              data_ != cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError.getDefaultInstance()) {
+            data_ = cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError.newBuilder((cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError) data_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            data_ = value;
+          }
+          onChanged();
+        } else {
+          if (dataCase_ == 64) {
+            errorBuilder_.mergeFrom(value);
+          } else {
+            errorBuilder_.setMessage(value);
+          }
+        }
+        dataCase_ = 64;
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.FDBTransactionError error = 64;</code>
+       */
+      public Builder clearError() {
+        if (errorBuilder_ == null) {
+          if (dataCase_ == 64) {
+            dataCase_ = 0;
+            data_ = null;
+            onChanged();
+          }
+        } else {
+          if (dataCase_ == 64) {
+            dataCase_ = 0;
+            data_ = null;
+          }
+          errorBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.FDBTransactionError error = 64;</code>
+       */
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError.Builder getErrorBuilder() {
+        return getErrorFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.FDBTransactionError error = 64;</code>
+       */
+      @java.lang.Override
+      public cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionErrorOrBuilder getErrorOrBuilder() {
+        if ((dataCase_ == 64) && (errorBuilder_ != null)) {
+          return errorBuilder_.getMessageOrBuilder();
+        } else {
+          if (dataCase_ == 64) {
+            return (cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError) data_;
+          }
+          return cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.cio.fdb.record.grpc.FDBTransactionError error = 64;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError, cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError.Builder, cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionErrorOrBuilder> 
+          getErrorFieldBuilder() {
+        if (errorBuilder_ == null) {
+          if (!(dataCase_ == 64)) {
+            data_ = cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError.getDefaultInstance();
+          }
+          errorBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError, cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError.Builder, cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionErrorOrBuilder>(
+                  (cio.fdb.record.grpc.FdbRecordGrpc.FDBTransactionError) data_,
+                  getParentForChildren(),
+                  isClean());
+          data_ = null;
+        }
+        dataCase_ = 64;
+        onChanged();
+        return errorBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:cio.fdb.record.grpc.FDBCRUDResponse)
+    }
+
+    // @@protoc_insertion_point(class_scope:cio.fdb.record.grpc.FDBCRUDResponse)
+    private static final cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse();
+    }
+
+    public static cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<FDBCRUDResponse>
+        PARSER = new com.google.protobuf.AbstractParser<FDBCRUDResponse>() {
+      @java.lang.Override
+      public FDBCRUDResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<FDBCRUDResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FDBCRUDResponse> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public cio.fdb.record.grpc.FdbRecordGrpc.FDBCRUDResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_cio_fdb_record_grpc_FDBRemoteSessionRequest_descriptor;
   private static final 
@@ -9695,6 +17320,11 @@ public final class FdbRecordGrpc {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_cio_fdb_record_grpc_FDBDeleteRecordResult_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cio_fdb_record_grpc_FDBLoadRecordsCommand_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cio_fdb_record_grpc_FDBLoadRecordsCommand_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_cio_fdb_record_grpc_FDBRemoteSessionCommitResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -9714,6 +17344,46 @@ public final class FdbRecordGrpc {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_cio_fdb_record_grpc_FDBDumpAllResponseBatch_KV_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cio_fdb_record_grpc_FDBLoadMetadataCommand_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cio_fdb_record_grpc_FDBLoadMetadataCommand_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cio_fdb_record_grpc_FDBRegisterSchemaCommand_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cio_fdb_record_grpc_FDBRegisterSchemaCommand_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cio_fdb_record_grpc_FDBLoadMetadataResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cio_fdb_record_grpc_FDBLoadMetadataResponse_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cio_fdb_record_grpc_KeysList_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cio_fdb_record_grpc_KeysList_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cio_fdb_record_grpc_RecordsList_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cio_fdb_record_grpc_RecordsList_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cio_fdb_record_grpc_FDBTransactionError_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cio_fdb_record_grpc_FDBTransactionError_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cio_fdb_record_grpc_FDBCRUDCommand_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cio_fdb_record_grpc_FDBCRUDCommand_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_cio_fdb_record_grpc_FDBCRUDResponse_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_cio_fdb_record_grpc_FDBCRUDResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -9724,33 +17394,38 @@ public final class FdbRecordGrpc {
   static {
     java.lang.String[] descriptorData = {
       "\n\025fdb_record_grpc.proto\022\023cio.fdb.record." +
-      "grpc\032 google/protobuf/descriptor.proto\032\025" +
-      "record_metadata.proto\",\n\027FDBRemoteSessio" +
-      "nRequest\022\021\n\tclient_id\030\001 \001(\003\"$\n\026FDBRemote" +
-      "SessionHandle\022\n\n\002id\030\001 \001(\003\"|\n\014FDBDirector" +
-      "y\022\014\n\004name\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\022=\n\rsub_di" +
-      "rectory\030\003 \001(\0132!.cio.fdb.record.grpc.FDBD" +
-      "irectoryH\000\210\001\001B\020\n\016_sub_directory\"\311\001\n\033FDBR" +
-      "emoteRecordStoreRequest\022<\n\007session\030\001 \001(\013" +
-      "2+.cio.fdb.record.grpc.FDBRemoteSessionH" +
-      "andle\0226\n\010metadata\030\002 \001(\0132$.google.protobu" +
-      "f.FileDescriptorProto\0224\n\tkey_space\030\003 \001(\013" +
-      "2!.cio.fdb.record.grpc.FDBDirectory\"\243\001\n\032" +
-      "FDBRemoteRecordStoreHandle\022\n\n\002id\030\001 \001(\003\022<" +
-      "\n\007session\030\002 \001(\0132+.cio.fdb.record.grpc.FD" +
-      "BRemoteSessionHandle\022;\n\005store\030\003 \001(\0132,.co" +
-      "m.apple.foundationdb.record.DataStoreInf" +
-      "o\"]\n\035FDBRemoteSessionCommitRequest\022<\n\007se" +
-      "ssion\030\001 \001(\0132+.cio.fdb.record.grpc.FDBRem" +
-      "oteSessionHandle\"u\n\024FDBSaveRecordCommand" +
-      "\022>\n\005store\030\001 \001(\0132/.cio.fdb.record.grpc.FD" +
-      "BRemoteRecordStoreHandle\022\r\n\005table\030\002 \001(\t\022" +
-      "\016\n\006record\030\003 \001(\014\"%\n\023FDBSaveRecordResult\022\016" +
-      "\n\006record\030\001 \001(\014\"k\n\026FDBDeleteRecordCommand" +
-      "\022>\n\005store\030\001 \001(\0132/.cio.fdb.record.grpc.FD" +
-      "BRemoteRecordStoreHandle\022\021\n\trecord_id\030\002 " +
-      "\001(\014\"\'\n\025FDBDeleteRecordResult\022\016\n\006result\030\001" +
-      " \001(\010\"|\n\036FDBRemoteSessionCommitResponse\022<" +
+      "grpc\032 google/protobuf/descriptor.proto\032\034" +
+      "google/protobuf/struct.proto\032\025record_met" +
+      "adata.proto\032\rfilters.proto\",\n\027FDBRemoteS" +
+      "essionRequest\022\021\n\tclient_id\030\001 \001(\003\"$\n\026FDBR" +
+      "emoteSessionHandle\022\n\n\002id\030\001 \001(\003\"|\n\014FDBDir" +
+      "ectory\022\014\n\004name\030\001 \001(\t\022\r\n\005value\030\002 \001(\t\022=\n\rs" +
+      "ub_directory\030\003 \001(\0132!.cio.fdb.record.grpc" +
+      ".FDBDirectoryH\000\210\001\001B\020\n\016_sub_directory\"\311\001\n" +
+      "\033FDBRemoteRecordStoreRequest\022<\n\007session\030" +
+      "\001 \001(\0132+.cio.fdb.record.grpc.FDBRemoteSes" +
+      "sionHandle\0226\n\010metadata\030\002 \001(\0132$.google.pr" +
+      "otobuf.FileDescriptorProto\0224\n\tkey_space\030" +
+      "\003 \001(\0132!.cio.fdb.record.grpc.FDBDirectory" +
+      "\"\243\001\n\032FDBRemoteRecordStoreHandle\022\n\n\002id\030\001 " +
+      "\001(\003\022<\n\007session\030\002 \001(\0132+.cio.fdb.record.gr" +
+      "pc.FDBRemoteSessionHandle\022;\n\005store\030\003 \001(\013" +
+      "2,.com.apple.foundationdb.record.DataSto" +
+      "reInfo\"]\n\035FDBRemoteSessionCommitRequest\022" +
+      "<\n\007session\030\001 \001(\0132+.cio.fdb.record.grpc.F" +
+      "DBRemoteSessionHandle\"u\n\024FDBSaveRecordCo" +
+      "mmand\022>\n\005store\030\001 \001(\0132/.cio.fdb.record.gr" +
+      "pc.FDBRemoteRecordStoreHandle\022\r\n\005table\030\002" +
+      " \001(\t\022\016\n\006record\030\003 \001(\014\"%\n\023FDBSaveRecordRes" +
+      "ult\022\016\n\006record\030\001 \001(\014\"k\n\026FDBDeleteRecordCo" +
+      "mmand\022>\n\005store\030\001 \001(\0132/.cio.fdb.record.gr" +
+      "pc.FDBRemoteRecordStoreHandle\022\021\n\trecord_" +
+      "id\030\002 \001(\014\"\'\n\025FDBDeleteRecordResult\022\016\n\006res" +
+      "ult\030\001 \001(\010\"\230\001\n\025FDBLoadRecordsCommand\022>\n\005s" +
+      "tore\030\001 \001(\0132/.cio.fdb.record.grpc.FDBRemo" +
+      "teRecordStoreHandle\022\r\n\005table\030\002 \001(\t\0220\n\005qu" +
+      "ery\030\003 \001(\0132!.cio.fdb.record.grpc.BooleanQ" +
+      "uery\"|\n\036FDBRemoteSessionCommitResponse\022<" +
       "\n\006result\030\001 \001(\0162,.cio.fdb.record.grpc.Tra" +
       "nsactionCommitResult\022\022\n\005error\030\002 \001(\tH\000\210\001\001" +
       "B\010\n\006_error\"K\n\021FDBDumpAllCommand\022\022\n\005start" +
@@ -9758,33 +17433,68 @@ public final class FdbRecordGrpc {
       "\006\n\004_end\"z\n\027FDBDumpAllResponseBatch\022=\n\004da" +
       "ta\030\007 \003(\0132/.cio.fdb.record.grpc.FDBDumpAl" +
       "lResponseBatch.KV\032 \n\002KV\022\013\n\003key\030\001 \001(\014\022\r\n\005" +
-      "value\030\002 \001(\014*f\n\027TransactionCommitResult\022\027" +
-      "\n\023TRANSACTION_SUCCESS\020\000\022\032\n\026TRANSACTION_N" +
-      "OT_ACTIVE\020\001\022\026\n\022TRANSACTION_FAILED\020\0022\227\005\n\t" +
-      "FDBRemote\022i\n\nNewSession\022,.cio.fdb.record" +
-      ".grpc.FDBRemoteSessionRequest\032+.cio.fdb." +
-      "record.grpc.FDBRemoteSessionHandle\"\000\022u\n\016" +
-      "NewRecordStore\0220.cio.fdb.record.grpc.FDB" +
-      "RemoteRecordStoreRequest\032/.cio.fdb.recor" +
-      "d.grpc.FDBRemoteRecordStoreHandle\"\000\022s\n\006c" +
-      "ommit\0222.cio.fdb.record.grpc.FDBRemoteSes" +
-      "sionCommitRequest\0323.cio.fdb.record.grpc." +
-      "FDBRemoteSessionCommitResponse\"\000\022c\n\nSave" +
-      "Record\022).cio.fdb.record.grpc.FDBSaveReco" +
-      "rdCommand\032(.cio.fdb.record.grpc.FDBSaveR" +
-      "ecordResult\"\000\022i\n\014DeleteRecord\022+.cio.fdb." +
-      "record.grpc.FDBDeleteRecordCommand\032*.cio" +
-      ".fdb.record.grpc.FDBDeleteRecordResult\"\000" +
-      "\022c\n\007GetDump\022&.cio.fdb.record.grpc.FDBDum" +
-      "pAllCommand\032,.cio.fdb.record.grpc.FDBDum" +
-      "pAllResponseBatch\"\0000\001B*\n\023cio.fdb.record." +
-      "grpcZ\023cio/fdb/grpc/protosb\006proto3"
+      "value\030\002 \001(\014\"&\n\026FDBLoadMetadataCommand\022\014\n" +
+      "\004path\030\001 \003(\t\"^\n\030FDBRegisterSchemaCommand\022" +
+      "\014\n\004path\030\001 \003(\t\0224\n\006schema\030\002 \001(\0132$.google.p" +
+      "rotobuf.FileDescriptorProto\"T\n\027FDBLoadMe" +
+      "tadataResponse\0229\n\010metadata\030\001 \001(\0132\'.com.a" +
+      "pple.foundationdb.record.MetaData\"\030\n\010Key" +
+      "sList\022\014\n\004keys\030\001 \003(\014\"\036\n\013RecordsList\022\017\n\007re" +
+      "cords\030\001 \003(\014\"A\n\023FDBTransactionError\022\014\n\004co" +
+      "de\030\001 \001(\005\022\022\n\005error\030\002 \001(\tH\000\210\001\001B\010\n\006_error\"\260" +
+      "\002\n\016FDBCRUDCommand\022\r\n\005table\030\001 \001(\t\022@\n\toper" +
+      "ation\030\n \001(\0162-.cio.fdb.record.grpc.FDBCRU" +
+      "DCommand.OPERATION\022-\n\004keys\030\020 \001(\0132\035.cio.f" +
+      "db.record.grpc.KeysListH\000\0223\n\007records\030\024 \001" +
+      "(\0132 .cio.fdb.record.grpc.RecordsListH\000\0222" +
+      "\n\005query\030\030 \001(\0132!.cio.fdb.record.grpc.Bool" +
+      "eanQueryH\000\"-\n\tOPERATION\022\n\n\006CREATE\020\000\022\010\n\004L" +
+      "OAD\020\001\022\n\n\006DELETE\020\002B\006\n\004data\"\313\001\n\017FDBCRUDRes" +
+      "ponse\022-\n\004keys\030\010 \001(\0132\035.cio.fdb.record.grp" +
+      "c.KeysListH\000\0223\n\007records\030\020 \001(\0132 .cio.fdb." +
+      "record.grpc.RecordsListH\000\022\021\n\007success\030  \001" +
+      "(\010H\000\0229\n\005error\030@ \001(\0132(.cio.fdb.record.grp" +
+      "c.FDBTransactionErrorH\000B\006\n\004data*f\n\027Trans" +
+      "actionCommitResult\022\027\n\023TRANSACTION_SUCCES" +
+      "S\020\000\022\032\n\026TRANSACTION_NOT_ACTIVE\020\001\022\026\n\022TRANS" +
+      "ACTION_FAILED\020\0022\305\002\n\rFDBRemoteCRUD\022k\n\014Loa" +
+      "dMetadata\022+.cio.fdb.record.grpc.FDBLoadM" +
+      "etadataCommand\032,.cio.fdb.record.grpc.FDB" +
+      "LoadMetadataResponse\"\000\022o\n\016RegisterSchema" +
+      "\022-.cio.fdb.record.grpc.FDBRegisterSchema" +
+      "Command\032,.cio.fdb.record.grpc.FDBLoadMet" +
+      "adataResponse\"\000\022V\n\007execute\022#.cio.fdb.rec" +
+      "ord.grpc.FDBCRUDCommand\032$.cio.fdb.record" +
+      ".grpc.FDBCRUDResponse\"\0002\222\006\n\033FDBRemoteInt" +
+      "eractiveSession\022i\n\nNewSession\022,.cio.fdb." +
+      "record.grpc.FDBRemoteSessionRequest\032+.ci" +
+      "o.fdb.record.grpc.FDBRemoteSessionHandle" +
+      "\"\000\022u\n\016NewRecordStore\0220.cio.fdb.record.gr" +
+      "pc.FDBRemoteRecordStoreRequest\032/.cio.fdb" +
+      ".record.grpc.FDBRemoteRecordStoreHandle\"" +
+      "\000\022s\n\006commit\0222.cio.fdb.record.grpc.FDBRem" +
+      "oteSessionCommitRequest\0323.cio.fdb.record" +
+      ".grpc.FDBRemoteSessionCommitResponse\"\000\022c" +
+      "\n\nSaveRecord\022).cio.fdb.record.grpc.FDBSa" +
+      "veRecordCommand\032(.cio.fdb.record.grpc.FD" +
+      "BSaveRecordResult\"\000\022i\n\014DeleteRecord\022+.ci" +
+      "o.fdb.record.grpc.FDBDeleteRecordCommand" +
+      "\032*.cio.fdb.record.grpc.FDBDeleteRecordRe" +
+      "sult\"\000\022g\n\013loadRecords\022*.cio.fdb.record.g" +
+      "rpc.FDBLoadRecordsCommand\032(.cio.fdb.reco" +
+      "rd.grpc.FDBSaveRecordResult\"\0000\001\022c\n\007GetDu" +
+      "mp\022&.cio.fdb.record.grpc.FDBDumpAllComma" +
+      "nd\032,.cio.fdb.record.grpc.FDBDumpAllRespo" +
+      "nseBatch\"\0000\001B*\n\023cio.fdb.record.grpcZ\023cio" +
+      "/fdb/grpc/protosb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.DescriptorProtos.getDescriptor(),
+          com.google.protobuf.StructProto.getDescriptor(),
           com.apple.foundationdb.record.RecordMetaDataProto.getDescriptor(),
+          cio.fdb.record.grpc.Filters.getDescriptor(),
         });
     internal_static_cio_fdb_record_grpc_FDBRemoteSessionRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -9846,20 +17556,26 @@ public final class FdbRecordGrpc {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cio_fdb_record_grpc_FDBDeleteRecordResult_descriptor,
         new java.lang.String[] { "Result", });
-    internal_static_cio_fdb_record_grpc_FDBRemoteSessionCommitResponse_descriptor =
+    internal_static_cio_fdb_record_grpc_FDBLoadRecordsCommand_descriptor =
       getDescriptor().getMessageTypes().get(10);
+    internal_static_cio_fdb_record_grpc_FDBLoadRecordsCommand_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cio_fdb_record_grpc_FDBLoadRecordsCommand_descriptor,
+        new java.lang.String[] { "Store", "Table", "Query", });
+    internal_static_cio_fdb_record_grpc_FDBRemoteSessionCommitResponse_descriptor =
+      getDescriptor().getMessageTypes().get(11);
     internal_static_cio_fdb_record_grpc_FDBRemoteSessionCommitResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cio_fdb_record_grpc_FDBRemoteSessionCommitResponse_descriptor,
         new java.lang.String[] { "Result", "Error", });
     internal_static_cio_fdb_record_grpc_FDBDumpAllCommand_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_cio_fdb_record_grpc_FDBDumpAllCommand_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cio_fdb_record_grpc_FDBDumpAllCommand_descriptor,
         new java.lang.String[] { "Start", "End", });
     internal_static_cio_fdb_record_grpc_FDBDumpAllResponseBatch_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_cio_fdb_record_grpc_FDBDumpAllResponseBatch_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cio_fdb_record_grpc_FDBDumpAllResponseBatch_descriptor,
@@ -9870,8 +17586,58 @@ public final class FdbRecordGrpc {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cio_fdb_record_grpc_FDBDumpAllResponseBatch_KV_descriptor,
         new java.lang.String[] { "Key", "Value", });
+    internal_static_cio_fdb_record_grpc_FDBLoadMetadataCommand_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_cio_fdb_record_grpc_FDBLoadMetadataCommand_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cio_fdb_record_grpc_FDBLoadMetadataCommand_descriptor,
+        new java.lang.String[] { "Path", });
+    internal_static_cio_fdb_record_grpc_FDBRegisterSchemaCommand_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_cio_fdb_record_grpc_FDBRegisterSchemaCommand_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cio_fdb_record_grpc_FDBRegisterSchemaCommand_descriptor,
+        new java.lang.String[] { "Path", "Schema", });
+    internal_static_cio_fdb_record_grpc_FDBLoadMetadataResponse_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_cio_fdb_record_grpc_FDBLoadMetadataResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cio_fdb_record_grpc_FDBLoadMetadataResponse_descriptor,
+        new java.lang.String[] { "Metadata", });
+    internal_static_cio_fdb_record_grpc_KeysList_descriptor =
+      getDescriptor().getMessageTypes().get(17);
+    internal_static_cio_fdb_record_grpc_KeysList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cio_fdb_record_grpc_KeysList_descriptor,
+        new java.lang.String[] { "Keys", });
+    internal_static_cio_fdb_record_grpc_RecordsList_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_cio_fdb_record_grpc_RecordsList_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cio_fdb_record_grpc_RecordsList_descriptor,
+        new java.lang.String[] { "Records", });
+    internal_static_cio_fdb_record_grpc_FDBTransactionError_descriptor =
+      getDescriptor().getMessageTypes().get(19);
+    internal_static_cio_fdb_record_grpc_FDBTransactionError_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cio_fdb_record_grpc_FDBTransactionError_descriptor,
+        new java.lang.String[] { "Code", "Error", });
+    internal_static_cio_fdb_record_grpc_FDBCRUDCommand_descriptor =
+      getDescriptor().getMessageTypes().get(20);
+    internal_static_cio_fdb_record_grpc_FDBCRUDCommand_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cio_fdb_record_grpc_FDBCRUDCommand_descriptor,
+        new java.lang.String[] { "Table", "Operation", "Keys", "Records", "Query", "Data", });
+    internal_static_cio_fdb_record_grpc_FDBCRUDResponse_descriptor =
+      getDescriptor().getMessageTypes().get(21);
+    internal_static_cio_fdb_record_grpc_FDBCRUDResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_cio_fdb_record_grpc_FDBCRUDResponse_descriptor,
+        new java.lang.String[] { "Keys", "Records", "Success", "Error", "Data", });
     com.google.protobuf.DescriptorProtos.getDescriptor();
+    com.google.protobuf.StructProto.getDescriptor();
     com.apple.foundationdb.record.RecordMetaDataProto.getDescriptor();
+    cio.fdb.record.grpc.Filters.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -1,0 +1,62 @@
+syntax="proto3";
+package cio.fdb.record.grpc;
+option java_package = "cio.fdb.record.grpc";
+option go_package = "cio/fdb/grpc/protos";
+
+message Reducer{
+    enum REDUCTION{
+        AND = 0;
+        OR = 1;
+    }
+    REDUCTION rduction = 10;
+}
+
+message Operator{
+    enum OPERATION{
+        EQ = 0;
+        N_EQ = 1;
+        GT = 2;
+        GTE = 3;
+        LT = 4;
+        LTE = 5;
+        IN = 6;
+    }
+    OPERATION operation = 20;
+}
+
+message Field{
+    string name = 1;
+    repeated Field nested = 2;
+}
+
+message IntList{
+    repeated int32 value = 1;
+}
+message DoubleList{
+    repeated double value = 1;
+}
+message StringList{
+    repeated string value = 1;
+}
+
+message Operand{
+    oneof expression{
+        int32 intValue = 8;
+        double doubleValue = 12;
+        string stringValue = 16;
+        IntList intListValue = 20;
+        DoubleList doubleListValue = 24;
+        StringList stringListValue = 28;
+    }
+}
+
+message BooleanExpression{
+    Operator operator = 1;
+    Field field = 2;
+    Operand value = 3;
+}
+
+message BooleanQuery{
+    Reducer reducer = 1;
+    repeated BooleanExpression expressions = 2;
+}

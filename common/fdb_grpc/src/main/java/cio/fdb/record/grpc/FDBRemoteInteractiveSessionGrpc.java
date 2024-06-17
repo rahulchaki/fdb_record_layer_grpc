@@ -8,11 +8,11 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
     value = "by gRPC proto compiler (version 1.64.0)",
     comments = "Source: fdb_record_grpc.proto")
 @io.grpc.stub.annotations.GrpcGenerated
-public final class FDBRemoteGrpc {
+public final class FDBRemoteInteractiveSessionGrpc {
 
-  private FDBRemoteGrpc() {}
+  private FDBRemoteInteractiveSessionGrpc() {}
 
-  public static final java.lang.String SERVICE_NAME = "cio.fdb.record.grpc.FDBRemote";
+  public static final java.lang.String SERVICE_NAME = "cio.fdb.record.grpc.FDBRemoteInteractiveSession";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteSessionRequest,
@@ -26,10 +26,10 @@ public final class FDBRemoteGrpc {
   public static io.grpc.MethodDescriptor<cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteSessionRequest,
       cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteSessionHandle> getNewSessionMethod() {
     io.grpc.MethodDescriptor<cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteSessionRequest, cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteSessionHandle> getNewSessionMethod;
-    if ((getNewSessionMethod = FDBRemoteGrpc.getNewSessionMethod) == null) {
-      synchronized (FDBRemoteGrpc.class) {
-        if ((getNewSessionMethod = FDBRemoteGrpc.getNewSessionMethod) == null) {
-          FDBRemoteGrpc.getNewSessionMethod = getNewSessionMethod =
+    if ((getNewSessionMethod = FDBRemoteInteractiveSessionGrpc.getNewSessionMethod) == null) {
+      synchronized (FDBRemoteInteractiveSessionGrpc.class) {
+        if ((getNewSessionMethod = FDBRemoteInteractiveSessionGrpc.getNewSessionMethod) == null) {
+          FDBRemoteInteractiveSessionGrpc.getNewSessionMethod = getNewSessionMethod =
               io.grpc.MethodDescriptor.<cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteSessionRequest, cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteSessionHandle>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "NewSession"))
@@ -38,7 +38,7 @@ public final class FDBRemoteGrpc {
                   cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteSessionRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteSessionHandle.getDefaultInstance()))
-              .setSchemaDescriptor(new FDBRemoteMethodDescriptorSupplier("NewSession"))
+              .setSchemaDescriptor(new FDBRemoteInteractiveSessionMethodDescriptorSupplier("NewSession"))
               .build();
         }
       }
@@ -57,10 +57,10 @@ public final class FDBRemoteGrpc {
   public static io.grpc.MethodDescriptor<cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreRequest,
       cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle> getNewRecordStoreMethod() {
     io.grpc.MethodDescriptor<cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreRequest, cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle> getNewRecordStoreMethod;
-    if ((getNewRecordStoreMethod = FDBRemoteGrpc.getNewRecordStoreMethod) == null) {
-      synchronized (FDBRemoteGrpc.class) {
-        if ((getNewRecordStoreMethod = FDBRemoteGrpc.getNewRecordStoreMethod) == null) {
-          FDBRemoteGrpc.getNewRecordStoreMethod = getNewRecordStoreMethod =
+    if ((getNewRecordStoreMethod = FDBRemoteInteractiveSessionGrpc.getNewRecordStoreMethod) == null) {
+      synchronized (FDBRemoteInteractiveSessionGrpc.class) {
+        if ((getNewRecordStoreMethod = FDBRemoteInteractiveSessionGrpc.getNewRecordStoreMethod) == null) {
+          FDBRemoteInteractiveSessionGrpc.getNewRecordStoreMethod = getNewRecordStoreMethod =
               io.grpc.MethodDescriptor.<cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreRequest, cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "NewRecordStore"))
@@ -69,7 +69,7 @@ public final class FDBRemoteGrpc {
                   cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteRecordStoreHandle.getDefaultInstance()))
-              .setSchemaDescriptor(new FDBRemoteMethodDescriptorSupplier("NewRecordStore"))
+              .setSchemaDescriptor(new FDBRemoteInteractiveSessionMethodDescriptorSupplier("NewRecordStore"))
               .build();
         }
       }
@@ -88,10 +88,10 @@ public final class FDBRemoteGrpc {
   public static io.grpc.MethodDescriptor<cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteSessionCommitRequest,
       cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteSessionCommitResponse> getCommitMethod() {
     io.grpc.MethodDescriptor<cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteSessionCommitRequest, cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteSessionCommitResponse> getCommitMethod;
-    if ((getCommitMethod = FDBRemoteGrpc.getCommitMethod) == null) {
-      synchronized (FDBRemoteGrpc.class) {
-        if ((getCommitMethod = FDBRemoteGrpc.getCommitMethod) == null) {
-          FDBRemoteGrpc.getCommitMethod = getCommitMethod =
+    if ((getCommitMethod = FDBRemoteInteractiveSessionGrpc.getCommitMethod) == null) {
+      synchronized (FDBRemoteInteractiveSessionGrpc.class) {
+        if ((getCommitMethod = FDBRemoteInteractiveSessionGrpc.getCommitMethod) == null) {
+          FDBRemoteInteractiveSessionGrpc.getCommitMethod = getCommitMethod =
               io.grpc.MethodDescriptor.<cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteSessionCommitRequest, cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteSessionCommitResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "commit"))
@@ -100,7 +100,7 @@ public final class FDBRemoteGrpc {
                   cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteSessionCommitRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   cio.fdb.record.grpc.FdbRecordGrpc.FDBRemoteSessionCommitResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new FDBRemoteMethodDescriptorSupplier("commit"))
+              .setSchemaDescriptor(new FDBRemoteInteractiveSessionMethodDescriptorSupplier("commit"))
               .build();
         }
       }
@@ -119,10 +119,10 @@ public final class FDBRemoteGrpc {
   public static io.grpc.MethodDescriptor<cio.fdb.record.grpc.FdbRecordGrpc.FDBSaveRecordCommand,
       cio.fdb.record.grpc.FdbRecordGrpc.FDBSaveRecordResult> getSaveRecordMethod() {
     io.grpc.MethodDescriptor<cio.fdb.record.grpc.FdbRecordGrpc.FDBSaveRecordCommand, cio.fdb.record.grpc.FdbRecordGrpc.FDBSaveRecordResult> getSaveRecordMethod;
-    if ((getSaveRecordMethod = FDBRemoteGrpc.getSaveRecordMethod) == null) {
-      synchronized (FDBRemoteGrpc.class) {
-        if ((getSaveRecordMethod = FDBRemoteGrpc.getSaveRecordMethod) == null) {
-          FDBRemoteGrpc.getSaveRecordMethod = getSaveRecordMethod =
+    if ((getSaveRecordMethod = FDBRemoteInteractiveSessionGrpc.getSaveRecordMethod) == null) {
+      synchronized (FDBRemoteInteractiveSessionGrpc.class) {
+        if ((getSaveRecordMethod = FDBRemoteInteractiveSessionGrpc.getSaveRecordMethod) == null) {
+          FDBRemoteInteractiveSessionGrpc.getSaveRecordMethod = getSaveRecordMethod =
               io.grpc.MethodDescriptor.<cio.fdb.record.grpc.FdbRecordGrpc.FDBSaveRecordCommand, cio.fdb.record.grpc.FdbRecordGrpc.FDBSaveRecordResult>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SaveRecord"))
@@ -131,7 +131,7 @@ public final class FDBRemoteGrpc {
                   cio.fdb.record.grpc.FdbRecordGrpc.FDBSaveRecordCommand.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   cio.fdb.record.grpc.FdbRecordGrpc.FDBSaveRecordResult.getDefaultInstance()))
-              .setSchemaDescriptor(new FDBRemoteMethodDescriptorSupplier("SaveRecord"))
+              .setSchemaDescriptor(new FDBRemoteInteractiveSessionMethodDescriptorSupplier("SaveRecord"))
               .build();
         }
       }
@@ -150,10 +150,10 @@ public final class FDBRemoteGrpc {
   public static io.grpc.MethodDescriptor<cio.fdb.record.grpc.FdbRecordGrpc.FDBDeleteRecordCommand,
       cio.fdb.record.grpc.FdbRecordGrpc.FDBDeleteRecordResult> getDeleteRecordMethod() {
     io.grpc.MethodDescriptor<cio.fdb.record.grpc.FdbRecordGrpc.FDBDeleteRecordCommand, cio.fdb.record.grpc.FdbRecordGrpc.FDBDeleteRecordResult> getDeleteRecordMethod;
-    if ((getDeleteRecordMethod = FDBRemoteGrpc.getDeleteRecordMethod) == null) {
-      synchronized (FDBRemoteGrpc.class) {
-        if ((getDeleteRecordMethod = FDBRemoteGrpc.getDeleteRecordMethod) == null) {
-          FDBRemoteGrpc.getDeleteRecordMethod = getDeleteRecordMethod =
+    if ((getDeleteRecordMethod = FDBRemoteInteractiveSessionGrpc.getDeleteRecordMethod) == null) {
+      synchronized (FDBRemoteInteractiveSessionGrpc.class) {
+        if ((getDeleteRecordMethod = FDBRemoteInteractiveSessionGrpc.getDeleteRecordMethod) == null) {
+          FDBRemoteInteractiveSessionGrpc.getDeleteRecordMethod = getDeleteRecordMethod =
               io.grpc.MethodDescriptor.<cio.fdb.record.grpc.FdbRecordGrpc.FDBDeleteRecordCommand, cio.fdb.record.grpc.FdbRecordGrpc.FDBDeleteRecordResult>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DeleteRecord"))
@@ -162,12 +162,43 @@ public final class FDBRemoteGrpc {
                   cio.fdb.record.grpc.FdbRecordGrpc.FDBDeleteRecordCommand.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   cio.fdb.record.grpc.FdbRecordGrpc.FDBDeleteRecordResult.getDefaultInstance()))
-              .setSchemaDescriptor(new FDBRemoteMethodDescriptorSupplier("DeleteRecord"))
+              .setSchemaDescriptor(new FDBRemoteInteractiveSessionMethodDescriptorSupplier("DeleteRecord"))
               .build();
         }
       }
     }
     return getDeleteRecordMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand,
+      cio.fdb.record.grpc.FdbRecordGrpc.FDBSaveRecordResult> getLoadRecordsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "loadRecords",
+      requestType = cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand.class,
+      responseType = cio.fdb.record.grpc.FdbRecordGrpc.FDBSaveRecordResult.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand,
+      cio.fdb.record.grpc.FdbRecordGrpc.FDBSaveRecordResult> getLoadRecordsMethod() {
+    io.grpc.MethodDescriptor<cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand, cio.fdb.record.grpc.FdbRecordGrpc.FDBSaveRecordResult> getLoadRecordsMethod;
+    if ((getLoadRecordsMethod = FDBRemoteInteractiveSessionGrpc.getLoadRecordsMethod) == null) {
+      synchronized (FDBRemoteInteractiveSessionGrpc.class) {
+        if ((getLoadRecordsMethod = FDBRemoteInteractiveSessionGrpc.getLoadRecordsMethod) == null) {
+          FDBRemoteInteractiveSessionGrpc.getLoadRecordsMethod = getLoadRecordsMethod =
+              io.grpc.MethodDescriptor.<cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand, cio.fdb.record.grpc.FdbRecordGrpc.FDBSaveRecordResult>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "loadRecords"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  cio.fdb.record.grpc.FdbRecordGrpc.FDBSaveRecordResult.getDefaultInstance()))
+              .setSchemaDescriptor(new FDBRemoteInteractiveSessionMethodDescriptorSupplier("loadRecords"))
+              .build();
+        }
+      }
+    }
+    return getLoadRecordsMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<cio.fdb.record.grpc.FdbRecordGrpc.FDBDumpAllCommand,
@@ -181,10 +212,10 @@ public final class FDBRemoteGrpc {
   public static io.grpc.MethodDescriptor<cio.fdb.record.grpc.FdbRecordGrpc.FDBDumpAllCommand,
       cio.fdb.record.grpc.FdbRecordGrpc.FDBDumpAllResponseBatch> getGetDumpMethod() {
     io.grpc.MethodDescriptor<cio.fdb.record.grpc.FdbRecordGrpc.FDBDumpAllCommand, cio.fdb.record.grpc.FdbRecordGrpc.FDBDumpAllResponseBatch> getGetDumpMethod;
-    if ((getGetDumpMethod = FDBRemoteGrpc.getGetDumpMethod) == null) {
-      synchronized (FDBRemoteGrpc.class) {
-        if ((getGetDumpMethod = FDBRemoteGrpc.getGetDumpMethod) == null) {
-          FDBRemoteGrpc.getGetDumpMethod = getGetDumpMethod =
+    if ((getGetDumpMethod = FDBRemoteInteractiveSessionGrpc.getGetDumpMethod) == null) {
+      synchronized (FDBRemoteInteractiveSessionGrpc.class) {
+        if ((getGetDumpMethod = FDBRemoteInteractiveSessionGrpc.getGetDumpMethod) == null) {
+          FDBRemoteInteractiveSessionGrpc.getGetDumpMethod = getGetDumpMethod =
               io.grpc.MethodDescriptor.<cio.fdb.record.grpc.FdbRecordGrpc.FDBDumpAllCommand, cio.fdb.record.grpc.FdbRecordGrpc.FDBDumpAllResponseBatch>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetDump"))
@@ -193,7 +224,7 @@ public final class FDBRemoteGrpc {
                   cio.fdb.record.grpc.FdbRecordGrpc.FDBDumpAllCommand.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   cio.fdb.record.grpc.FdbRecordGrpc.FDBDumpAllResponseBatch.getDefaultInstance()))
-              .setSchemaDescriptor(new FDBRemoteMethodDescriptorSupplier("GetDump"))
+              .setSchemaDescriptor(new FDBRemoteInteractiveSessionMethodDescriptorSupplier("GetDump"))
               .build();
         }
       }
@@ -204,45 +235,45 @@ public final class FDBRemoteGrpc {
   /**
    * Creates a new async stub that supports all call types for the service
    */
-  public static FDBRemoteStub newStub(io.grpc.Channel channel) {
-    io.grpc.stub.AbstractStub.StubFactory<FDBRemoteStub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<FDBRemoteStub>() {
+  public static FDBRemoteInteractiveSessionStub newStub(io.grpc.Channel channel) {
+    io.grpc.stub.AbstractStub.StubFactory<FDBRemoteInteractiveSessionStub> factory =
+      new io.grpc.stub.AbstractStub.StubFactory<FDBRemoteInteractiveSessionStub>() {
         @java.lang.Override
-        public FDBRemoteStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new FDBRemoteStub(channel, callOptions);
+        public FDBRemoteInteractiveSessionStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+          return new FDBRemoteInteractiveSessionStub(channel, callOptions);
         }
       };
-    return FDBRemoteStub.newStub(factory, channel);
+    return FDBRemoteInteractiveSessionStub.newStub(factory, channel);
   }
 
   /**
    * Creates a new blocking-style stub that supports unary and streaming output calls on the service
    */
-  public static FDBRemoteBlockingStub newBlockingStub(
+  public static FDBRemoteInteractiveSessionBlockingStub newBlockingStub(
       io.grpc.Channel channel) {
-    io.grpc.stub.AbstractStub.StubFactory<FDBRemoteBlockingStub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<FDBRemoteBlockingStub>() {
+    io.grpc.stub.AbstractStub.StubFactory<FDBRemoteInteractiveSessionBlockingStub> factory =
+      new io.grpc.stub.AbstractStub.StubFactory<FDBRemoteInteractiveSessionBlockingStub>() {
         @java.lang.Override
-        public FDBRemoteBlockingStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new FDBRemoteBlockingStub(channel, callOptions);
+        public FDBRemoteInteractiveSessionBlockingStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+          return new FDBRemoteInteractiveSessionBlockingStub(channel, callOptions);
         }
       };
-    return FDBRemoteBlockingStub.newStub(factory, channel);
+    return FDBRemoteInteractiveSessionBlockingStub.newStub(factory, channel);
   }
 
   /**
    * Creates a new ListenableFuture-style stub that supports unary calls on the service
    */
-  public static FDBRemoteFutureStub newFutureStub(
+  public static FDBRemoteInteractiveSessionFutureStub newFutureStub(
       io.grpc.Channel channel) {
-    io.grpc.stub.AbstractStub.StubFactory<FDBRemoteFutureStub> factory =
-      new io.grpc.stub.AbstractStub.StubFactory<FDBRemoteFutureStub>() {
+    io.grpc.stub.AbstractStub.StubFactory<FDBRemoteInteractiveSessionFutureStub> factory =
+      new io.grpc.stub.AbstractStub.StubFactory<FDBRemoteInteractiveSessionFutureStub>() {
         @java.lang.Override
-        public FDBRemoteFutureStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-          return new FDBRemoteFutureStub(channel, callOptions);
+        public FDBRemoteInteractiveSessionFutureStub newStub(io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
+          return new FDBRemoteInteractiveSessionFutureStub(channel, callOptions);
         }
       };
-    return FDBRemoteFutureStub.newStub(factory, channel);
+    return FDBRemoteInteractiveSessionFutureStub.newStub(factory, channel);
   }
 
   /**
@@ -286,6 +317,13 @@ public final class FDBRemoteGrpc {
 
     /**
      */
+    default void loadRecords(cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand request,
+        io.grpc.stub.StreamObserver<cio.fdb.record.grpc.FdbRecordGrpc.FDBSaveRecordResult> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getLoadRecordsMethod(), responseObserver);
+    }
+
+    /**
+     */
     default void getDump(cio.fdb.record.grpc.FdbRecordGrpc.FDBDumpAllCommand request,
         io.grpc.stub.StreamObserver<cio.fdb.record.grpc.FdbRecordGrpc.FDBDumpAllResponseBatch> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetDumpMethod(), responseObserver);
@@ -293,30 +331,30 @@ public final class FDBRemoteGrpc {
   }
 
   /**
-   * Base class for the server implementation of the service FDBRemote.
+   * Base class for the server implementation of the service FDBRemoteInteractiveSession.
    */
-  public static abstract class FDBRemoteImplBase
+  public static abstract class FDBRemoteInteractiveSessionImplBase
       implements io.grpc.BindableService, AsyncService {
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
-      return FDBRemoteGrpc.bindService(this);
+      return FDBRemoteInteractiveSessionGrpc.bindService(this);
     }
   }
 
   /**
-   * A stub to allow clients to do asynchronous rpc calls to service FDBRemote.
+   * A stub to allow clients to do asynchronous rpc calls to service FDBRemoteInteractiveSession.
    */
-  public static final class FDBRemoteStub
-      extends io.grpc.stub.AbstractAsyncStub<FDBRemoteStub> {
-    private FDBRemoteStub(
+  public static final class FDBRemoteInteractiveSessionStub
+      extends io.grpc.stub.AbstractAsyncStub<FDBRemoteInteractiveSessionStub> {
+    private FDBRemoteInteractiveSessionStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected FDBRemoteStub build(
+    protected FDBRemoteInteractiveSessionStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      return new FDBRemoteStub(channel, callOptions);
+      return new FDBRemoteInteractiveSessionStub(channel, callOptions);
     }
 
     /**
@@ -361,6 +399,14 @@ public final class FDBRemoteGrpc {
 
     /**
      */
+    public void loadRecords(cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand request,
+        io.grpc.stub.StreamObserver<cio.fdb.record.grpc.FdbRecordGrpc.FDBSaveRecordResult> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getLoadRecordsMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
     public void getDump(cio.fdb.record.grpc.FdbRecordGrpc.FDBDumpAllCommand request,
         io.grpc.stub.StreamObserver<cio.fdb.record.grpc.FdbRecordGrpc.FDBDumpAllResponseBatch> responseObserver) {
       io.grpc.stub.ClientCalls.asyncServerStreamingCall(
@@ -369,19 +415,19 @@ public final class FDBRemoteGrpc {
   }
 
   /**
-   * A stub to allow clients to do synchronous rpc calls to service FDBRemote.
+   * A stub to allow clients to do synchronous rpc calls to service FDBRemoteInteractiveSession.
    */
-  public static final class FDBRemoteBlockingStub
-      extends io.grpc.stub.AbstractBlockingStub<FDBRemoteBlockingStub> {
-    private FDBRemoteBlockingStub(
+  public static final class FDBRemoteInteractiveSessionBlockingStub
+      extends io.grpc.stub.AbstractBlockingStub<FDBRemoteInteractiveSessionBlockingStub> {
+    private FDBRemoteInteractiveSessionBlockingStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected FDBRemoteBlockingStub build(
+    protected FDBRemoteInteractiveSessionBlockingStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      return new FDBRemoteBlockingStub(channel, callOptions);
+      return new FDBRemoteInteractiveSessionBlockingStub(channel, callOptions);
     }
 
     /**
@@ -421,6 +467,14 @@ public final class FDBRemoteGrpc {
 
     /**
      */
+    public java.util.Iterator<cio.fdb.record.grpc.FdbRecordGrpc.FDBSaveRecordResult> loadRecords(
+        cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getLoadRecordsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
     public java.util.Iterator<cio.fdb.record.grpc.FdbRecordGrpc.FDBDumpAllResponseBatch> getDump(
         cio.fdb.record.grpc.FdbRecordGrpc.FDBDumpAllCommand request) {
       return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
@@ -429,19 +483,19 @@ public final class FDBRemoteGrpc {
   }
 
   /**
-   * A stub to allow clients to do ListenableFuture-style rpc calls to service FDBRemote.
+   * A stub to allow clients to do ListenableFuture-style rpc calls to service FDBRemoteInteractiveSession.
    */
-  public static final class FDBRemoteFutureStub
-      extends io.grpc.stub.AbstractFutureStub<FDBRemoteFutureStub> {
-    private FDBRemoteFutureStub(
+  public static final class FDBRemoteInteractiveSessionFutureStub
+      extends io.grpc.stub.AbstractFutureStub<FDBRemoteInteractiveSessionFutureStub> {
+    private FDBRemoteInteractiveSessionFutureStub(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
       super(channel, callOptions);
     }
 
     @java.lang.Override
-    protected FDBRemoteFutureStub build(
+    protected FDBRemoteInteractiveSessionFutureStub build(
         io.grpc.Channel channel, io.grpc.CallOptions callOptions) {
-      return new FDBRemoteFutureStub(channel, callOptions);
+      return new FDBRemoteInteractiveSessionFutureStub(channel, callOptions);
     }
 
     /**
@@ -490,7 +544,8 @@ public final class FDBRemoteGrpc {
   private static final int METHODID_COMMIT = 2;
   private static final int METHODID_SAVE_RECORD = 3;
   private static final int METHODID_DELETE_RECORD = 4;
-  private static final int METHODID_GET_DUMP = 5;
+  private static final int METHODID_LOAD_RECORDS = 5;
+  private static final int METHODID_GET_DUMP = 6;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -528,6 +583,10 @@ public final class FDBRemoteGrpc {
         case METHODID_DELETE_RECORD:
           serviceImpl.deleteRecord((cio.fdb.record.grpc.FdbRecordGrpc.FDBDeleteRecordCommand) request,
               (io.grpc.stub.StreamObserver<cio.fdb.record.grpc.FdbRecordGrpc.FDBDeleteRecordResult>) responseObserver);
+          break;
+        case METHODID_LOAD_RECORDS:
+          serviceImpl.loadRecords((cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand) request,
+              (io.grpc.stub.StreamObserver<cio.fdb.record.grpc.FdbRecordGrpc.FDBSaveRecordResult>) responseObserver);
           break;
         case METHODID_GET_DUMP:
           serviceImpl.getDump((cio.fdb.record.grpc.FdbRecordGrpc.FDBDumpAllCommand) request,
@@ -587,6 +646,13 @@ public final class FDBRemoteGrpc {
               cio.fdb.record.grpc.FdbRecordGrpc.FDBDeleteRecordResult>(
                 service, METHODID_DELETE_RECORD)))
         .addMethod(
+          getLoadRecordsMethod(),
+          io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+            new MethodHandlers<
+              cio.fdb.record.grpc.FdbRecordGrpc.FDBLoadRecordsCommand,
+              cio.fdb.record.grpc.FdbRecordGrpc.FDBSaveRecordResult>(
+                service, METHODID_LOAD_RECORDS)))
+        .addMethod(
           getGetDumpMethod(),
           io.grpc.stub.ServerCalls.asyncServerStreamingCall(
             new MethodHandlers<
@@ -596,9 +662,9 @@ public final class FDBRemoteGrpc {
         .build();
   }
 
-  private static abstract class FDBRemoteBaseDescriptorSupplier
+  private static abstract class FDBRemoteInteractiveSessionBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoFileDescriptorSupplier, io.grpc.protobuf.ProtoServiceDescriptorSupplier {
-    FDBRemoteBaseDescriptorSupplier() {}
+    FDBRemoteInteractiveSessionBaseDescriptorSupplier() {}
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
@@ -607,21 +673,21 @@ public final class FDBRemoteGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.ServiceDescriptor getServiceDescriptor() {
-      return getFileDescriptor().findServiceByName("FDBRemote");
+      return getFileDescriptor().findServiceByName("FDBRemoteInteractiveSession");
     }
   }
 
-  private static final class FDBRemoteFileDescriptorSupplier
-      extends FDBRemoteBaseDescriptorSupplier {
-    FDBRemoteFileDescriptorSupplier() {}
+  private static final class FDBRemoteInteractiveSessionFileDescriptorSupplier
+      extends FDBRemoteInteractiveSessionBaseDescriptorSupplier {
+    FDBRemoteInteractiveSessionFileDescriptorSupplier() {}
   }
 
-  private static final class FDBRemoteMethodDescriptorSupplier
-      extends FDBRemoteBaseDescriptorSupplier
+  private static final class FDBRemoteInteractiveSessionMethodDescriptorSupplier
+      extends FDBRemoteInteractiveSessionBaseDescriptorSupplier
       implements io.grpc.protobuf.ProtoMethodDescriptorSupplier {
     private final java.lang.String methodName;
 
-    FDBRemoteMethodDescriptorSupplier(java.lang.String methodName) {
+    FDBRemoteInteractiveSessionMethodDescriptorSupplier(java.lang.String methodName) {
       this.methodName = methodName;
     }
 
@@ -636,16 +702,17 @@ public final class FDBRemoteGrpc {
   public static io.grpc.ServiceDescriptor getServiceDescriptor() {
     io.grpc.ServiceDescriptor result = serviceDescriptor;
     if (result == null) {
-      synchronized (FDBRemoteGrpc.class) {
+      synchronized (FDBRemoteInteractiveSessionGrpc.class) {
         result = serviceDescriptor;
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
-              .setSchemaDescriptor(new FDBRemoteFileDescriptorSupplier())
+              .setSchemaDescriptor(new FDBRemoteInteractiveSessionFileDescriptorSupplier())
               .addMethod(getNewSessionMethod())
               .addMethod(getNewRecordStoreMethod())
               .addMethod(getCommitMethod())
               .addMethod(getSaveRecordMethod())
               .addMethod(getDeleteRecordMethod())
+              .addMethod(getLoadRecordsMethod())
               .addMethod(getGetDumpMethod())
               .build();
         }
