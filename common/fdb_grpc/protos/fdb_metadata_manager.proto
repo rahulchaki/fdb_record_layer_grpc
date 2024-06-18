@@ -1,0 +1,31 @@
+syntax = "proto3";
+package cio.fdb.record.grpc;
+
+option java_package = "cio.fdb.record.grpc";
+option go_package = "cio/fdb/grpc/protos";
+
+
+import "google/protobuf/descriptor.proto";
+import "record_metadata.proto";
+
+
+message FDBDatabaseMetadata{
+    string name = 1;
+    int32 version = 2;
+    bytes metadataNamespace = 3;
+    bytes recordsNamespace = 4;
+    com.apple.foundationdb.record.MetaData metadata = 5;
+}
+
+message FDBCreateOrOpenRequest{
+    string database = 1;
+    google.protobuf.FileDescriptorProto schema = 2;
+}
+
+message FDBCreateOrOpenResponse{
+    FDBDatabaseMetadata metadata = 1;
+}
+
+service FDBMetadataManager{
+    rpc CreateOrOpen(FDBCreateOrOpenRequest) returns(FDBCreateOrOpenResponse) {}
+}

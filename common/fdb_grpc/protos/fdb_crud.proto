@@ -1,0 +1,50 @@
+syntax = "proto3";
+package cio.fdb.record.grpc;
+
+option java_package = "cio.fdb.record.grpc";
+option go_package = "cio/fdb/grpc/protos";
+
+import "fdb_filters.proto";
+
+
+
+
+message KeysList{
+    repeated bytes keys = 1;
+}
+message RecordsList{
+    repeated bytes records = 1;
+}
+message FDBTransactionError{
+    int32 code = 1;
+    optional string error = 2;
+}
+
+message FDBCrudCommand{
+    optional string database = 1;
+    string table = 2;
+    enum OPERATION{
+        CREATE=0;
+        LOAD=1;
+        DELETE=2;
+    }
+    OPERATION operation = 10;
+    oneof data {
+        KeysList keys = 16;
+        RecordsList records = 20;
+        BooleanQuery query = 24;
+    }
+}
+
+message FDBCrudResponse{
+    oneof data{
+        KeysList keys = 8;
+        RecordsList records = 16;
+        bool success = 32;
+        FDBTransactionError error = 64;
+    }
+}
+
+service FDBCrud {
+    rpc execute( FDBCrudCommand) returns (FDBCrudResponse) {}
+}

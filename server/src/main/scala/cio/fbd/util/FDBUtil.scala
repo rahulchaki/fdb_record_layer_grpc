@@ -1,11 +1,12 @@
 package cio.fbd.util
 
-import cio.fdb.record.grpc.Filters
-import cio.fdb.record.grpc.Filters.{Operator, Reducer}
+import cio.fdb.record.grpc.FdbFilters._
 import com.apple.foundationdb.directory.DirectoryLayer
+import com.apple.foundationdb.record.provider.foundationdb.keyspace.{DirectoryLayerDirectory, KeySpace, KeySpacePath}
 import com.apple.foundationdb.record.query.expressions.{Comparisons, FieldWithComparison, Query, QueryComponent}
 import com.apple.foundationdb.{Database, KeyValue, Range, Transaction}
 
+import scala.annotation.tailrec
 import scala.jdk.CollectionConverters._
 
 object FDBUtil {
@@ -55,7 +56,7 @@ object FDBUtil {
     }
   }
 
-  def toFDBQuery(query: Filters.BooleanQuery): QueryComponent = {
+  def toFDBQuery(query: BooleanQuery): QueryComponent = {
     val expressions = query.getExpressionsList.asScala.map { exp =>
       val comparand =
         if (exp.getValue.hasIntValue) {
@@ -91,6 +92,37 @@ object FDBUtil {
         case Reducer.REDUCTION.AND => Query.and(expressions)
         case Reducer.REDUCTION.OR => Query.or(expressions)
       }
+    }
+  }
+
+  def toKeySpacePath(namespace: List[String]): KeySpacePath = {
+    def buildDirectories(rest: List[String]): DirectoryLayerDirectory = {
+      val dirName = rest.head
+      val child = rest.tail.tail
+      val dir = new DirectoryLayerDirectory(dirName)
+      child match {
+        case Nil => dir
+        case _ =>
+          dir.addSubdirectory(buildDirectories(child))
+          dir
+      }
+    }
+    val keySpace = new KeySpace(buildDirectories(namespace))
+
+    @tailrec
+    def addPath(rest: List[String], path: KeySpacePath): KeySpacePath = {
+      val newPath = path.add(rest.head, rest.tail.head)
+      rest.tail.tail match {
+        case Nil => newPath
+        case further => addPath(further, newPath)
+      }
+    }
+
+    val path = keySpace.path(namespace.head, namespace.tail.head)
+    namespace.tail.tail match {
+      case Nil => path
+      case further =>
+        addPath(further, path)
     }
   }
 

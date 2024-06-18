@@ -51,23 +51,18 @@ func main() {
 	}
 	itemsBuilder := func() proto.Message { return &pb.Item{} }
 
-	keySpace := []string{"environment", "demo", "application", "ecommerce"}
-	fdbCRUD, err := NewCRUDClient()
+	conn, err := NewGrpcConnection()
 	if err != nil {
-		log.Fatalf("Could not create CRUD client: %v", err)
+		log.Fatalf("Error connecting to fdb: %v", err)
 	}
-	metadata, err := fdbCRUD.LoadMetadata(keySpace)
+	database := "workspace_1"
+
+	fdbMetadataManager := NewFDbMetadataManager(conn)
+	fdbCRUD := NewCRUDClient(conn, database)
+
+	metadata, err := fdbMetadataManager.CreateOrOpen(database, pb.File_sample_proto)
 	if err != nil {
 		log.Fatalf("Could not load metadata: %v", err)
-	}
-	if metadata == nil {
-		log.Println(" Metadata not found. Registering Schema : =========")
-		registered, err := fdbCRUD.RegisterSchema(keySpace, pb.File_sample_proto)
-		if err != nil {
-			log.Fatalf("Could not register schema: %v", err)
-		}
-		metadata = registered
-		log.Println("  Registering Schema done: =========")
 	}
 	log.Println(" Metadata found : =========")
 	log.Println(protojson.Format(metadata))

@@ -13,42 +13,17 @@ func NewGrpcConnection() (*grpc.ClientConn, error) {
 	)
 }
 
-func NewCRUDClient() (*RemoteFDBCRUD, error) {
-	conn, err := NewGrpcConnection()
-	if err != nil {
-		return nil, err
+func NewCRUDClient(conn *grpc.ClientConn, database string) *RemoteFDBCrud {
+	return &RemoteFDBCrud{
+		client:   fdbgrpc.NewFDBCrudClient(conn),
+		Database: database,
 	}
-	return &RemoteFDBCRUD{
-		Client: fdbgrpc.NewFDBRemoteCRUDClient(conn),
-	}, nil
 }
 
-func NewSessionClient() (*RemoteFDBSession, error) {
-	conn, err := NewGrpcConnection()
-	if err != nil {
-		return nil, err
+func NewFDbMetadataManager(conn *grpc.ClientConn) *FdbMetadataManager {
+	return &FdbMetadataManager{
+		client: fdbgrpc.NewFDBMetadataManagerClient(conn),
 	}
-	return &RemoteFDBSession{
-		Client: fdbgrpc.NewFDBRemoteInteractiveSessionClient(conn),
-	}, nil
-}
-
-func NewFDBKeySpace(name, value string, further ...string) *fdbgrpc.FDBDirectory {
-	dir := fdbgrpc.FDBDirectory{
-		Name:  name,
-		Value: value,
-	}
-	if len(further) > 0 && len(further)%2 == 0 {
-		dirIter := &dir
-		for i := 0; i < len(further); i = i + 2 {
-			dirIter.SubDirectory = &fdbgrpc.FDBDirectory{
-				Name:         further[i],
-				Value:        further[i+1],
-				SubDirectory: &fdbgrpc.FDBDirectory{},
-			}
-		}
-	}
-	return &dir
 }
 
 func Field_Equals_Long(field string, value int64) *fdbgrpc.BooleanQuery {
