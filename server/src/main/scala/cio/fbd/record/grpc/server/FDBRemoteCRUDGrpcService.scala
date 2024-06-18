@@ -54,11 +54,10 @@ class FDBRemoteCRUDGrpcService(fdb: FDBDatabase) extends FDBRemoteCRUDImplBase {
           request.getOperation match {
             case FDBCRUDCommand.OPERATION.CREATE =>
               if (request.hasRecords) {
+                val keysCreated = remoteFDB
+                  .createAll(table, request.getRecords.getRecordsList.asScala.toList).asJava
                 responseBuilder.setKeys(
-                  KeysList.newBuilder().addAllKeys(
-                    remoteFDB
-                      .createAll(table, request.getRecords.getRecordsList.asScala.toList).asJava
-                  ).build()
+                  KeysList.newBuilder().addAllKeys(keysCreated).build()
                 ).build()
               }
               else
@@ -74,7 +73,7 @@ class FDBRemoteCRUDGrpcService(fdb: FDBDatabase) extends FDBRemoteCRUDImplBase {
                 ).build()
               }
               else if (request.hasQuery) {
-                val result = Await.result(remoteFDB.loadAll(table, request.getQuery), Duration.Inf)
+                val result = remoteFDB.loadAll(table, request.getQuery)
                 responseBuilder.setRecords(
                   RecordsList.newBuilder().addAllRecords(result.asJava).build()
                 ).build()

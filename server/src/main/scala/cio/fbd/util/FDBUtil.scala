@@ -59,7 +59,7 @@ object FDBUtil {
     val expressions = query.getExpressionsList.asScala.map { exp =>
       val comparand =
         if (exp.getValue.hasIntValue) {
-          Integer.valueOf(exp.getValue.getIntValue.intValue)
+          java.lang.Long.valueOf(exp.getValue.getIntValue.intValue)
         } else if (exp.getValue.hasDoubleValue) {
           java.lang.Double.valueOf(exp.getValue.getDoubleValue)
         } else if (exp.getValue.hasStringValue) {

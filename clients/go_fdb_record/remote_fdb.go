@@ -51,7 +51,7 @@ func NewFDBKeySpace(name, value string, further ...string) *fdbgrpc.FDBDirectory
 	return &dir
 }
 
-func Field_Equals_String(field string, value string) *fdbgrpc.BooleanQuery {
+func Field_Equals_Long(field string, value int64) *fdbgrpc.BooleanQuery {
 	return &fdbgrpc.BooleanQuery{
 		Expressions: []*fdbgrpc.BooleanExpression{
 			{
@@ -62,8 +62,8 @@ func Field_Equals_String(field string, value string) *fdbgrpc.BooleanQuery {
 					Name: field,
 				},
 				Value: &fdbgrpc.Operand{
-					Expression: &fdbgrpc.Operand_StringValue{
-						StringValue: value,
+					Expression: &fdbgrpc.Operand_IntValue{
+						IntValue: value,
 					},
 				},
 			},

@@ -12,27 +12,24 @@ import (
 
 func newVendor(ids ...int32) []proto.Message {
 	protos := make([]proto.Message, len(ids))
-	for _, id := range ids {
+	for i, id := range ids {
 		vendorId := int64(id)
-		vendorName := fmt.Sprintf("%s%d", "vendor_", id)
-		_ = append(protos, &pb.Vendor{VendorId: &vendorId, VendorName: &vendorName})
+		vendorName := fmt.Sprintf("%s%d", "N_vendor_", id)
+		protos[i] = &pb.Vendor{VendorId: &vendorId, VendorName: &vendorName}
 	}
 	return protos
 }
 func newItems(ids ...int32) []proto.Message {
 	protos := make([]proto.Message, len(ids))
-	for _, id := range ids {
+	for i, id := range ids {
 		itemId := int64(id)
 		vendorId := int64(id - 10)
-		itemName := fmt.Sprintf("%s%d", "item_", id)
-		_ = append(
-			protos,
-			&pb.Item{
-				ItemId:   &itemId,
-				ItemName: &itemName,
-				VendorId: &vendorId,
-			},
-		)
+		itemName := fmt.Sprintf("%s%d", "N_item_", id)
+		protos[i] = &pb.Item{
+			ItemId:   &itemId,
+			ItemName: &itemName,
+			VendorId: &vendorId,
+		}
 	}
 	return protos
 }
@@ -42,8 +39,16 @@ func main() {
 	}
 
 	vendors := newVendor(1, 2, 3, 4, 5)
+	log.Println("Vendors Generated")
+	for _, vendor := range vendors {
+		log.Printf(protojson.Format(vendor))
+	}
 	vendorBuilder := func() proto.Message { return &pb.Vendor{} }
 	items := newItems(11, 12, 13, 14, 15)
+	log.Println("Items Generated")
+	for _, item := range items {
+		log.Printf(protojson.Format(item))
+	}
 	itemsBuilder := func() proto.Message { return &pb.Item{} }
 
 	keySpace := []string{"environment", "demo", "application", "ecommerce"}
@@ -84,7 +89,7 @@ func main() {
 	}
 	log.Println(" Items created with Keys  : =========")
 	for _, item := range itemKeys {
-		log.Println(" VendorKey : ", item.String())
+		log.Println(" ItemKey : ", item.String())
 	}
 	log.Println(" Items created with Keys  : =========")
 
@@ -92,8 +97,8 @@ func main() {
 		"Vendor",
 		[]tuple.Tuple{
 			[]tuple.TupleElement{int64(1)},
-			[]tuple.TupleElement{int64(1)},
-			[]tuple.TupleElement{int64(1)},
+			[]tuple.TupleElement{int64(2)},
+			[]tuple.TupleElement{int64(3)},
 		},
 		vendorBuilder,
 	)
@@ -108,7 +113,7 @@ func main() {
 
 	itemsFiltered, err := fdbCRUD.LoadAllQuery(
 		"Item",
-		Field_Equals_String("vendor_id", "vendor_1"),
+		Field_Equals_Long("vendor_id", 1),
 		itemsBuilder,
 	)
 	if err != nil {

@@ -1,6 +1,6 @@
 package cio.fbd.record.grpc.server
 
-import cio.fbd.util.FDBUtil
+import cio.fbd.util.{ByteArrayReadable, FDBUtil}
 import cio.fdb.record.grpc.FdbRecordGrpc.FDBDirectory
 import cio.fdb.record.grpc.Filters
 import com.apple.foundationdb.record.metadata.{Key, RecordType}
@@ -12,7 +12,7 @@ import com.apple.foundationdb.record.{RecordMetaData, RecordMetaDataOptionsProto
 import com.apple.foundationdb.tuple.Tuple
 import com.google.protobuf.DescriptorProtos.FileDescriptorProto
 import com.google.protobuf.Descriptors.FileDescriptor
-import com.google.protobuf.{ByteString, DynamicMessage, ExtensionRegistry, Message}
+import com.google.protobuf.{ByteString, DynamicMessage, ExtensionRegistry, Message, UnknownFieldSet}
 
 import java.util.concurrent.{CompletableFuture, ConcurrentHashMap}
 import scala.annotation.tailrec
@@ -27,31 +27,33 @@ object RemoteFDB {
   private val extensionRegistry = ExtensionRegistry.newInstance()
   RecordMetaDataOptionsProto.registerAllExtensions(extensionRegistry)
 
+
+
   def loadExisting(fdb: FDBDatabase, namespace: List[String]): Option[RemoteFDB]= {
     fdb.run{ ctx =>
-      val keySpace = FDBDirectoryUtil.toKeySpacePath(namespace)
-      val metadataStore = new FDBMetaDataStore(ctx, keySpace)
+      val (metadataKeySpace, recordsNameSpace) = FDBDirectoryUtil.getRecordsAndMetadataPaths(namespace)
+      val metadataStore = new FDBMetaDataStore(ctx, metadataKeySpace)
       Try(metadataStore.getRecordMetaData) match {
         case Failure(_: MissingMetaDataException) =>
           None
         case Failure(ex) =>
           throw ex
         case Success(metadata) =>
-          Some(new RemoteFDB(fdb, keySpace, metadata))
+          Some(new RemoteFDB(fdb, recordsNameSpace, metadata))
       }
     }
   }
 
   def buildNew(fdb: FDBDatabase, namespace: List[String], schema: FileDescriptorProto): RemoteFDB = {
+    val (metadataKeySpace, recordsNameSpace) = FDBDirectoryUtil.getRecordsAndMetadataPaths(namespace)
     val schemaFD = RemoteFDB.toFileDescriptor(schema)
-    val keySpace = FDBDirectoryUtil.toKeySpacePath(namespace)
     val rmBuilder = RecordMetaData.newBuilder()
     rmBuilder.setRecords(schemaFD)
     val recordMetaData = rmBuilder.build()
     fdb.run { ctx =>
-      val metadataStore = new FDBMetaDataStore(ctx, keySpace)
+      val metadataStore = new FDBMetaDataStore(ctx, metadataKeySpace)
       metadataStore.saveRecordMetaData(recordMetaData)
-      new RemoteFDB(fdb, keySpace, recordMetaData)
+      new RemoteFDB(fdb, recordsNameSpace, recordMetaData)
     }
   }
 
@@ -99,11 +101,12 @@ class RemoteFDB(fdb: FDBDatabase, keySpace: KeySpacePath, val metadata: RecordMe
     val recordType = metadata.getRecordType(table)
     fdb.run { ctx =>
       val recordStore = rsBuilder.copyBuilder().setContext(ctx).setKeySpacePath(keySpace).createOrOpen()
-      records
-        .map(rec => RemoteFDB.toMessage(rec, recordType))
-        .map(recordStore.saveRecord)
-        .map(_.getPrimaryKey.pack())
-        .map(ByteString.copyFrom)
+      records.map{ rec =>
+        val proto = RemoteFDB.toMessage(rec, recordType)
+        val storedRecord = recordStore.saveRecord( proto )
+        val primaryKey = storedRecord.getPrimaryKey
+        ByteString.copyFrom( primaryKey.pack())
+      }
     }
   }
 
@@ -121,15 +124,13 @@ class RemoteFDB(fdb: FDBDatabase, keySpace: KeySpacePath, val metadata: RecordMe
     }
   }
 
-  def loadAll(table: String, query: Filters.BooleanQuery): Future[List[ByteString]] = {
-    val jFuture: CompletableFuture[java.util.List[FDBQueriedRecord[Message]]] =
-      fdb.run { ctx =>
-        val recordStore = rsBuilder.copyBuilder().setContext(ctx).setKeySpacePath(keySpace).createOrOpen()
-        val rQuery = RecordQuery.newBuilder().setRecordType(table).setFilter(FDBUtil.toFDBQuery(query)).build()
-        val cursor = recordStore.executeQuery(rQuery)
-        cursor.asList()
-      }
-    jFuture.asScala.map(_.asScala.map(_.getRecord.toByteString).toList)
+  def loadAll(table: String, query: Filters.BooleanQuery): List[ByteString] = {
+    fdb.run { ctx =>
+      val recordStore = rsBuilder.copyBuilder().setContext(ctx).setKeySpacePath(keySpace).createOrOpen()
+      val rQuery = RecordQuery.newBuilder().setRecordType(table).setFilter(FDBUtil.toFDBQuery(query)).build()
+      val cursor = recordStore.executeQuery(rQuery)
+      cursor.asList().join().asScala.map(_.getRecord.toByteString).toList
+    }
   }
 
   def deleteAll(table: String, query: Filters.BooleanQuery): Boolean = {
@@ -290,17 +291,24 @@ class RemoteFDBSessionManager(fdb: FDBDatabase) {
 
 
 object FDBDirectoryUtil {
-  def toKeySpacePath(namespace: List[String]): KeySpacePath = {
+
+  def getRecordsAndMetadataPaths( namespace: List[String] ): (KeySpacePath, KeySpacePath) = {
+    (toKeySpacePath(namespace.appendedAll(List("records","meta"))),
+    toKeySpacePath(namespace.appendedAll(List("records","data"))))
+  }
+
+  private def toKeySpacePath(namespace: List[String]): KeySpacePath = {
     def buildDirectories(rest: List[String]): DirectoryLayerDirectory = {
-      val dir = new DirectoryLayerDirectory(rest.head)
-      rest.tail.tail match {
+      val dirName = rest.head
+      val child = rest.tail.tail
+      val dir = new DirectoryLayerDirectory(dirName)
+      child match {
         case Nil => dir
-        case further =>
-          dir.addSubdirectory(buildDirectories(further))
+        case _ =>
+          dir.addSubdirectory(buildDirectories(child))
           dir
       }
     }
-
     val keySpace = new KeySpace(buildDirectories(namespace))
 
     @tailrec

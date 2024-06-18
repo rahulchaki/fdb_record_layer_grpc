@@ -30,7 +30,7 @@ message Field{
 }
 
 message IntList{
-    repeated int32 value = 1;
+    repeated int64 value = 1;
 }
 message DoubleList{
     repeated double value = 1;
@@ -41,7 +41,7 @@ message StringList{
 
 message Operand{
     oneof expression{
-        int32 intValue = 8;
+        int64   intValue = 8;
         double doubleValue = 12;
         string stringValue = 16;
         IntList intListValue = 20;

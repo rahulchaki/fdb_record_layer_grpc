@@ -49,12 +49,12 @@ func (fdb *RemoteFDBCRUD) LoadMetadata(
 
 func marshalRecords(records []proto.Message) (*fdbgrpc.FDBCRUDCommand_Records, error) {
 	packedRecords := make([][]byte, len(records))
-	for _, record := range records {
+	for i, record := range records {
 		data, err := proto.Marshal(record)
 		if err != nil {
 			return nil, err
 		}
-		_ = append(packedRecords, data)
+		packedRecords[i] = data
 	}
 	result := fdbgrpc.FDBCRUDCommand_Records{
 		Records: &fdbgrpc.RecordsList{
@@ -66,8 +66,8 @@ func marshalRecords(records []proto.Message) (*fdbgrpc.FDBCRUDCommand_Records, e
 
 func marshalKeys(keys []tuple.Tuple) (*fdbgrpc.FDBCRUDCommand_Keys, error) {
 	packedKeys := make([][]byte, len(keys))
-	for _, key := range keys {
-		_ = append(packedKeys, key.Pack())
+	for i, key := range keys {
+		packedKeys[i] = key.Pack()
 	}
 	result := fdbgrpc.FDBCRUDCommand_Keys{
 		Keys: &fdbgrpc.KeysList{
@@ -82,25 +82,25 @@ func unmarshalRecords(
 	makeNew func() proto.Message,
 ) ([]proto.Message, error) {
 	records := make([]proto.Message, len(response.GetRecords().Records))
-	for _, record := range response.GetRecords().Records {
+	for i, record := range response.GetRecords().Records {
 		holder := makeNew()
 		err := proto.Unmarshal(record, holder)
 		if err != nil {
 			return nil, err
 		}
-		_ = append(records, holder)
+		records[i] = holder
 	}
 	return records, nil
 }
 
 func unmarshalKeys(response *fdbgrpc.FDBCRUDResponse) ([]tuple.Tuple, error) {
 	keys := make([]tuple.Tuple, len(response.GetKeys().Keys))
-	for _, key := range response.GetKeys().Keys {
+	for i, key := range response.GetKeys().Keys {
 		tup, err := tuple.Unpack(key)
 		if err != nil {
 			return nil, err
 		}
-		_ = append(keys, tup)
+		keys[i] = tup
 	}
 	return keys, nil
 }

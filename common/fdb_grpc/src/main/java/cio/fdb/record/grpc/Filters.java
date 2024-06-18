@@ -2229,21 +2229,21 @@ public final class Filters {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>repeated int32 value = 1;</code>
+     * <code>repeated int64 value = 1;</code>
      * @return A list containing the value.
      */
-    java.util.List<java.lang.Integer> getValueList();
+    java.util.List<java.lang.Long> getValueList();
     /**
-     * <code>repeated int32 value = 1;</code>
+     * <code>repeated int64 value = 1;</code>
      * @return The count of value.
      */
     int getValueCount();
     /**
-     * <code>repeated int32 value = 1;</code>
+     * <code>repeated int64 value = 1;</code>
      * @param index The index of the element to return.
      * @return The value at the given index.
      */
-    int getValue(int index);
+    long getValue(int index);
   }
   /**
    * Protobuf type {@code cio.fdb.record.grpc.IntList}
@@ -2258,7 +2258,7 @@ public final class Filters {
       super(builder);
     }
     private IntList() {
-      value_ = emptyIntList();
+      value_ = emptyLongList();
     }
 
     @java.lang.Override
@@ -2283,31 +2283,31 @@ public final class Filters {
 
     public static final int VALUE_FIELD_NUMBER = 1;
     @SuppressWarnings("serial")
-    private com.google.protobuf.Internal.IntList value_ =
-        emptyIntList();
+    private com.google.protobuf.Internal.LongList value_ =
+        emptyLongList();
     /**
-     * <code>repeated int32 value = 1;</code>
+     * <code>repeated int64 value = 1;</code>
      * @return A list containing the value.
      */
     @java.lang.Override
-    public java.util.List<java.lang.Integer>
+    public java.util.List<java.lang.Long>
         getValueList() {
       return value_;
     }
     /**
-     * <code>repeated int32 value = 1;</code>
+     * <code>repeated int64 value = 1;</code>
      * @return The count of value.
      */
     public int getValueCount() {
       return value_.size();
     }
     /**
-     * <code>repeated int32 value = 1;</code>
+     * <code>repeated int64 value = 1;</code>
      * @param index The index of the element to return.
      * @return The value at the given index.
      */
-    public int getValue(int index) {
-      return value_.getInt(index);
+    public long getValue(int index) {
+      return value_.getLong(index);
     }
     private int valueMemoizedSerializedSize = -1;
 
@@ -2331,7 +2331,7 @@ public final class Filters {
         output.writeUInt32NoTag(valueMemoizedSerializedSize);
       }
       for (int i = 0; i < value_.size(); i++) {
-        output.writeInt32NoTag(value_.getInt(i));
+        output.writeInt64NoTag(value_.getLong(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -2346,7 +2346,7 @@ public final class Filters {
         int dataSize = 0;
         for (int i = 0; i < value_.size(); i++) {
           dataSize += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(value_.getInt(i));
+            .computeInt64SizeNoTag(value_.getLong(i));
         }
         size += dataSize;
         if (!getValueList().isEmpty()) {
@@ -2519,7 +2519,7 @@ public final class Filters {
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        value_ = emptyIntList();
+        value_ = emptyLongList();
         return this;
       }
 
@@ -2641,9 +2641,9 @@ public final class Filters {
                 done = true;
                 break;
               case 8: {
-                int v = input.readInt32();
+                long v = input.readInt64();
                 ensureValueIsMutable();
-                value_.addInt(v);
+                value_.addLong(v);
                 break;
               } // case 8
               case 10: {
@@ -2651,7 +2651,7 @@ public final class Filters {
                 int limit = input.pushLimit(length);
                 ensureValueIsMutable();
                 while (input.getBytesUntilLimit() > 0) {
-                  value_.addInt(input.readInt32());
+                  value_.addLong(input.readInt64());
                 }
                 input.popLimit(limit);
                 break;
@@ -2673,7 +2673,7 @@ public final class Filters {
       }
       private int bitField0_;
 
-      private com.google.protobuf.Internal.IntList value_ = emptyIntList();
+      private com.google.protobuf.Internal.LongList value_ = emptyLongList();
       private void ensureValueIsMutable() {
         if (!value_.isModifiable()) {
           value_ = makeMutableCopy(value_);
@@ -2681,64 +2681,64 @@ public final class Filters {
         bitField0_ |= 0x00000001;
       }
       /**
-       * <code>repeated int32 value = 1;</code>
+       * <code>repeated int64 value = 1;</code>
        * @return A list containing the value.
        */
-      public java.util.List<java.lang.Integer>
+      public java.util.List<java.lang.Long>
           getValueList() {
         value_.makeImmutable();
         return value_;
       }
       /**
-       * <code>repeated int32 value = 1;</code>
+       * <code>repeated int64 value = 1;</code>
        * @return The count of value.
        */
       public int getValueCount() {
         return value_.size();
       }
       /**
-       * <code>repeated int32 value = 1;</code>
+       * <code>repeated int64 value = 1;</code>
        * @param index The index of the element to return.
        * @return The value at the given index.
        */
-      public int getValue(int index) {
-        return value_.getInt(index);
+      public long getValue(int index) {
+        return value_.getLong(index);
       }
       /**
-       * <code>repeated int32 value = 1;</code>
+       * <code>repeated int64 value = 1;</code>
        * @param index The index to set the value at.
        * @param value The value to set.
        * @return This builder for chaining.
        */
       public Builder setValue(
-          int index, int value) {
+          int index, long value) {
 
         ensureValueIsMutable();
-        value_.setInt(index, value);
+        value_.setLong(index, value);
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated int32 value = 1;</code>
+       * <code>repeated int64 value = 1;</code>
        * @param value The value to add.
        * @return This builder for chaining.
        */
-      public Builder addValue(int value) {
+      public Builder addValue(long value) {
 
         ensureValueIsMutable();
-        value_.addInt(value);
+        value_.addLong(value);
         bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
-       * <code>repeated int32 value = 1;</code>
+       * <code>repeated int64 value = 1;</code>
        * @param values The value to add.
        * @return This builder for chaining.
        */
       public Builder addAllValue(
-          java.lang.Iterable<? extends java.lang.Integer> values) {
+          java.lang.Iterable<? extends java.lang.Long> values) {
         ensureValueIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
             values, value_);
@@ -2747,11 +2747,11 @@ public final class Filters {
         return this;
       }
       /**
-       * <code>repeated int32 value = 1;</code>
+       * <code>repeated int64 value = 1;</code>
        * @return This builder for chaining.
        */
       public Builder clearValue() {
-        value_ = emptyIntList();
+        value_ = emptyLongList();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
         return this;
@@ -4043,15 +4043,15 @@ public final class Filters {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>int32 intValue = 8;</code>
+     * <code>int64 intValue = 8;</code>
      * @return Whether the intValue field is set.
      */
     boolean hasIntValue();
     /**
-     * <code>int32 intValue = 8;</code>
+     * <code>int64 intValue = 8;</code>
      * @return The intValue.
      */
-    int getIntValue();
+    long getIntValue();
 
     /**
      * <code>double doubleValue = 12;</code>
@@ -4215,7 +4215,7 @@ public final class Filters {
 
     public static final int INTVALUE_FIELD_NUMBER = 8;
     /**
-     * <code>int32 intValue = 8;</code>
+     * <code>int64 intValue = 8;</code>
      * @return Whether the intValue field is set.
      */
     @java.lang.Override
@@ -4223,15 +4223,15 @@ public final class Filters {
       return expressionCase_ == 8;
     }
     /**
-     * <code>int32 intValue = 8;</code>
+     * <code>int64 intValue = 8;</code>
      * @return The intValue.
      */
     @java.lang.Override
-    public int getIntValue() {
+    public long getIntValue() {
       if (expressionCase_ == 8) {
-        return (java.lang.Integer) expression_;
+        return (java.lang.Long) expression_;
       }
-      return 0;
+      return 0L;
     }
 
     public static final int DOUBLEVALUE_FIELD_NUMBER = 12;
@@ -4415,8 +4415,8 @@ public final class Filters {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (expressionCase_ == 8) {
-        output.writeInt32(
-            8, (int)((java.lang.Integer) expression_));
+        output.writeInt64(
+            8, (long)((java.lang.Long) expression_));
       }
       if (expressionCase_ == 12) {
         output.writeDouble(
@@ -4445,8 +4445,8 @@ public final class Filters {
       size = 0;
       if (expressionCase_ == 8) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(
-              8, (int)((java.lang.Integer) expression_));
+          .computeInt64Size(
+              8, (long)((java.lang.Long) expression_));
       }
       if (expressionCase_ == 12) {
         size += com.google.protobuf.CodedOutputStream
@@ -4527,7 +4527,8 @@ public final class Filters {
       switch (expressionCase_) {
         case 8:
           hash = (37 * hash) + INTVALUE_FIELD_NUMBER;
-          hash = (53 * hash) + getIntValue();
+          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+              getIntValue());
           break;
         case 12:
           hash = (37 * hash) + DOUBLEVALUE_FIELD_NUMBER;
@@ -4850,7 +4851,7 @@ public final class Filters {
                 done = true;
                 break;
               case 64: {
-                expression_ = input.readInt32();
+                expression_ = input.readInt64();
                 expressionCase_ = 8;
                 break;
               } // case 64
@@ -4919,28 +4920,28 @@ public final class Filters {
       private int bitField0_;
 
       /**
-       * <code>int32 intValue = 8;</code>
+       * <code>int64 intValue = 8;</code>
        * @return Whether the intValue field is set.
        */
       public boolean hasIntValue() {
         return expressionCase_ == 8;
       }
       /**
-       * <code>int32 intValue = 8;</code>
+       * <code>int64 intValue = 8;</code>
        * @return The intValue.
        */
-      public int getIntValue() {
+      public long getIntValue() {
         if (expressionCase_ == 8) {
-          return (java.lang.Integer) expression_;
+          return (java.lang.Long) expression_;
         }
-        return 0;
+        return 0L;
       }
       /**
-       * <code>int32 intValue = 8;</code>
+       * <code>int64 intValue = 8;</code>
        * @param value The intValue to set.
        * @return This builder for chaining.
        */
-      public Builder setIntValue(int value) {
+      public Builder setIntValue(long value) {
 
         expressionCase_ = 8;
         expression_ = value;
@@ -4948,7 +4949,7 @@ public final class Filters {
         return this;
       }
       /**
-       * <code>int32 intValue = 8;</code>
+       * <code>int64 intValue = 8;</code>
        * @return This builder for chaining.
        */
       public Builder clearIntValue() {
@@ -7650,9 +7651,9 @@ public final class Filters {
       "\006\n\002GT\020\002\022\007\n\003GTE\020\003\022\006\n\002LT\020\004\022\007\n\003LTE\020\005\022\006\n\002IN\020" +
       "\006\"A\n\005Field\022\014\n\004name\030\001 \001(\t\022*\n\006nested\030\002 \003(\013" +
       "2\032.cio.fdb.record.grpc.Field\"\030\n\007IntList\022" +
-      "\r\n\005value\030\001 \003(\005\"\033\n\nDoubleList\022\r\n\005value\030\001 " +
+      "\r\n\005value\030\001 \003(\003\"\033\n\nDoubleList\022\r\n\005value\030\001 " +
       "\003(\001\"\033\n\nStringList\022\r\n\005value\030\001 \003(\t\"\207\002\n\007Ope" +
-      "rand\022\022\n\010intValue\030\010 \001(\005H\000\022\025\n\013doubleValue\030" +
+      "rand\022\022\n\010intValue\030\010 \001(\003H\000\022\025\n\013doubleValue\030" +
       "\014 \001(\001H\000\022\025\n\013stringValue\030\020 \001(\tH\000\0224\n\014intLis" +
       "tValue\030\024 \001(\0132\034.cio.fdb.record.grpc.IntLi" +
       "stH\000\022:\n\017doubleListValue\030\030 \001(\0132\037.cio.fdb." +
