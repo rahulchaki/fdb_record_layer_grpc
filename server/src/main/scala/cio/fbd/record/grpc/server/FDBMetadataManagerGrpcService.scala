@@ -25,6 +25,7 @@ class FDBMetadataManagerGrpcService(
             .setMetadata(db.toProto)
             .build()
         )
+        responseObserver.onCompleted()
     }
   }
 

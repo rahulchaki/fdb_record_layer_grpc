@@ -31,5 +31,5 @@ message FDBStreamingSessionResponse{
 }
 
 service FDBStreamingSession{
-    rpc execute( stream FDBStreamingSessionComand) returns (FDBStreamingSessionResponse){}
+    rpc execute( stream FDBStreamingSessionComand) returns (stream FDBStreamingSessionResponse){}
 }

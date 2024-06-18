@@ -2688,11 +2688,11 @@ public final class FdbSession {
       "\004 \001(\0132(.cio.fdb.record.grpc.FDBDatabaseM" +
       "etadataH\000\022<\n\014execResponse\030\010 \001(\0132$.cio.fd" +
       "b.record.grpc.FDBCrudResponseH\000B\n\n\010respo" +
-      "nse2\206\001\n\023FDBStreamingSession\022o\n\007execute\022." +
+      "nse2\210\001\n\023FDBStreamingSession\022q\n\007execute\022." +
       ".cio.fdb.record.grpc.FDBStreamingSession" +
       "Comand\0320.cio.fdb.record.grpc.FDBStreamin" +
-      "gSessionResponse\"\000(\001B*\n\023cio.fdb.record.g" +
-      "rpcZ\023cio/fdb/grpc/protosb\006proto3"
+      "gSessionResponse\"\000(\0010\001B*\n\023cio.fdb.record" +
+      ".grpcZ\023cio/fdb/grpc/protosb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

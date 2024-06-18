@@ -7,6 +7,7 @@ import com.apple.foundationdb.record.provider.foundationdb.FDBRecordContext
 import io.grpc.stub.StreamObserver
 
 import java.util.concurrent.atomic.AtomicReference
+import java.util.concurrent.{Executors, TimeUnit}
 import scala.util.{Failure, Success, Try}
 
 
@@ -56,13 +57,15 @@ class RemoteFDBStreamingSession(
                                  responseObserver: StreamObserver[FDBStreamingSessionResponse]
                                ) extends StreamObserver[FDBStreamingSessionComand]{
 
-  val sessionHandler = new RemoteFDBStreamingSessionHandlerSync( ctx, metadataManager)
+  private val sessionHandler = new RemoteFDBStreamingSessionHandlerSync( ctx, metadataManager)
+  private val executor = Executors.newSingleThreadExecutor()
 
-  override def onNext( command: FDBStreamingSessionComand): Unit = {
+  def handle( command: FDBStreamingSessionComand ): Try[ FDBStreamingSessionResponse ] = {
     if( command.hasBegin && !sessionHandler.isInitialized) {
       sessionHandler. handle(command.getBegin)
         .map{ resp =>
           FDBStreamingSessionResponse.newBuilder()
+            .setCommandId( command.getCommandId)
             .setDatabase( resp )
             .build()
         }
@@ -70,25 +73,41 @@ class RemoteFDBStreamingSession(
       sessionHandler.handle(command.getExecute)
         .map{ resp =>
           FDBStreamingSessionResponse.newBuilder()
+            .setCommandId( command.getCommandId)
             .setExecResponse( resp )
             .build()
         }
-    } match {
-      case Failure(ex) => handleError(ex)
-      case Success(resp) =>
-        responseObserver.onNext( resp )
     }
   }
 
+  override def onNext( command: FDBStreamingSessionComand): Unit = {
+    executor.submit( new Runnable {
+      override def run(): Unit = {
+        handle(command) match {
+          case Failure(ex) =>
+            handleError(ex)
+          case Success(resp) =>
+            responseObserver.onNext( resp )
+        }
+      }
+    })
+  }
+
   def handleError( ex: Throwable ): Unit = {
+    Try(executor.shutdownNow())
     responseObserver.onError( ex)
   }
 
   override def onError(t: Throwable): Unit = {
+    Try(executor.shutdownNow())
     responseObserver.onError(t)
   }
 
   override def onCompleted(): Unit = {
+    Try{
+      executor.shutdown()
+      executor.awaitTermination( 10, TimeUnit.SECONDS)
+    }
     responseObserver.onCompleted()
   }
 }

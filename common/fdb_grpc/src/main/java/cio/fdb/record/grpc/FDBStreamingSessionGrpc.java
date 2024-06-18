@@ -22,7 +22,7 @@ public final class FDBStreamingSessionGrpc {
       fullMethodName = SERVICE_NAME + '/' + "execute",
       requestType = cio.fdb.record.grpc.FdbSession.FDBStreamingSessionComand.class,
       responseType = cio.fdb.record.grpc.FdbSession.FDBStreamingSessionResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
   public static io.grpc.MethodDescriptor<cio.fdb.record.grpc.FdbSession.FDBStreamingSessionComand,
       cio.fdb.record.grpc.FdbSession.FDBStreamingSessionResponse> getExecuteMethod() {
     io.grpc.MethodDescriptor<cio.fdb.record.grpc.FdbSession.FDBStreamingSessionComand, cio.fdb.record.grpc.FdbSession.FDBStreamingSessionResponse> getExecuteMethod;
@@ -31,7 +31,7 @@ public final class FDBStreamingSessionGrpc {
         if ((getExecuteMethod = FDBStreamingSessionGrpc.getExecuteMethod) == null) {
           FDBStreamingSessionGrpc.getExecuteMethod = getExecuteMethod =
               io.grpc.MethodDescriptor.<cio.fdb.record.grpc.FdbSession.FDBStreamingSessionComand, cio.fdb.record.grpc.FdbSession.FDBStreamingSessionResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "execute"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
@@ -133,7 +133,7 @@ public final class FDBStreamingSessionGrpc {
      */
     public io.grpc.stub.StreamObserver<cio.fdb.record.grpc.FdbSession.FDBStreamingSessionComand> execute(
         io.grpc.stub.StreamObserver<cio.fdb.record.grpc.FdbSession.FDBStreamingSessionResponse> responseObserver) {
-      return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
+      return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
           getChannel().newCall(getExecuteMethod(), getCallOptions()), responseObserver);
     }
   }
@@ -214,7 +214,7 @@ public final class FDBStreamingSessionGrpc {
     return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
         .addMethod(
           getExecuteMethod(),
-          io.grpc.stub.ServerCalls.asyncClientStreamingCall(
+          io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
             new MethodHandlers<
               cio.fdb.record.grpc.FdbSession.FDBStreamingSessionComand,
               cio.fdb.record.grpc.FdbSession.FDBStreamingSessionResponse>(

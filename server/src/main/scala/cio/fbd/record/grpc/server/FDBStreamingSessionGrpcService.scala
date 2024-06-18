@@ -22,33 +22,36 @@ class FDBStreamingSessionGrpcService(
 
   override def execute(responseObserver: StreamObserver[FDBStreamingSessionResponse]): StreamObserver[FDBStreamingSessionComand] = {
 
-    val responsePromise = Promise[Boolean]()
+    val hasProcessingFinished = Promise[Boolean]()
 
     val wrappedResponseObserver = new StreamObserver[FDBStreamingSessionResponse]{
       override def onNext(value: FDBStreamingSessionResponse): Unit = {
         responseObserver.onNext(value)
       }
       override def onError(t: Throwable): Unit = {
-        responsePromise.failure(t)
+        hasProcessingFinished.failure(t)
       }
       override def onCompleted(): Unit = {
-        responsePromise.success(true)
+        hasProcessingFinished.success(true)
       }
     }
-    val contextSet = Promise[RemoteFDBStreamingSession]()
-    val async: Function[_ >: FDBRecordContext, CompletableFuture[_]] = (ctx: FDBRecordContext) => {
-      contextSet.success(
-        new RemoteFDBStreamingSession( ctx, metadataManager, wrappedResponseObserver )
-      )
-      responsePromise.future.asJava.toCompletableFuture
-    }
-    fdb.runAsync(async).asScala.onComplete {
+    val isContextSet = Promise[RemoteFDBStreamingSession]()
+
+    val processRequests: Function[_ >: FDBRecordContext, CompletableFuture[_]] =
+      (ctx: FDBRecordContext) => {
+        isContextSet.success(
+          new RemoteFDBStreamingSession( ctx, metadataManager, wrappedResponseObserver )
+        )
+        hasProcessingFinished.future.asJava.toCompletableFuture
+      }
+
+    fdb.runAsync(processRequests).asScala.onComplete {
       case Failure(ex) =>
         responseObserver.onError(  Status.fromThrowable(ex).asRuntimeException())
       case Success(_) =>
         responseObserver.onCompleted()
     }
-    Await.result( contextSet.future, Duration.Inf )
+    Await.result( isContextSet.future, Duration.Inf )
   }
 
 }

@@ -49,7 +49,7 @@ func (c *fDBStreamingSessionClient) Execute(ctx context.Context, opts ...grpc.Ca
 
 type FDBStreamingSession_ExecuteClient interface {
 	Send(*FDBStreamingSessionComand) error
-	CloseAndRecv() (*FDBStreamingSessionResponse, error)
+	Recv() (*FDBStreamingSessionResponse, error)
 	grpc.ClientStream
 }
 
@@ -61,10 +61,7 @@ func (x *fDBStreamingSessionExecuteClient) Send(m *FDBStreamingSessionComand) er
 	return x.ClientStream.SendMsg(m)
 }
 
-func (x *fDBStreamingSessionExecuteClient) CloseAndRecv() (*FDBStreamingSessionResponse, error) {
-	if err := x.ClientStream.CloseSend(); err != nil {
-		return nil, err
-	}
+func (x *fDBStreamingSessionExecuteClient) Recv() (*FDBStreamingSessionResponse, error) {
 	m := new(FDBStreamingSessionResponse)
 	if err := x.ClientStream.RecvMsg(m); err != nil {
 		return nil, err
@@ -105,7 +102,7 @@ func _FDBStreamingSession_Execute_Handler(srv interface{}, stream grpc.ServerStr
 }
 
 type FDBStreamingSession_ExecuteServer interface {
-	SendAndClose(*FDBStreamingSessionResponse) error
+	Send(*FDBStreamingSessionResponse) error
 	Recv() (*FDBStreamingSessionComand, error)
 	grpc.ServerStream
 }
@@ -114,7 +111,7 @@ type fDBStreamingSessionExecuteServer struct {
 	grpc.ServerStream
 }
 
-func (x *fDBStreamingSessionExecuteServer) SendAndClose(m *FDBStreamingSessionResponse) error {
+func (x *fDBStreamingSessionExecuteServer) Send(m *FDBStreamingSessionResponse) error {
 	return x.ServerStream.SendMsg(m)
 }
 
@@ -137,6 +134,7 @@ var FDBStreamingSession_ServiceDesc = grpc.ServiceDesc{
 		{
 			StreamName:    "execute",
 			Handler:       _FDBStreamingSession_Execute_Handler,
+			ServerStreams: true,
 			ClientStreams: true,
 		},
 	},
