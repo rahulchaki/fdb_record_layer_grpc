@@ -37,6 +37,7 @@ case class Database(
 }
 
 trait MetadataManager[M[_]]{
+  def cached( database: String ): Option[Database]
   def fetch( database: String ): M[ Option[Database] ]
   def open( database: String ): M[ Option[Database] ]
   def create(
@@ -88,6 +89,10 @@ class MetadataManagerSync(
     val metadataNamespace = databaseNamespace appendedAll List("dataType", "metadata")
     val recordsNamespace = databaseNamespace appendedAll List("dataType", "records")
     FDBUtil.toKeySpacePath( metadataNamespace ) -> FDBUtil.toKeySpacePath( recordsNamespace )
+  }
+
+  override def cached(database: String): Option[Database] = {
+    Option(databases.get(database))
   }
 
   override def fetch(database: String): Try[Option[Database]] = {

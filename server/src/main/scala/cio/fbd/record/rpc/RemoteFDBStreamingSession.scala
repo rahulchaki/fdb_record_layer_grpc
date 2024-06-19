@@ -7,7 +7,9 @@ import com.apple.foundationdb.record.provider.foundationdb.FDBRecordContext
 import io.grpc.stub.StreamObserver
 
 import java.util.concurrent.atomic.AtomicReference
-import java.util.concurrent.{Executors, TimeUnit}
+import java.util.concurrent.{ConcurrentSkipListSet, Executor, Executors}
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.{ExecutionContext, Future}
 import scala.util.{Failure, Success, Try}
 
 
@@ -17,35 +19,33 @@ trait RemoteFDBStreamingSessionHandler[M[_]] {
   def handle( command: FDBCrudCommand ): M[FDBCrudResponse]
 }
 
-class RemoteFDBStreamingSessionHandlerSync(
+class RemoteFDBStreamingSessionHandlerAsync(
                                             ctx: FDBRecordContext,
                                             metadataManager: MetadataManagerSync
-                                          ) extends RemoteFDBStreamingSessionHandler[Try]{
+                                          ) extends RemoteFDBStreamingSessionHandler[Future]{
 
-  private val repoAtm = new AtomicReference[RemoteFDBRepoSingleTxnSync]()
+  private val repoAtm = new AtomicReference[RemoteFDBRepoSingleTxnAsync]()
 
 
   override def isInitialized: Boolean = Option(repoAtm.get()).isDefined
 
-  override def handle(command: FDBNewStreamingSessionComand): Try[FDBDatabaseMetadata] = {
+  override def handle(command: FDBNewStreamingSessionComand): Future[FDBDatabaseMetadata] = {
     val dbName = command.getDatabase
-    metadataManager.open(dbName) match {
-      case Failure( ex ) =>
-        Failure( ex )
-      case Success(None) =>
-        Failure( new IllegalStateException(s" Metadata for $dbName could not be opened ") )
-      case Success(Some( db )) =>
-        repoAtm.set( new RemoteFDBRepoSingleTxnSync( ctx, db))
-        Success(db.toProto)
+    metadataManager.cached(dbName) match {
+      case None =>
+        Future.failed( new IllegalStateException(s" Metadata for $dbName could not be opened ") )
+      case Some( db ) =>
+        repoAtm.set( new RemoteFDBRepoSingleTxnAsync( ctx, db))
+        Future.successful(db.toProto)
     }
   }
 
-  override def handle(command: FDBCrudCommand): Try[FDBCrudResponse] = {
+  override def handle(command: FDBCrudCommand): Future[FDBCrudResponse] = {
     if( isInitialized ){
       val repo = repoAtm.get()
       repo.execute(command)
     } else {
-      Failure( new IllegalStateException("Session is not initialized"))
+      Future.failed( new IllegalStateException("Session is not initialized"))
     }
   }
 
@@ -57,12 +57,13 @@ class RemoteFDBStreamingSession(
                                  responseObserver: StreamObserver[FDBStreamingSessionResponse]
                                ) extends StreamObserver[FDBStreamingSessionComand]{
 
-  private val sessionHandler = new RemoteFDBStreamingSessionHandlerSync( ctx, metadataManager)
-  private val executor = Executors.newSingleThreadExecutor()
+  private val sessionHandler = new RemoteFDBStreamingSessionHandlerAsync( ctx, metadataManager)
 
-  def handle( command: FDBStreamingSessionComand ): Try[ FDBStreamingSessionResponse ] = {
+  private val taskFutures = new ConcurrentSkipListSet[Future[_]]()
+
+  private def handle(command: FDBStreamingSessionComand ): Future[ FDBStreamingSessionResponse ] = {
     if( command.hasBegin && !sessionHandler.isInitialized) {
-      sessionHandler. handle(command.getBegin)
+      sessionHandler.handle(command.getBegin)
         .map{ resp =>
           FDBStreamingSessionResponse.newBuilder()
             .setCommandId( command.getCommandId)
@@ -81,33 +82,45 @@ class RemoteFDBStreamingSession(
   }
 
   override def onNext( command: FDBStreamingSessionComand): Unit = {
-    executor.submit( new Runnable {
-      override def run(): Unit = {
-        handle(command) match {
-          case Failure(ex) =>
-            handleError(ex)
-          case Success(resp) =>
-            responseObserver.onNext( resp )
-        }
-      }
-    })
+    val taskF = handle( command )
+    taskFutures.add(taskF)
+    taskF.andThen {
+      case Failure(ex) =>
+        taskFutures.remove(taskF)
+        handleError( ex )
+      case Success(resp) =>
+        taskFutures.remove(taskF)
+        responseObserver.onNext( resp )
+    }
   }
 
-  def handleError( ex: Throwable ): Unit = {
-    Try(executor.shutdownNow())
+  private def handleError(ex: Throwable ): Unit = {
     responseObserver.onError( ex)
   }
 
   override def onError(t: Throwable): Unit = {
-    Try(executor.shutdownNow())
     responseObserver.onError(t)
   }
 
+  private def awaitFinish( timeoutMillis: Long, ex: Executor ): Future[_] = {
+    Future{
+      val now = System.currentTimeMillis()
+      while( taskFutures.size() > 0 && ( System.currentTimeMillis() - now) < timeoutMillis ){
+        Try{
+          Thread.sleep(taskFutures.size()* 10)
+        }
+      }
+    }(ExecutionContext.fromExecutor(ex))
+  }
+
   override def onCompleted(): Unit = {
-    Try{
-      executor.shutdown()
-      executor.awaitTermination( 10, TimeUnit.SECONDS)
+    val ex = Executors.newSingleThreadExecutor()
+    awaitFinish( 3000, ex ).andThen {
+      case Failure(exception) =>
+        handleError(exception)
+      case Success(_) =>
+        responseObserver.onCompleted()
     }
-    responseObserver.onCompleted()
+    ex.shutdown()
   }
 }

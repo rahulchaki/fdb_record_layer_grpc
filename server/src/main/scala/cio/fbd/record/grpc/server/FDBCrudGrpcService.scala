@@ -7,6 +7,7 @@ import com.apple.foundationdb.record.provider.foundationdb.FDBDatabase
 import io.grpc.Status
 import io.grpc.stub.StreamObserver
 
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.util.{Failure, Success}
 
 class FDBCrudGrpcService(
@@ -20,10 +21,14 @@ class FDBCrudGrpcService(
         case Failure(ex) =>
           responseObserver.onError(Status.fromThrowable(ex).asRuntimeException())
         case Success(None) =>
-          responseObserver.onError(Status.fromThrowable(new IllegalArgumentException(s" No metadata found for db ${request.getDatabase} ")).asRuntimeException())
+          responseObserver.onError(
+            Status.fromThrowable(
+              new IllegalArgumentException(s" No metadata found for db ${request.getDatabase} ")
+            ).asRuntimeException()
+          )
         case Success( Some(db) ) =>
-          RemoteFDBRepo.sync(fdb, db)
-            .execute(request) match {
+          RemoteFDBRepo.async(fdb, db)
+            .execute(request).onComplete {
             case Failure(ex) =>
               responseObserver.onError(Status.fromThrowable(ex).asRuntimeException())
             case Success(value) =>

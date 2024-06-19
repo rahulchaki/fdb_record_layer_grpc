@@ -9,117 +9,130 @@ import com.apple.foundationdb.record.query.RecordQuery
 import com.apple.foundationdb.tuple.Tuple
 import com.google.protobuf.ByteString
 
-import java.util.concurrent.Executors
-import scala.concurrent.{ExecutionContext, Future}
+import java.util.concurrent.CompletableFuture
+import java.util.function.Function
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
 import scala.jdk.CollectionConverters._
-import scala.util.{Failure, Success, Try}
+import scala.jdk.FutureConverters.{CompletionStageOps, FutureOps}
 
-trait RemoteFDBRepo[M[_]]{
+trait RemoteFDBRepo[M[_]] {
   def execute(command: FDBCrudCommand) : M[FDBCrudResponse]
 }
 
 object RemoteFDBRepo {
-  def singleTxnSync( ctx: FDBRecordContext, db: Database): RemoteFDBRepoSingleTxnSync = {
-    new RemoteFDBRepoSingleTxnSync( ctx, db)
-  }
-  def sync( fdb: FDBDatabase, db: Database ): RemoteFDBRepoSync ={
-    new RemoteFDBRepoSync( fdb, db )
-  }
 
-  def singleTxnAsync( ctx: FDBRecordContext, db: Database): RemoteFDBRepoAsync ={
-    new RemoteFDBRepoAsync(singleTxnSync( ctx, db ))
+  def singleTxnAsync( ctx: FDBRecordContext, db: Database): RemoteFDBRepoSingleTxnAsync ={
+    new RemoteFDBRepoSingleTxnAsync( ctx, db )
   }
   def async( fdb: FDBDatabase, db: Database): RemoteFDBRepoAsync ={
-    new RemoteFDBRepoAsync(sync( fdb, db ))
+    new RemoteFDBRepoAsync(  fdb, db )
   }
 }
 
-class RemoteFDBRepoAsync( sync: RemoteFDBRepo[Try]) extends RemoteFDBRepo[Future]{
-  private val ex = ExecutionContext.fromExecutor(
-    Executors.newCachedThreadPool()
-  )
-  override def execute(command: FDBCrudCommand): Future[FDBCrudResponse] = {
-    Future {
-      sync.execute(command) match {
-        case Failure(ex) =>
-          throw ex
-        case Success(response) =>
-          response
+class RemoteFDBRepoAsync(
+                         fdb: FDBDatabase,
+                         db: Database
+                       ) extends RemoteFDBRepo[Future]{
+
+  def execute(command: FDBCrudCommand) : Future[FDBCrudResponse] = {
+    val processRequests: Function[_ >: FDBRecordContext, CompletableFuture[_]] =
+      (ctx: FDBRecordContext) => {
+        RemoteFDBRepo.singleTxnAsync( ctx, db )
+          .execute( command )
+          .asJava.toCompletableFuture
       }
-    }(ex)
+    fdb.runAsync(processRequests).asInstanceOf[Future[FDBCrudResponse]]
   }
+
 }
 
-class RemoteFDBRepoSingleTxnSync(
-                                  val ctx: FDBRecordContext,
-                                  db: Database
-                                ) extends RemoteFDBRepo[Try]{
+
+class RemoteFDBRepoSingleTxnAsync(
+                                   ctx: FDBRecordContext,
+                                   db: Database
+                                 ) extends RemoteFDBRepo[Future]{
+
   private val rsBuilder = FDBRecordStore.newBuilder()
     .setMetaDataProvider(db.metadata)
-  val recordStore: FDBRecordStore = rsBuilder.copyBuilder()
+  private val recordStore: FDBRecordStore = rsBuilder.copyBuilder()
     .setContext(ctx).setKeySpacePath(db.recordsKeySpace).createOrOpen()
 
-  def execute(command: FDBCrudCommand) : Try[FDBCrudResponse] = {
+
+  override def execute(command: FDBCrudCommand): Future[FDBCrudResponse] = {
     val table = command.getTable
     val responseBuilder = FDBCrudResponse.newBuilder()
-    Try {
       command.getOperation match {
         case FDBCrudCommand.OPERATION.CREATE =>
           if (command.hasRecords) {
-            val keysCreated =
-              createAll(table, command.getRecords.getRecordsList.asScala.toList).asJava
-            responseBuilder.setKeys(
-              KeysList.newBuilder().addAllKeys(keysCreated).build()
-            ).build()
+            createAll(table, command.getRecords.getRecordsList.asScala.toList)
+              .map{ keysCreated =>
+                responseBuilder.setKeys(
+                  KeysList.newBuilder().addAllKeys(keysCreated.asJava).build()
+                ).build()
+              }
           }
           else
-            throw new IllegalArgumentException(" CREATE command needs list of records as data. ")
+            Future.failed(
+              new IllegalArgumentException(" CREATE command needs list of records as data. ")
+            )
 
         case FDBCrudCommand.OPERATION.LOAD =>
           if (command.hasKeys) {
-            responseBuilder.setRecords(
-              RecordsList.newBuilder().addAllRecords(
-                loadAll(command.getKeys.getKeysList.asScala.toList).asJava
-              ).build()
-            ).build()
+            loadAll(command.getKeys.getKeysList.asScala.toList)
+              .map{ records =>
+                responseBuilder.setRecords(
+                  RecordsList.newBuilder().addAllRecords(records.asJava).build()
+                ).build()
+              }
           }
           else if (command.hasQuery) {
-            val result = loadAll(table, command.getQuery)
-            responseBuilder.setRecords(
-              RecordsList.newBuilder().addAllRecords(result.asJava).build()
-            ).build()
+            loadAll(table, command.getQuery)
+              .map{ records =>
+                responseBuilder.setRecords(
+                  RecordsList.newBuilder().addAllRecords(records.asJava).build()
+                ).build()
+              }
           }
           else
-            throw new IllegalArgumentException(" LOAD command needs either Query or list of keys  as data. ")
+            Future.failed(
+              new IllegalArgumentException(" LOAD command needs either Query or list of keys  as data. ")
+            )
         case FDBCrudCommand.OPERATION.DELETE =>
           if (command.hasKeys) {
-            responseBuilder.setSuccess(
-              deleteAll(command.getKeys.getKeysList.asScala.toList)
-            ).build()
+            deleteAll(command.getKeys.getKeysList.asScala.toList)
+              .map{ result =>
+                responseBuilder.setSuccess(result).build()
+              }
           }
           else if (command.hasQuery) {
-            responseBuilder.setSuccess(
-              deleteAll(table, command.getQuery)
-            ).build()
+            deleteAll(table, command.getQuery)
+              .map{ result =>
+                responseBuilder.setSuccess(result).build()
+              }
           }
           else
-            throw new IllegalArgumentException(" DELETE command needs either Query or list of keys  as data. ")
+            Future.failed(
+              new IllegalArgumentException(" DELETE command needs either Query or list of keys  as data. ")
+            )
         case FDBCrudCommand.OPERATION.UNRECOGNIZED =>
-          throw new IllegalArgumentException(" UNKNOWN command found  ")
+          Future.failed( new IllegalArgumentException(" UNKNOWN command found  "))
       }
-    }
   }
-
-
-  def createAll(table: String, records: List[ByteString]): List[ByteString] = {
+  def createAll(table: String, records: List[ByteString]): Future[List[ByteString]] = {
     val recordType = db.metadata.getRecordType(table)
-    records.map{ rec =>
-      val proto = MetadataManager.toMessage(rec, recordType)
-      val storedRecord = recordStore.saveRecord( proto )
-      val primaryKey = storedRecord.getPrimaryKey
-      ByteString.copyFrom( primaryKey.pack())
+    val recordsProto = records.map( rec => MetadataManager.toMessage(rec, recordType))
+    val recordsF = recordsProto.map{ proto =>
+      recordStore.saveRecordAsync( proto ).asScala
+        .map{ storedRecord =>
+          recordStore.saveRecordAsync( proto )
+          val primaryKey = storedRecord.getPrimaryKey
+          ByteString.copyFrom( primaryKey.pack())
+        }
     }
+    Future.sequence( recordsF)
   }
+
   private def toTuple(value: AnyRef): Tuple = {
     value match {
       case inner: ByteString =>
@@ -132,42 +145,28 @@ class RemoteFDBRepoSingleTxnSync(
         Key.Evaluated.scalar(inner).toTuple
     }
   }
-  def loadAll(keys: List[AnyRef]): List[ByteString] = {
-    keys.map(toTuple).map(recordStore.loadRecord)
-      .map(_.getRecord.toByteString)
+  def loadAll(keys: List[AnyRef]): Future[List[ByteString]] = {
+    Future.sequence(
+      keys.map(toTuple).map(recordStore.loadRecordAsync).map(_.asScala)
+    ).map( _.map(_.getRecord.toByteString))
   }
-
-  def deleteAll(keys: List[AnyRef]): Boolean = {
-    keys.map(toTuple).forall(recordStore.deleteRecord)
-  }
-
-  def loadAll(table: String, query: BooleanQuery): List[ByteString] = {
+  def loadAll(table: String, query: BooleanQuery): Future[List[ByteString]] = {
     val rQuery = RecordQuery.newBuilder().setRecordType(table).setFilter(FDBUtil.toFDBQuery(query)).build()
     val cursor = recordStore.executeQuery(rQuery)
-    cursor.asList().join()
-      .asScala.map(_.getRecord.toByteString).toList
-  }
-
-  def deleteAll(table: String, query: BooleanQuery): Boolean = {
-    val recordStore = rsBuilder.copyBuilder().setContext(ctx).setKeySpacePath(db.recordsKeySpace).createOrOpen()
-    recordStore.deleteRecordsWhere(table, FDBUtil.toFDBQuery(query))
-    true
-  }
-
-}
-
-class RemoteFDBRepoSync(
-                         fdb: FDBDatabase,
-                         db: Database
-                       ) extends RemoteFDBRepo[Try]{
-
-  def execute(command: FDBCrudCommand) : Try[FDBCrudResponse] = {
-    Try{
-      fdb.run{ ctx =>
-        RemoteFDBRepo.singleTxnSync( ctx, db )
-          .execute(command)
+    cursor.asList().asScala
+      .map{ recs =>
+        recs.asScala.map(_.getRecord.toByteString).toList
       }
-    }.flatten
   }
 
+  def deleteAll(keys: List[AnyRef]): Future[Boolean] = {
+    Future.sequence(
+      keys.map(toTuple).map(recordStore.deleteRecordAsync).map(_.asScala)
+    ).map(_.forall(_==true))
+  }
+
+  def deleteAll(table: String, query: BooleanQuery): Future[Boolean] = {
+    recordStore.deleteRecordsWhereAsync(table, FDBUtil.toFDBQuery(query))
+      .asScala.map(_ => true)
+  }
 }
