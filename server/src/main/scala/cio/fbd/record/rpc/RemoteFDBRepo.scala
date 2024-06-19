@@ -42,7 +42,7 @@ class RemoteFDBRepoAsync(
           .execute( command )
           .asJava.toCompletableFuture
       }
-    fdb.runAsync(processRequests).asInstanceOf[Future[FDBCrudResponse]]
+    fdb.runAsync(processRequests).asScala.asInstanceOf[Future[FDBCrudResponse]]
   }
 
 }
