@@ -8,7 +8,7 @@ tasks:
   build:
     deps: [protogen]
     cmds:
-      - go build -o app -v main.go
+      - go build -o app
       - chmod 777 ./app
   run:
     deps: [build]
