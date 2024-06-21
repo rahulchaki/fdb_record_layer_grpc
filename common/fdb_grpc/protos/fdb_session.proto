@@ -1,33 +1,22 @@
 syntax = "proto3";
-package cio.fdb.record.grpc;
+package io.fdb.record.grpc;
 
-option java_package = "cio.fdb.record.grpc";
-option go_package = "cio/fdb/grpc/protos";
+option java_package = "io.fdb.record.grpc";
+option go_package = "io/fdb/grpc/protos";
 
 import "fdb_crud.proto";
 import "fdb_metadata_manager.proto";
 
 
-message FDBNewStreamingSessionComand{
-    int64 clientId = 1;
-    string database = 2;
-}
-
 message FDBStreamingSessionComand{
     int64 commandId = 1;
-    oneof command {
-        FDBNewStreamingSessionComand begin = 4;
-        FDBCrudCommand execute = 8;
-    }
+    string database = 2;
+    FDBCrudCommand command = 8;
 }
 
 message FDBStreamingSessionResponse{
     int64 commandId = 1;
-    oneof response{
-        FDBDatabaseMetadata database = 4;
-        FDBCrudResponse execResponse = 8;
-    }
-    
+    FDBCrudResponse response = 8;
 }
 
 service FDBStreamingSession{

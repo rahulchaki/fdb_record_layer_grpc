@@ -4,7 +4,7 @@ import sbt.Compile
 lazy val root = (project in file("."))
   .settings(
     name := "server",
-    libraryDependencies += "cio.fbd.record.grpc" % "stubs" % "1.0-SNAPSHOT",
+    libraryDependencies += "io.fbd.record.grpc" % "stubs" % "1.0-SNAPSHOT",
     libraryDependencies += "org.foundationdb" % "fdb-java" % "7.3.43",
     libraryDependencies += "org.foundationdb" % "fdb-record-layer-core" % "3.4-SNAPSHOT" exclude("org.foundationdb", "fdb-java"),
     libraryDependencies += "org.foundationdb" % "fdb-record-layer-core" % "3.4-SNAPSHOT" % "protobuf",

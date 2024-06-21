@@ -19,7 +19,7 @@
  */
 syntax = "proto2";
 
-package com.cio.fdb.record.grpc;
+package io.fdb.record.grpc;
 option go_package = "protos/gen";
 import "record_metadata_options.proto";
 

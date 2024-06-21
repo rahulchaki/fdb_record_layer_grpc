@@ -1,7 +1,6 @@
-package cio.fbd.record.rpc
+package io.fbd.record.rpc
 
-import cio.fbd.util.FDBUtil
-import cio.fdb.record.grpc.FdbMetadataManager.FDBDatabaseMetadata
+import io.fdb.record.grpc.FdbMetadataManager.FDBDatabaseMetadata
 import com.apple.foundationdb.record.metadata.RecordType
 import com.apple.foundationdb.record.{RecordMetaData, RecordMetaDataOptionsProto}
 import com.apple.foundationdb.record.provider.foundationdb.FDBMetaDataStore.MissingMetaDataException
@@ -11,6 +10,7 @@ import com.apple.foundationdb.tuple.Tuple
 import com.google.protobuf.DescriptorProtos.FileDescriptorProto
 import com.google.protobuf.Descriptors.FileDescriptor
 import com.google.protobuf.{ByteString, DynamicMessage, ExtensionRegistry, Message}
+import io.fbd.util.FDBUtil
 
 import java.util.concurrent.ConcurrentHashMap
 import scala.util.{Failure, Success, Try}

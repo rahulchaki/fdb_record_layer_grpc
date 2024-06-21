@@ -1,8 +1,8 @@
-package cio.fbd.record.grpc.server
+package io.fbd.record.grpc.server
 
-import cio.fbd.record.rpc.MetadataManagerSync
-import cio.fdb.record.grpc.FDBMetadataManagerGrpc.FDBMetadataManagerImplBase
-import cio.fdb.record.grpc.FdbMetadataManager._
+import io.fdb.record.grpc.FDBMetadataManagerGrpc.FDBMetadataManagerImplBase
+import io.fdb.record.grpc.FdbMetadataManager._
+import io.fbd.record.rpc.MetadataManagerSync
 import io.grpc.Status
 import io.grpc.stub.StreamObserver
 

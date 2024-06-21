@@ -1,9 +1,9 @@
 package main
 
 import (
-	fdbgrpc "cio/fdb/grpc/src/main/go"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
+	fdbgrpc "io/fdb/grpc/src/main/go"
 )
 
 func NewGrpcConnection() (*grpc.ClientConn, error) {
@@ -18,6 +18,16 @@ func NewCRUDClient(conn *grpc.ClientConn, database string) *RemoteFDBCrud {
 		client:   fdbgrpc.NewFDBCrudClient(conn),
 		Database: database,
 	}
+}
+func NewRemoteSession(conn *grpc.ClientConn, handler func(ctx *FDBSessionContext) error) error {
+	fdbRemote := &RemoteFdbSession{
+		client: fdbgrpc.NewFDBStreamingSessionClient(conn),
+	}
+	session, err := fdbRemote.Run()
+	if err != nil {
+		return err
+	}
+	return handler(session)
 }
 
 func NewFDbMetadataManager(conn *grpc.ClientConn) *FdbMetadataManager {

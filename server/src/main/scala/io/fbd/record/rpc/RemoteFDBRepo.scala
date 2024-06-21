@@ -1,13 +1,13 @@
-package cio.fbd.record.rpc
+package io.fbd.record.rpc
 
-import cio.fbd.util.FDBUtil
-import cio.fdb.record.grpc.FdbCrud.{FDBCrudCommand, FDBCrudResponse, KeysList, RecordsList}
-import cio.fdb.record.grpc.FdbFilters.BooleanQuery
+import io.fdb.record.grpc.FdbCrud.{FDBCrudCommand, FDBCrudResponse, FDBTransactionError, KeysList, RecordsList}
+import io.fdb.record.grpc.FdbFilters.BooleanQuery
 import com.apple.foundationdb.record.metadata.Key
-import com.apple.foundationdb.record.provider.foundationdb.{FDBDatabase, FDBRecordContext, FDBRecordStore}
+import com.apple.foundationdb.record.provider.foundationdb.{FDBDatabase, FDBExceptions, FDBRecordContext, FDBRecordStore}
 import com.apple.foundationdb.record.query.RecordQuery
 import com.apple.foundationdb.tuple.Tuple
 import com.google.protobuf.ByteString
+import io.fbd.util.FDBUtil
 
 import java.util.concurrent.CompletableFuture
 import java.util.function.Function
@@ -15,6 +15,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 import scala.jdk.CollectionConverters._
 import scala.jdk.FutureConverters.{CompletionStageOps, FutureOps}
+import scala.util.{Failure, Success, Try}
 
 trait RemoteFDBRepo[M[_]] {
   def execute(command: FDBCrudCommand) : M[FDBCrudResponse]
@@ -47,6 +48,23 @@ class RemoteFDBRepoAsync(
 
 }
 
+object FDBTransactionErrors{
+  val NON_FDB_ERROR = -1
+  def apply( ex: Throwable ): FDBTransactionError = {
+    Option(FDBExceptions.getFDBCause(ex)) match {
+      case Some( fdbEx ) =>
+        FDBTransactionError.newBuilder()
+          .setCode( fdbEx.getCode )
+          .setError( fdbEx.toString )
+          .build()
+      case None =>
+        FDBTransactionError.newBuilder()
+          .setCode( NON_FDB_ERROR )
+          .setError( ex.toString )
+          .build()
+    }
+  }
+}
 
 class RemoteFDBRepoSingleTxnAsync(
                                    ctx: FDBRecordContext,
@@ -58,8 +76,19 @@ class RemoteFDBRepoSingleTxnAsync(
   private val recordStore: FDBRecordStore = rsBuilder.copyBuilder()
     .setContext(ctx).setKeySpacePath(db.recordsKeySpace).createOrOpen()
 
-
   override def execute(command: FDBCrudCommand): Future[FDBCrudResponse] = {
+    handle( command ) transform {
+      case Failure(ex) =>
+        Success(
+          FDBCrudResponse.newBuilder()
+            .setError( FDBTransactionErrors(ex) )
+            .build()
+        )
+      case res => res
+
+    }
+  }
+  private def handle(command: FDBCrudCommand): Future[FDBCrudResponse] = {
     val table = command.getTable
     val responseBuilder = FDBCrudResponse.newBuilder()
       command.getOperation match {

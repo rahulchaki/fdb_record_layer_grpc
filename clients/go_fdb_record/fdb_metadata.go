@@ -1,10 +1,10 @@
 package main
 
 import (
-	fdbgrpc "cio/fdb/grpc/src/main/go"
 	"context"
 	"google.golang.org/protobuf/reflect/protodesc"
 	"google.golang.org/protobuf/reflect/protoreflect"
+	fdbgrpc "io/fdb/grpc/src/main/go"
 	"time"
 )
 

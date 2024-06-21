@@ -1,6 +1,6 @@
-package cio.fbd.util
+package io.fbd.util
 
-import cio.fdb.record.grpc.FdbFilters._
+import io.fdb.record.grpc.FdbFilters._
 import com.apple.foundationdb.directory.DirectoryLayer
 import com.apple.foundationdb.record.provider.foundationdb.keyspace.{DirectoryLayerDirectory, KeySpace, KeySpacePath}
 import com.apple.foundationdb.record.query.expressions.{Comparisons, FieldWithComparison, Query, QueryComponent}

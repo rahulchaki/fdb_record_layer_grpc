@@ -1,10 +1,10 @@
-module cio/fdb/grpc/client
+module io/fdb/grpc/client
 
 go 1.22.3
 
 require (
-	cio/fdb/grpc v0.0.0-unpublished
-	cio/fdb/record v0.0.0-unpublished
+	io/fdb/grpc v0.0.0-unpublished
+	io/fdb/record v0.0.0-unpublished
 	github.com/apple/foundationdb/bindings/go v0.0.0-20240412182139-38384edc16db
 	google.golang.org/grpc v1.64.0
 	google.golang.org/protobuf v1.34.2
@@ -18,6 +18,6 @@ require (
 )
 
 replace (
-	cio/fdb/grpc v0.0.0-unpublished => ../../common/fdb_grpc
-	cio/fdb/record v0.0.0-unpublished => ../../common/record_layer
+	io/fdb/grpc v0.0.0-unpublished => ../../common/fdb_grpc
+	io/fdb/record v0.0.0-unpublished => ../../common/record_layer
 )

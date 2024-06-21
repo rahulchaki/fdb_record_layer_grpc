@@ -1,8 +1,8 @@
 syntax = "proto3";
-package cio.fdb.record.grpc;
+package io.fdb.record.grpc;
 
-option java_package = "cio.fdb.record.grpc";
-option go_package = "cio/fdb/grpc/protos";
+option java_package = "io.fdb.record.grpc";
+option go_package = "io/fdb/grpc/protos";
 
 
 import "google/protobuf/descriptor.proto";

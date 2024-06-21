@@ -1,12 +1,12 @@
 package main
 
 import (
-	pb "cio/fdb/grpc/client/protos"
 	"fmt"
 	"github.com/apple/foundationdb/bindings/go/src/fdb"
 	"github.com/apple/foundationdb/bindings/go/src/fdb/tuple"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
+	pb "io/fdb/grpc/client/protos"
 	"log"
 )
 
@@ -58,7 +58,7 @@ func main() {
 	database := "workspace_1"
 
 	fdbMetadataManager := NewFDbMetadataManager(conn)
-	fdbCRUD := NewCRUDClient(conn, database)
+	//fdbCRUD := NewCRUDClient(conn, database)
 
 	metadata, err := fdbMetadataManager.CreateOrOpen(database, pb.File_sample_proto)
 	if err != nil {
@@ -68,55 +68,83 @@ func main() {
 	log.Println(protojson.Format(metadata))
 	log.Println(" Metadata found : =========")
 
-	vendorKeys, err := fdbCRUD.CreateAll("Vendor", vendors)
-	if err != nil {
-		log.Fatalf("Could not create vendors: %v", err)
-	}
-	log.Println(" Vendors created with Keys  : =========")
-	for _, vendor := range vendorKeys {
-		log.Println(" VendorKey : ", vendor.String())
-	}
-	log.Println(" Vendors created with Keys  : =========")
-
-	itemKeys, err := fdbCRUD.CreateAll("Item", items)
-	if err != nil {
-		log.Fatalf("Could not create items: %v", err)
-	}
-	log.Println(" Items created with Keys  : =========")
-	for _, item := range itemKeys {
-		log.Println(" ItemKey : ", item.String())
-	}
-	log.Println(" Items created with Keys  : =========")
-
-	vendorsFiltered, err := fdbCRUD.LoadAllKeys(
-		"Vendor",
-		[]tuple.Tuple{
+	NewRemoteSession(conn, func(session *FDBSessionContext) error {
+		rs := session.RecordStore(database)
+		rs.CreateAll("Vendor", vendors, func(vendorKeys []tuple.Tuple, err error) {
+			if err != nil {
+				log.Fatalf("Could not create vendors: %v", err)
+			}
+			log.Println(" Vendors created with Keys  : =========")
+			for _, vendor := range vendorKeys {
+				log.Println(" VendorKey : ", vendor.String())
+			}
+			log.Println(" Vendors created with Keys  : =========")
+		})
+		rs.CreateAll("Item", items, func(itemKeys []tuple.Tuple, err error) {
+			if err != nil {
+				log.Fatalf("Could not create items: %v", err)
+			}
+			log.Println(" Items created with Keys  : =========")
+			for _, item := range itemKeys {
+				log.Println(" ItemKey : ", item.String())
+			}
+			log.Println(" Items created with Keys  : =========")
+		})
+		keysToLoad := []tuple.Tuple{
 			[]tuple.TupleElement{int64(1)},
 			[]tuple.TupleElement{int64(2)},
 			[]tuple.TupleElement{int64(3)},
-		},
-		vendorBuilder,
-	)
-	if err != nil {
-		log.Fatalf("Could not filter vendors: %v", err)
-	}
-	log.Println(" Vendors found: =========")
-	for _, vendor := range vendorsFiltered {
-		log.Println(" Vendor : ", protojson.Format(vendor))
-	}
-	log.Println(" Vendors found: =========")
+		}
+		rs.LoadAllKeys(
+			"Vendor", keysToLoad, vendorBuilder,
+			func(vendorsFiltered []proto.Message, err error) {
+				if err != nil {
+					log.Fatalf("Could not filter vendors: %v", err)
+				}
+				log.Println(" Vendors found: =========")
+				for _, vendor := range vendorsFiltered {
+					log.Println(" Vendor : ", protojson.Format(vendor))
+				}
+				log.Println(" Vendors found: =========")
+			})
+		rs.LoadAllQuery(
+			"Item",
+			Field_Equals_Long("vendor_id", 1), itemsBuilder,
+			func(itemsFiltered []proto.Message, err error) {
+				if err != nil {
+					log.Fatalf("Could not filter items: %v", err)
+				}
+				log.Println(" Items found: =========")
+				for _, item := range itemsFiltered {
+					log.Println(" Item : ", protojson.Format(item))
+				}
+				log.Println(" Items found: =========")
+			})
 
-	itemsFiltered, err := fdbCRUD.LoadAllQuery(
-		"Item",
-		Field_Equals_Long("vendor_id", 1),
-		itemsBuilder,
-	)
-	if err != nil {
-		log.Fatalf("Could not filter items: %v", err)
-	}
-	log.Println(" Items found: =========")
-	for _, item := range itemsFiltered {
-		log.Println(" Item : ", protojson.Format(item))
-	}
-	log.Println(" Items found: =========")
+		err := session.Done()
+		if err != nil {
+			return err
+		}
+		return session.Wait()
+	})
+
+	//vendorKeys, err := fdbCRUD.CreateAll("Vendor", vendors)
+	//itemKeys, err := fdbCRUD.CreateAll("Item", items)
+	//
+	//vendorsFiltered, err := fdbCRUD.LoadAllKeys(
+	//	"Vendor",
+	//	[]tuple.Tuple{
+	//		[]tuple.TupleElement{int64(1)},
+	//		[]tuple.TupleElement{int64(2)},
+	//		[]tuple.TupleElement{int64(3)},
+	//	},
+	//	vendorBuilder,
+	//)
+	//
+	//itemsFiltered, err := fdbCRUD.LoadAllQuery(
+	//	"Item",
+	//	Field_Equals_Long("vendor_id", 1),
+	//	itemsBuilder,
+	//)
+
 }

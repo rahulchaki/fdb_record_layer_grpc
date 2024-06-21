@@ -1,4 +1,4 @@
-module cio/fdb/record
+module io/fdb/record
 
 go 1.22.3
 

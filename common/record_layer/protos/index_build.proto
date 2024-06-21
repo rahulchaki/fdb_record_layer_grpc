@@ -19,7 +19,7 @@
   */
 
 syntax = "proto2";
-option go_package = "cio/fdb/record/src";
+option go_package = "io/fdb/record/src";
 
 
 package com.apple.foundationdb.record;

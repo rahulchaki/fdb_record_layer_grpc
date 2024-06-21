@@ -1,9 +1,9 @@
-package cio.fbd.record.grpc.server
+package io.fbd.record.grpc.server
 
-import cio.fbd.record.rpc.{MetadataManagerSync, RemoteFDBRepo}
-import cio.fdb.record.grpc.FDBCrudGrpc.FDBCrudImplBase
-import cio.fdb.record.grpc.FdbCrud._
+import io.fdb.record.grpc.FDBCrudGrpc.FDBCrudImplBase
+import io.fdb.record.grpc.FdbCrud._
 import com.apple.foundationdb.record.provider.foundationdb.FDBDatabase
+import io.fbd.record.rpc.{MetadataManagerSync, RemoteFDBRepo}
 import io.grpc.Status
 import io.grpc.stub.StreamObserver
 

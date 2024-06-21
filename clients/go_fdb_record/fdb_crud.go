@@ -1,10 +1,12 @@
 package main
 
 import (
-	fdbgrpc "cio/fdb/grpc/src/main/go"
 	"context"
+	"errors"
+	"fmt"
 	"github.com/apple/foundationdb/bindings/go/src/fdb/tuple"
 	"google.golang.org/protobuf/proto"
+	fdbgrpc "io/fdb/grpc/src/main/go"
 	"time"
 )
 
@@ -104,6 +106,10 @@ func (fdb *RemoteFDBCrud) execute(
 	response, err := fdb.client.Execute(ctx, &command)
 	if err != nil {
 		return nil, err
+	}
+	rErr := response.GetError()
+	if rErr != nil {
+		return nil, errors.New(fmt.Sprintf(" Error code: %d Error msg: %v ", rErr.GetCode(), rErr.GetError()))
 	}
 	return response, nil
 }

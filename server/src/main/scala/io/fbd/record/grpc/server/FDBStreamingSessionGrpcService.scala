@@ -1,9 +1,9 @@
-package cio.fbd.record.grpc.server
+package io.fbd.record.grpc.server
 
-import cio.fbd.record.rpc.{MetadataManagerSync, RemoteFDBStreamingSession}
-import cio.fdb.record.grpc.FDBStreamingSessionGrpc.FDBStreamingSessionImplBase
-import cio.fdb.record.grpc.FdbSession.{FDBStreamingSessionComand, FDBStreamingSessionResponse}
+import io.fdb.record.grpc.FDBStreamingSessionGrpc.FDBStreamingSessionImplBase
+import io.fdb.record.grpc.FdbSession.{FDBStreamingSessionComand, FDBStreamingSessionResponse}
 import com.apple.foundationdb.record.provider.foundationdb.{FDBDatabase, FDBRecordContext}
+import io.fbd.record.rpc.{MetadataManagerSync, RemoteFDBStreamingSession}
 import io.grpc.Status
 import io.grpc.stub.StreamObserver
 

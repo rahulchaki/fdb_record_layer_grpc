@@ -1,8 +1,8 @@
-package cio.fbd.record.grpc.server
+package io.fbd.record.grpc.server
 
-import cio.fbd.record.rpc.MetadataManager
-import cio.fbd.util.FDBUtil
 import com.apple.foundationdb.record.provider.foundationdb.FDBDatabaseFactoryImpl
+import io.fbd.record.rpc.MetadataManager
+import io.fbd.util.FDBUtil
 import io.grpc.ServerBuilder
 
 
