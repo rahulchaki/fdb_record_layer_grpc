@@ -5,7 +5,7 @@ import io.fdb.record.grpc.StreamingSession.{StreamingSessionRequest, StreamingSe
 import io.grpc.stub.StreamObserver
 import org.slf4j.LoggerFactory
 
-import java.util.concurrent.{ConcurrentHashMap, ConcurrentSkipListSet, Executor, Executors, TimeUnit}
+import java.util.concurrent.{ConcurrentHashMap, Executor, Executors, TimeUnit}
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.Duration
 import scala.concurrent.{ExecutionContext, Future}

@@ -56,6 +56,7 @@ func (session *FDBSessionContext) execute(
 	}
 	command := &fdbgrpc.FDBStreamingSessionComand{
 		CommandId: rand.Int64(),
+		Database:  database,
 		Command:   &execCommand,
 	}
 	handler := func(res *fdbgrpc.FDBStreamingSessionResponse, err error) error {

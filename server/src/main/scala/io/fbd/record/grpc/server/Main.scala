@@ -9,7 +9,7 @@ import io.grpc.ServerBuilder
 object Main extends App {
   val factory = new FDBDatabaseFactoryImpl()
   val fdb = factory.getDatabase
-  //FDBUtil.clearAll( fdb.database())
+  FDBUtil.clearAll( fdb.database())
   val baseNamespace = List("application", "demo", "environment", "dev")
   val metadataManager = MetadataManager.sync(fdb,baseNamespace)
   val server = ServerBuilder

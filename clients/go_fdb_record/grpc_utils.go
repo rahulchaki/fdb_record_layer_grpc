@@ -1,16 +1,11 @@
 package main
 
 import (
-	"context"
-	"fmt"
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
 	"io"
-	fdbgrpc "io/fdb/grpc/src/main/go"
 	"log"
 	"log/slog"
 	"sync"
-	"time"
 )
 
 type StreamObserver[T any] interface {
@@ -113,57 +108,57 @@ func RunAndWaitGrpcSession[Rq any, Rs any](
 	return streamer.Wait()
 }
 
-func RunAndWaitEchoExample() {
-	conn, err := grpc.NewClient(
-		"localhost:8080",
-		grpc.WithTransportCredentials(insecure.NewCredentials()),
-	)
-	if err != nil {
-		log.Fatalln("Failed to connect to server:", err)
-	}
-	client := fdbgrpc.NewRawStreamingSessionServiceClient(conn)
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
-	defer func(conn *grpc.ClientConn) {
-		err := conn.Close()
-		if err != nil {
-			log.Fatalln("Failed to close connection to server:", err)
-		}
-		cancel()
-	}(conn)
-	session, err := client.Execute(ctx)
-	if err != nil {
-		log.Fatalln("Failed to initiate stream to server:", err)
-	}
-	err = RunAndWaitGrpcSession[fdbgrpc.StreamingSessionRequest, fdbgrpc.StreamingSessionResponse](
-		session,
-		func(f *fdbgrpc.StreamingSessionResponse) int64 {
-			return f.GetId()
-		},
-		func(g GrpcStreamer[fdbgrpc.StreamingSessionRequest, fdbgrpc.StreamingSessionResponse]) {
-			ids := []int{1, 2, 3, 4, 6, 7}
-			for _, id := range ids {
-				req := &fdbgrpc.StreamingSessionRequest{
-					Id:      int64(id),
-					Command: []byte(fmt.Sprintf(" This is a test message id: %v", id)),
-				}
-				err := g.Send(int64(id), req, func(resp *fdbgrpc.StreamingSessionResponse, err error) error {
-					if err != nil {
-						log.Println(" Error received from  server", err)
-					}
-					return nil
-				})
-				if err != nil {
-					log.Println("Error sending request to server:", err)
-				}
-			}
-			err := g.Done()
-			if err != nil {
-				log.Println("Error finishing client stream:", err)
-			}
-		},
-	)
-	if err != nil {
-		log.Fatalln("Session finished with error:", err)
-	}
-}
+//func RunAndWaitEchoExample() {
+//	conn, err := grpc.NewClient(
+//		"localhost:8080",
+//		grpc.WithTransportCredentials(insecure.NewCredentials()),
+//	)
+//	if err != nil {
+//		log.Fatalln("Failed to connect to server:", err)
+//	}
+//	client := fdbgrpc.NewRawStreamingSessionServiceClient(conn)
+//	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+//	defer cancel()
+//	defer func(conn *grpc.ClientConn) {
+//		err := conn.Close()
+//		if err != nil {
+//			log.Fatalln("Failed to close connection to server:", err)
+//		}
+//		cancel()
+//	}(conn)
+//	session, err := client.Execute(ctx)
+//	if err != nil {
+//		log.Fatalln("Failed to initiate stream to server:", err)
+//	}
+//	err = RunAndWaitGrpcSession[fdbgrpc.StreamingSessionRequest, fdbgrpc.StreamingSessionResponse](
+//		session,
+//		func(f *fdbgrpc.StreamingSessionResponse) int64 {
+//			return f.GetId()
+//		},
+//		func(g GrpcStreamer[fdbgrpc.StreamingSessionRequest, fdbgrpc.StreamingSessionResponse]) {
+//			ids := []int{1, 2, 3, 4, 6, 7}
+//			for _, id := range ids {
+//				req := &fdbgrpc.StreamingSessionRequest{
+//					Id:      int64(id),
+//					Command: []byte(fmt.Sprintf(" This is a test message id: %v", id)),
+//				}
+//				err := g.Send(int64(id), req, func(resp *fdbgrpc.StreamingSessionResponse, err error) error {
+//					if err != nil {
+//						log.Println(" Error received from  server", err)
+//					}
+//					return nil
+//				})
+//				if err != nil {
+//					log.Println("Error sending request to server:", err)
+//				}
+//			}
+//			err := g.Done()
+//			if err != nil {
+//				log.Println("Error finishing client stream:", err)
+//			}
+//		},
+//	)
+//	if err != nil {
+//		log.Fatalln("Session finished with error:", err)
+//	}
+//}

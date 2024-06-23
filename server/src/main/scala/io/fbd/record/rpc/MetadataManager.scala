@@ -10,6 +10,7 @@ import com.apple.foundationdb.tuple.Tuple
 import com.google.protobuf.DescriptorProtos.FileDescriptorProto
 import com.google.protobuf.Descriptors.FileDescriptor
 import com.google.protobuf.{ByteString, DynamicMessage, ExtensionRegistry, Message}
+import io.fbd.record.rpc
 import io.fbd.util.FDBUtil
 
 import java.util.concurrent.ConcurrentHashMap
@@ -75,6 +76,7 @@ object MetadataManager {
 
 }
 
+
 class MetadataManagerSync(
                            fdb: FDBDatabase,
                            baseNamespace: List[String]
@@ -83,6 +85,7 @@ class MetadataManagerSync(
 
 
   private val databases = new ConcurrentHashMap[String, Database]()
+
 
   private def buildKeySpaces( database: String ): (KeySpacePath, KeySpacePath) = {
     val databaseNamespace = baseNamespace appendedAll List("database", database)
@@ -156,3 +159,45 @@ class MetadataManagerSync(
 
 
 }
+
+
+//object FDBKeySpaces{
+//  val DATA_TYPE = "data_type"
+//  val METADATA_COUNT = "metadata_count"
+//  val METADATA_LIST = "metadata_list"
+//  val METADATA = "metadata"
+//  val RECORDS = "records"
+//  val DATABASE = "database"
+//}
+//class FDBKeySpaces( baseNamespace: List[String], fdb: FDBDatabase ){
+//
+//  import FDBKeySpaces._
+//
+//  private def toKeySpacePath( dataType: String) = {
+//    FDBUtil.toKeySpacePath(
+//      baseNamespace appendedAll List(DATA_TYPE, dataType)
+//    )
+//  }
+//
+//  val metadataList: KeySpacePath = toKeySpacePath( METADATA_LIST )
+//  val metadataCount: KeySpacePath = toKeySpacePath( METADATA_COUNT)
+//  val metadata: KeySpacePath = toKeySpacePath(METADATA)
+//  val records: KeySpacePath = toKeySpacePath(RECORDS)
+//
+//  def metadata(database: String): KeySpacePath = metadata.add(DATABASE, database)
+//  def records(database: String): KeySpacePath = records.add(DATABASE, database)
+//
+//  def getSchemasCount(): Try[ Int ] = {
+//    fdb.run{ ctx =>
+//      val txn = ctx.ensureActive()
+//      txn.run{ t =>
+//        Option(t.get(metadataCount.toTuple(ctx).pack()).join()) match {
+//          case Some(value) => ???
+//          case None =>
+//        }
+//      }
+//    }
+//  }
+//
+//}
+
