@@ -11,6 +11,7 @@ lazy val root = (project in file("."))
     libraryDependencies += "com.google.protobuf" % "protobuf-java" % PROTO_VERSION,
     libraryDependencies += "com.google.protobuf" % "protobuf-java-util" % PROTO_VERSION,
     libraryDependencies += "io.grpc" % "grpc-netty-shaded" % "1.64.0",
+    libraryDependencies +=  "ch.qos.logback" % "logback-classic" % "1.5.6",
     Compile / PB.targets := Seq(
       scalapb.gen() -> (Compile / sourceManaged).value / "scalapb"
     ),

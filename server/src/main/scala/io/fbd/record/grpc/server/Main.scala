@@ -15,6 +15,7 @@ object Main extends App {
   val server = ServerBuilder
     .forPort(8080)
     .addService( new FDBMetadataManagerGrpcService(metadataManager))
+    .addService( new StreamingSessionGrpcService())
     .addService(new FDBCrudGrpcService(fdb,metadataManager))
     .addService(new FDBStreamingSessionGrpcService(fdb,metadataManager))
     .build()

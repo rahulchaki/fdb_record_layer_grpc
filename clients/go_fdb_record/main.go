@@ -34,21 +34,22 @@ func newItems(ids ...int32) []proto.Message {
 	return protos
 }
 func main() {
+	//RunAndWaitEchoExample()
 	if err := fdb.APIVersion(710); err != nil {
 		log.Fatalf("Error loading fdb: %v", err)
 	}
 
 	vendors := newVendor(1, 2, 3, 4, 5)
-	log.Println("Vendors Generated")
-	for _, vendor := range vendors {
-		log.Printf(protojson.Format(vendor))
-	}
+	//log.Println("Vendors Generated")
+	//for _, vendor := range vendors {
+	//	log.Printf(protojson.Format(vendor))
+	//}
 	vendorBuilder := func() proto.Message { return &pb.Vendor{} }
 	items := newItems(11, 12, 13, 14, 15)
-	log.Println("Items Generated")
-	for _, item := range items {
-		log.Printf(protojson.Format(item))
-	}
+	//log.Println("Items Generated")
+	//for _, item := range items {
+	//	log.Printf(protojson.Format(item))
+	//}
 	itemsBuilder := func() proto.Message { return &pb.Item{} }
 
 	conn, err := NewGrpcConnection()
@@ -64,11 +65,11 @@ func main() {
 	if err != nil {
 		log.Fatalf("Could not load metadata: %v", err)
 	}
-	log.Println(" Metadata found : =========")
-	log.Println(protojson.Format(metadata))
-	log.Println(" Metadata found : =========")
+	//log.Println(" Metadata found : =========")
+	log.Println("Metadata version ", metadata)
+	//log.Println(" Metadata found : =========")
 
-	NewRemoteSession(conn, func(session *FDBSessionContext) error {
+	session, err := NewRemoteSession(conn, func(session *FDBSessionContext) error {
 		rs := session.RecordStore(database)
 		rs.CreateAll("Vendor", vendors, func(vendorKeys []tuple.Tuple, err error) {
 			if err != nil {
@@ -121,13 +122,15 @@ func main() {
 				log.Println(" Items found: =========")
 			})
 
-		err := session.Done()
-		if err != nil {
-			return err
-		}
-		return session.Wait()
+		return session.Done()
 	})
-
+	if err != nil {
+		log.Fatalf("Could not create session: %v", err)
+	}
+	err = session.Wait()
+	if err != nil {
+		log.Fatalf("Error waiting for session: %v", err)
+	}
 	//vendorKeys, err := fdbCRUD.CreateAll("Vendor", vendors)
 	//itemKeys, err := fdbCRUD.CreateAll("Item", items)
 	//

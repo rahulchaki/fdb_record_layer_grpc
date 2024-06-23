@@ -1,0 +1,299 @@
+2024-06-23 06:34:04 INFO  Starting FDB api_version="630" run_loop_profiling="false" threads_per_client_version="1" trace_directory="null" trace_format="DEFAULT" trace_log_group="null" unclosed_warning="true"
+2024-06-23 06:34:11 INFO   Received request with ID:6087684317642175628 command: commandId: 6087684317642175628
+command {
+  database: "workspace_1"
+  table: "Vendor"
+  records {
+    records: "\b\001\022\nN_vendor_1"
+    records: "\b\002\022\nN_vendor_2"
+    records: "\b\003\022\nN_vendor_3"
+    records: "\b\004\022\nN_vendor_4"
+    records: "\b\005\022\nN_vendor_5"
+  }
+}
+
+2024-06-23 06:34:11 INFO   Received request with ID:5680186889267633050 command: commandId: 5680186889267633050
+command {
+  database: "workspace_1"
+  table: "Item"
+  records {
+    records: "\b\v\022\tN_item_11\030\001"
+    records: "\b\f\022\tN_item_12\030\002"
+    records: "\b\r\022\tN_item_13\030\003"
+    records: "\b\016\022\tN_item_14\030\004"
+    records: "\b\017\022\tN_item_15\030\005"
+  }
+}
+
+2024-06-23 06:34:11 INFO   Received request with ID:3593132122009135644 command: commandId: 3593132122009135644
+command {
+  database: "workspace_1"
+  table: "Vendor"
+  operation: LOAD
+  keys {
+    keys: "\025\001"
+    keys: "\025\002"
+    keys: "\025\003"
+  }
+}
+
+2024-06-23 06:34:11 ERROR  Error processing request with ID:6087684317642175628 ERROR: commandId: 6087684317642175628
+response {
+  error {
+    code: -1
+    error: "java.lang.IllegalArgumentException: No database  locally cached. "
+  }
+}
+
+2024-06-23 06:34:11 ERROR  Error processing request with ID:3593132122009135644 ERROR: commandId: 3593132122009135644
+response {
+  error {
+    code: -1
+    error: "java.lang.IllegalArgumentException: No database  locally cached. "
+  }
+}
+
+2024-06-23 06:34:11 ERROR  Error processing request with ID:5680186889267633050 ERROR: commandId: 5680186889267633050
+response {
+  error {
+    code: -1
+    error: "java.lang.IllegalArgumentException: No database  locally cached. "
+  }
+}
+
+2024-06-23 06:34:11 ERROR  Failed request with ID:6087684317642175628 command:
+java.lang.IllegalArgumentException: No database  locally cached. 
+	at io.fbd.record.rpc.RemoteFDBStreamingSessionHandlerAsync.handle(FDBStreamingSession.scala:43)
+	at io.fbd.record.rpc.RemoteFDBStreamingSessionHandlerAsync.handle(FDBStreamingSession.scala:14)
+	at io.fbd.record.rpc.StreamingSession.onNext(StreamingSession.scala:89)
+	at io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)
+	at io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:834)
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-06-23 06:34:11 ERROR  Failed request with ID:3593132122009135644 command:
+java.lang.IllegalArgumentException: No database  locally cached. 
+	at io.fbd.record.rpc.RemoteFDBStreamingSessionHandlerAsync.handle(FDBStreamingSession.scala:43)
+	at io.fbd.record.rpc.RemoteFDBStreamingSessionHandlerAsync.handle(FDBStreamingSession.scala:14)
+	at io.fbd.record.rpc.StreamingSession.onNext(StreamingSession.scala:89)
+	at io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)
+	at io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:834)
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-06-23 06:34:11 ERROR  Failed request with ID:5680186889267633050 command:
+java.lang.IllegalArgumentException: No database  locally cached. 
+	at io.fbd.record.rpc.RemoteFDBStreamingSessionHandlerAsync.handle(FDBStreamingSession.scala:43)
+	at io.fbd.record.rpc.RemoteFDBStreamingSessionHandlerAsync.handle(FDBStreamingSession.scala:14)
+	at io.fbd.record.rpc.StreamingSession.onNext(StreamingSession.scala:89)
+	at io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)
+	at io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:834)
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-06-23 06:34:11 INFO   Received request with ID:8848097347041520370 command: commandId: 8848097347041520370
+command {
+  database: "workspace_1"
+  table: "Item"
+  operation: LOAD
+  query {
+    expressions {
+      operator {
+      }
+      field {
+        name: "vendor_id"
+      }
+      value {
+        intValue: 1
+      }
+    }
+  }
+}
+
+2024-06-23 06:34:11 INFO   Session streaming client finished.
+2024-06-23 06:34:11 ERROR  Error processing request with ID:8848097347041520370 ERROR: commandId: 8848097347041520370
+response {
+  error {
+    code: -1
+    error: "java.lang.IllegalArgumentException: No database  locally cached. "
+  }
+}
+
+2024-06-23 06:34:11 ERROR  Failed request with ID:8848097347041520370 command:
+java.lang.IllegalArgumentException: No database  locally cached. 
+	at io.fbd.record.rpc.RemoteFDBStreamingSessionHandlerAsync.handle(FDBStreamingSession.scala:43)
+	at io.fbd.record.rpc.RemoteFDBStreamingSessionHandlerAsync.handle(FDBStreamingSession.scala:14)
+	at io.fbd.record.rpc.StreamingSession.onNext(StreamingSession.scala:89)
+	at io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)
+	at io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:834)
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-06-23 06:34:11 INFO  Waiting for all requests to be processed. remaining 0 
+2024-06-23 06:34:11 INFO  Finished Waiting for all requests to be processed.
+2024-06-23 06:34:11 INFO   Finished streaming session  
+2024-06-23 06:36:37 INFO   Received request with ID:3796011818114154201 command: commandId: 3796011818114154201
+command {
+  database: "workspace_1"
+  table: "Vendor"
+  records {
+    records: "\b\001\022\nN_vendor_1"
+    records: "\b\002\022\nN_vendor_2"
+    records: "\b\003\022\nN_vendor_3"
+    records: "\b\004\022\nN_vendor_4"
+    records: "\b\005\022\nN_vendor_5"
+  }
+}
+
+2024-06-23 06:36:37 ERROR  Error processing request with ID:3796011818114154201 ERROR: commandId: 3796011818114154201
+response {
+  error {
+    code: -1
+    error: "java.lang.IllegalArgumentException: No database  locally cached. "
+  }
+}
+
+2024-06-23 06:36:37 INFO   Received request with ID:7525825031196322472 command: commandId: 7525825031196322472
+command {
+  database: "workspace_1"
+  table: "Item"
+  records {
+    records: "\b\v\022\tN_item_11\030\001"
+    records: "\b\f\022\tN_item_12\030\002"
+    records: "\b\r\022\tN_item_13\030\003"
+    records: "\b\016\022\tN_item_14\030\004"
+    records: "\b\017\022\tN_item_15\030\005"
+  }
+}
+
+2024-06-23 06:36:37 ERROR  Failed request with ID:3796011818114154201 command:
+java.lang.IllegalArgumentException: No database  locally cached. 
+	at io.fbd.record.rpc.RemoteFDBStreamingSessionHandlerAsync.handle(FDBStreamingSession.scala:43)
+	at io.fbd.record.rpc.RemoteFDBStreamingSessionHandlerAsync.handle(FDBStreamingSession.scala:14)
+	at io.fbd.record.rpc.StreamingSession.onNext(StreamingSession.scala:89)
+	at io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)
+	at io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:834)
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-06-23 06:36:37 ERROR  Error processing request with ID:7525825031196322472 ERROR: commandId: 7525825031196322472
+response {
+  error {
+    code: -1
+    error: "java.lang.IllegalArgumentException: No database  locally cached. "
+  }
+}
+
+2024-06-23 06:36:37 ERROR  Failed request with ID:7525825031196322472 command:
+java.lang.IllegalArgumentException: No database  locally cached. 
+	at io.fbd.record.rpc.RemoteFDBStreamingSessionHandlerAsync.handle(FDBStreamingSession.scala:43)
+	at io.fbd.record.rpc.RemoteFDBStreamingSessionHandlerAsync.handle(FDBStreamingSession.scala:14)
+	at io.fbd.record.rpc.StreamingSession.onNext(StreamingSession.scala:89)
+	at io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)
+	at io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:834)
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-06-23 06:36:37 INFO   Received request with ID:6542839646297990175 command: commandId: 6542839646297990175
+command {
+  database: "workspace_1"
+  table: "Vendor"
+  operation: LOAD
+  keys {
+    keys: "\025\001"
+    keys: "\025\002"
+    keys: "\025\003"
+  }
+}
+
+2024-06-23 06:36:37 ERROR  Error processing request with ID:6542839646297990175 ERROR: commandId: 6542839646297990175
+response {
+  error {
+    code: -1
+    error: "java.lang.IllegalArgumentException: No database  locally cached. "
+  }
+}
+
+2024-06-23 06:36:37 ERROR  Failed request with ID:6542839646297990175 command:
+java.lang.IllegalArgumentException: No database  locally cached. 
+	at io.fbd.record.rpc.RemoteFDBStreamingSessionHandlerAsync.handle(FDBStreamingSession.scala:43)
+	at io.fbd.record.rpc.RemoteFDBStreamingSessionHandlerAsync.handle(FDBStreamingSession.scala:14)
+	at io.fbd.record.rpc.StreamingSession.onNext(StreamingSession.scala:89)
+	at io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)
+	at io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:834)
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-06-23 06:36:37 INFO   Received request with ID:2380143903103628572 command: commandId: 2380143903103628572
+command {
+  database: "workspace_1"
+  table: "Item"
+  operation: LOAD
+  query {
+    expressions {
+      operator {
+      }
+      field {
+        name: "vendor_id"
+      }
+      value {
+        intValue: 1
+      }
+    }
+  }
+}
+
+2024-06-23 06:36:37 INFO   Session streaming client finished.
+2024-06-23 06:36:37 ERROR  Error processing request with ID:2380143903103628572 ERROR: commandId: 2380143903103628572
+response {
+  error {
+    code: -1
+    error: "java.lang.IllegalArgumentException: No database  locally cached. "
+  }
+}
+
+2024-06-23 06:36:37 INFO  Waiting for all requests to be processed. remaining 0 
+2024-06-23 06:36:37 INFO  Finished Waiting for all requests to be processed.
+2024-06-23 06:36:37 ERROR  Failed request with ID:2380143903103628572 command:
+java.lang.IllegalArgumentException: No database  locally cached. 
+	at io.fbd.record.rpc.RemoteFDBStreamingSessionHandlerAsync.handle(FDBStreamingSession.scala:43)
+	at io.fbd.record.rpc.RemoteFDBStreamingSessionHandlerAsync.handle(FDBStreamingSession.scala:14)
+	at io.fbd.record.rpc.StreamingSession.onNext(StreamingSession.scala:89)
+	at io.grpc.stub.ServerCalls$StreamingServerCallHandler$StreamingServerCallListener.onMessage(ServerCalls.java:262)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailableInternal(ServerCallImpl.java:334)
+	at io.grpc.internal.ServerCallImpl$ServerStreamListenerImpl.messagesAvailable(ServerCallImpl.java:319)
+	at io.grpc.internal.ServerImpl$JumpToApplicationThreadServerStreamListener$1MessagesAvailable.runInContext(ServerImpl.java:834)
+	at io.grpc.internal.ContextRunnable.run(ContextRunnable.java:37)
+	at io.grpc.internal.SerializingExecutor.run(SerializingExecutor.java:133)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2024-06-23 06:36:37 INFO   Finished streaming session  

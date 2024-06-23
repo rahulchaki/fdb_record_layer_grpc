@@ -19,15 +19,23 @@ func NewCRUDClient(conn *grpc.ClientConn, database string) *RemoteFDBCrud {
 		Database: database,
 	}
 }
-func NewRemoteSession(conn *grpc.ClientConn, handler func(ctx *FDBSessionContext) error) error {
+
+func NewRemoteSession(
+	conn *grpc.ClientConn,
+	handler func(ctx *FDBSessionContext) error,
+) (*FDBSessionContext, error) {
 	fdbRemote := &RemoteFdbSession{
 		client: fdbgrpc.NewFDBStreamingSessionClient(conn),
 	}
-	session, err := fdbRemote.Run()
+	session, err := fdbRemote.NewSession()
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return handler(session)
+	err = handler(session)
+	if err != nil {
+		return nil, err
+	}
+	return session, nil
 }
 
 func NewFDbMetadataManager(conn *grpc.ClientConn) *FdbMetadataManager {

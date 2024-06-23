@@ -182,6 +182,7 @@ class RemoteFDBRepoSingleTxnAsync(
   def loadAll(table: String, query: BooleanQuery): Future[List[ByteString]] = {
     val rQuery = RecordQuery.newBuilder().setRecordType(table).setFilter(FDBUtil.toFDBQuery(query)).build()
     val cursor = recordStore.executeQuery(rQuery)
+
     cursor.asList().asScala
       .map{ recs =>
         recs.asScala.map(_.getRecord.toByteString).toList

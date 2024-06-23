@@ -2,41 +2,25 @@ package main
 
 import (
 	"context"
-	"errors"
 	"github.com/apple/foundationdb/bindings/go/src/fdb/tuple"
 	"google.golang.org/protobuf/proto"
-	"io"
 	fdbgrpc "io/fdb/grpc/src/main/go"
 	"math/rand/v2"
-	"sync"
 	"time"
 )
 
 type ResponseHandler func(*fdbgrpc.FDBCrudResponse, error)
 
 type FDBSessionContext struct {
-	stream fdbgrpc.FDBStreamingSession_ExecuteClient
-
-	responseHandlers sync.Map
-	doneCh           chan error
-}
-
-func (session *FDBSessionContext) finishHandlers() {
-	session.responseHandlers.Range(
-		func(key, value interface{}) bool {
-			handler := value.(ResponseHandler)
-			handler(nil, errors.New(" No response from server"))
-			return true
-		},
-	)
+	GrpcStreamer[fdbgrpc.FDBStreamingSessionComand, fdbgrpc.FDBStreamingSessionResponse]
 }
 
 func (session *FDBSessionContext) Done() error {
-	return session.stream.CloseSend()
+	return session.GrpcStreamer.Done()
 }
 
 func (session *FDBSessionContext) Wait() error {
-	return <-session.doneCh
+	return session.GrpcStreamer.Wait()
 }
 
 func (session *FDBSessionContext) execute(
@@ -48,6 +32,7 @@ func (session *FDBSessionContext) execute(
 	query *fdbgrpc.BooleanQuery,
 	onComplete ResponseHandler,
 ) error {
+
 	execCommand := fdbgrpc.FDBCrudCommand{
 		Database:  &database,
 		Table:     table,
@@ -69,12 +54,15 @@ func (session *FDBSessionContext) execute(
 	} else {
 		execCommand.Data = &fdbgrpc.FDBCrudCommand_Query{Query: query}
 	}
-	command := fdbgrpc.FDBStreamingSessionComand{
+	command := &fdbgrpc.FDBStreamingSessionComand{
 		CommandId: rand.Int64(),
 		Command:   &execCommand,
 	}
-	session.responseHandlers.Store(command.CommandId, onComplete)
-	return session.stream.Send(&command)
+	handler := func(res *fdbgrpc.FDBStreamingSessionResponse, err error) error {
+		onComplete(res.GetResponse(), err)
+		return nil
+	}
+	return session.Send(command.CommandId, command, handler)
 }
 
 func (session *FDBSessionContext) RecordStore(database string) *FDBRecordStore {
@@ -162,35 +150,18 @@ type RemoteFdbSession struct {
 	client fdbgrpc.FDBStreamingSessionClient
 }
 
-func (this *RemoteFdbSession) Run() (*FDBSessionContext, error) {
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
-	defer cancel()
+func (this *RemoteFdbSession) NewSession() (*FDBSessionContext, error) {
+	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
+
 	stream, err := this.client.Execute(ctx)
 	if err != nil {
 		return nil, err
 	}
-	fdbContext := FDBSessionContext{
-		stream:           stream,
-		responseHandlers: sync.Map{},
-	}
-	go func() {
-		defer func() {
-			fdbContext.finishHandlers()
-		}()
-		for {
-			response, err := stream.Recv()
-			if err == io.EOF {
-				fdbContext.doneCh <- nil
-				return
-			} else if err != nil {
-				// log
-			} else {
-				responseHandler, loaded := fdbContext.responseHandlers.LoadAndDelete(response.GetCommandId())
-				if loaded {
-					responseHandler.(ResponseHandler)(response.GetResponse(), nil)
-				}
-			}
-		}
-	}()
-	return &fdbContext, err
+	streamer := RunGrpcSession[fdbgrpc.FDBStreamingSessionComand, fdbgrpc.FDBStreamingSessionResponse](
+		stream,
+		func(rs *fdbgrpc.FDBStreamingSessionResponse) int64 {
+			return rs.GetCommandId()
+		})
+
+	return &FDBSessionContext{streamer}, nil
 }

@@ -1,0 +1,21 @@
+syntax = "proto3";
+package io.fdb.record.grpc;
+
+option java_package = "io.fdb.record.grpc";
+option go_package = "io/fdb/grpc/protos";
+
+message StreamingSessionRequest{
+    int64 id = 1;
+    bytes command = 2;
+}
+
+message StreamingSessionResponse{
+    int64 id = 1;
+    bytes response = 2;
+    bytes error = 3;
+}
+
+
+service RawStreamingSessionService{
+    rpc execute( stream StreamingSessionRequest) returns (stream StreamingSessionResponse){}
+}

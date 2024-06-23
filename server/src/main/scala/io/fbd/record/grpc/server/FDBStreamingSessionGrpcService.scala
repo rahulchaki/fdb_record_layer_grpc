@@ -3,7 +3,7 @@ package io.fbd.record.grpc.server
 import io.fdb.record.grpc.FDBStreamingSessionGrpc.FDBStreamingSessionImplBase
 import io.fdb.record.grpc.FdbSession.{FDBStreamingSessionComand, FDBStreamingSessionResponse}
 import com.apple.foundationdb.record.provider.foundationdb.{FDBDatabase, FDBRecordContext}
-import io.fbd.record.rpc.{MetadataManagerSync, RemoteFDBStreamingSession}
+import io.fbd.record.rpc.{FDBStreamingSession, MetadataManagerSync}
 import io.grpc.Status
 import io.grpc.stub.StreamObserver
 
@@ -35,12 +35,12 @@ class FDBStreamingSessionGrpcService(
         hasProcessingFinished.success(true)
       }
     }
-    val isContextSet = Promise[RemoteFDBStreamingSession]()
+    val isContextSet = Promise[StreamObserver[FDBStreamingSessionComand]]()
 
     val processRequests: Function[_ >: FDBRecordContext, CompletableFuture[_]] =
       (ctx: FDBRecordContext) => {
         isContextSet.success(
-          new RemoteFDBStreamingSession( ctx, metadataManager, wrappedResponseObserver )
+          FDBStreamingSession.newSession( ctx, metadataManager, wrappedResponseObserver )
         )
         hasProcessingFinished.future.asJava.toCompletableFuture
       }
